@@ -37,7 +37,7 @@ function App() {
 				<Route path="/competences" element={<Competences />} />
 				<Route path="/stages" element={<Stages />} />
 				<Route path="/veille" element={<Veille />} />
-				<Route path="*" element={<Notfound />} />
+				{/* <Route path="*" element={<Notfound />} /> */}
 			</Routes>
 		</div>
 	);
