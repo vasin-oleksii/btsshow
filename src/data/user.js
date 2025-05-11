@@ -7,12 +7,9 @@ const INFO = {
 	},
 
 	socials: {
-		twitter: "https://twitter.com/",
+		linkedin: "https://www.linkedin.com/in/oleksii-vasin/",
+		instagram: "https://www.instagram.com/vasin.oleksii/",
 		github: "https://github.com/vasin-oleksii",
-		linkedin: "https://linkedin.com/",
-		instagram: "https://instagram.com/",
-		stackoverflow: "https://stackoverflow.com/",
-		facebook: "https://facebook.com/",
 	},
 
 	homepage: {
@@ -25,6 +22,28 @@ const INFO = {
 		title: "À propos de moi",
 		description:
 			"Je suis un développeur passionné avec une expérience en développement web et mobile. J'ai travaillé sur divers projets utilisant React, Next.js, Ruby on Rails et d'autres technologies modernes. Je suis toujours à la recherche de nouveaux défis et opportunités pour développer mes compétences.",
+	},
+
+	work: {
+		title: "Expérience Professionnelle",
+		description: [
+			{
+				company: "Miratech",
+				position: "Junior Software Engineer",
+				period: "Depuis Octobre 2024",
+				description:
+					"Développement fullstack (React, Next.js, Ruby on Rails)",
+				logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Miratech_Logo.jpg",
+			},
+			{
+				company: "DigitalMindUA",
+				position: "Junior Frontend Developer",
+				period: "Avril – Juin 2024",
+				description:
+					"Développement avec React Native, intégration de systèmes de paiement, API externes",
+				logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdX2jfJBVbV3AHlWbCpuQApG7m9QQF09KgV7Ic_10XkVOYxi0KVi_xExlZSZIap2LwQTM&usqp=CAU",
+			},
+		],
 	},
 
 	articles: {

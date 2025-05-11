@@ -1,28 +1,51 @@
 .veille-container {
+	padding-top: 120px;
 	width: 100%;
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .veille-logo-container {
+	margin-top: 4.5rem;
 	display: flex;
 	justify-content: center;
-	margin-bottom: 30px;
 }
 
 .veille-title {
-	text-align: center;
-	font-size: 2.5rem;
-	margin-bottom: 40px;
-	color: var(--main-text-color);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 800px;
+	margin-bottom: 30px;
+}
+
+.veille-pdf-button {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 16px;
+	background-color: #007bff;
+	color: white;
+	border-radius: 4px;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	font-size: 14px;
+}
+
+.veille-pdf-button:hover {
+	background-color: #0056b3;
+	transform: translateY(-2px);
 }
 
 .veille-content {
-	background-color: var(--main-background);
-	border-radius: 10px;
-	padding: 30px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 800px;
+	padding: 20px;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .veille-section {
@@ -34,44 +57,45 @@
 }
 
 .veille-section h2 {
-	color: var(--main-text-color);
-	font-size: 1.5rem;
+	color: #333;
 	margin-bottom: 15px;
-	border-bottom: 2px solid var(--main-color);
-	padding-bottom: 5px;
+	font-size: 1.5em;
 }
 
 .veille-section p {
-	color: var(--secondary-text-color);
+	color: #666;
 	line-height: 1.6;
 	margin-bottom: 15px;
 }
 
 .veille-section ul {
 	list-style-type: disc;
-	margin-left: 20px;
-	color: var(--secondary-text-color);
+	padding-left: 20px;
+	color: #666;
 }
 
 .veille-section li {
-	margin-bottom: 10px;
+	margin-bottom: 8px;
 	line-height: 1.6;
 }
 
 @media (max-width: 768px) {
 	.veille-container {
-		padding: 15px;
-	}
-
-	.veille-content {
-		padding: 20px;
+		padding-top: 100px;
 	}
 
 	.veille-title {
-		font-size: 2rem;
+		flex-direction: column;
+		gap: 15px;
+		text-align: center;
 	}
 
-	.veille-section h2 {
-		font-size: 1.3rem;
+	.veille-pdf-button {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.veille-content {
+		padding: 15px;
 	}
 }

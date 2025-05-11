@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
@@ -40,6 +42,18 @@ const CV = () => {
 					<div className="cv-container">
 						<div className="title cv-title">
 							Mon Curriculum Vitae
+							<a
+								href="/cv.pdf"
+								className="cv-pdf-button"
+								target="_blank"
+								rel="noopener noreferrer"
+								style={{
+									color: "black",
+								}}
+							>
+								<FontAwesomeIcon icon={faFilePdf} /> Télécharger
+								PDF
+							</a>
 						</div>
 
 						<div className="cv-content">
@@ -70,12 +84,17 @@ const CV = () => {
 							<div className="cv-section">
 								<h2>Expériences professionnelles</h2>
 								<p>
-									Junior Software Engineer – Miratech (React,
+									Depuis Octobre 2024 : Junior Software
+									Engineer chez Miratech
+									<br />→ Développement fullstack (React,
 									Next.js, Ruby on Rails)
 								</p>
 								<p>
-									Frontend Developer – DigitalMindUA (React
-									Native)
+									Avril – Juin 2024 : Junior Frontend
+									Developer chez DigitalMindUA
+									<br />→ Développement avec React Native,
+									intégration de systèmes de paiement, API
+									externes
 								</p>
 							</div>
 

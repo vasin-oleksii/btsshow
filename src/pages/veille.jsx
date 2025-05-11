@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
@@ -40,6 +42,15 @@ const Veille = () => {
 					<div className="veille-container">
 						<div className="title veille-title">
 							Veille Technologique
+							<a
+								href="/veille.pdf"
+								className="veille-pdf-button"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<FontAwesomeIcon icon={faFilePdf} /> Télécharger
+								PDF
+							</a>
 						</div>
 
 						<div className="veille-content">
