@@ -72,3 +72,13 @@
 		font-weight: bold;
 	}
 }
+
+@media (max-width: 550px) {
+	.nav-background {
+		display: none;
+	}
+
+	.nav-item {
+		font-weight: bold;
+	}
+}
