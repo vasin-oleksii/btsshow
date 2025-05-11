@@ -2,36 +2,69 @@ const SEO = [
 	{
 		page: "home",
 		description:
-			"I am a backend developer with expertise in Node.js. I have experience in building scalable, secure and reliable web applications using various frameworks and technologies.",
-		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+			"Je suis un développeur web full-stack avec une expertise en React.js. J'ai de l'expérience dans la création d'applications web évolutives, sécurisées et fiables en utilisant diverses technologies modernes.",
+		keywords: ["Vasin", "Vasin Oleksii", "Développeur Web"],
 	},
 
 	{
 		page: "about",
 		description:
-			"I am a backend developer with expertise in Node.js. I have experience in building scalable, secure and reliable web applications using various frameworks and technologies.",
-		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+			"Je suis un développeur passionné avec une expérience en développement web et mobile. J'ai travaillé sur divers projets utilisant React, Next.js et d'autres technologies modernes.",
+		keywords: ["Vasin", "Vasin Oleksii", "Développeur Web"],
 	},
 
 	{
 		page: "articles",
 		description:
-			"Chronological collection of my long-form thoughts on programming, leadership, product design, and more.",
-		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+			"Collection chronologique de mes articles sur la programmation, le leadership, la conception de produits et plus encore.",
+		keywords: ["Vasin", "Vasin Oleksii", "Articles", "Blog"],
 	},
 
 	{
 		page: "projects",
 		description:
-			"I've worked on a variety of projects over the years and I'm proud of the progress I've made. Many of these projects are open-source and available for others to explore and contribute to.",
-		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+			"J'ai travaillé sur une variété de projets au fil des années et je suis fier des progrès réalisés. Beaucoup de ces projets sont open-source et disponibles pour que d'autres puissent les explorer et y contribuer.",
+		keywords: ["Vasin", "Vasin Oleksii", "Projets", "Portfolio"],
 	},
 
 	{
 		page: "contact",
 		description:
-			"If you're interested in collaborating on a project, feel free to reach out to me. I'm always open to new ideas and opportunities.",
-		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+			"Si vous êtes intéressé par une collaboration sur un projet, n'hésitez pas à me contacter. Je suis toujours ouvert aux nouvelles idées et opportunités.",
+		keywords: ["Vasin", "Vasin Oleksii", "Contact"],
+	},
+
+	{
+		page: "cv",
+		description:
+			"Mon CV détaillé présentant mon parcours académique, mon expérience professionnelle et mes compétences techniques.",
+		keywords: ["Vasin", "Vasin Oleksii", "CV", "Curriculum Vitae"],
+	},
+
+	{
+		page: "competences",
+		description:
+			"Un aperçu détaillé de mes compétences techniques, y compris la programmation, la cybersécurité, les réseaux et la gestion de projet.",
+		keywords: ["Vasin", "Vasin Oleksii", "Compétences", "Skills"],
+	},
+
+	{
+		page: "stages",
+		description:
+			"Informations sur mes stages et opportunités de stage, notamment dans le domaine du développement web.",
+		keywords: ["Vasin", "Vasin Oleksii", "Stages", "Internships"],
+	},
+
+	{
+		page: "veille",
+		description:
+			"Ma veille technologique sur React.js et l'écosystème front-end moderne, incluant les tendances, les bonnes pratiques et les nouvelles fonctionnalités.",
+		keywords: [
+			"Vasin",
+			"Vasin Oleksii",
+			"Veille Technologique",
+			"React.js",
+		],
 	},
 ];
 

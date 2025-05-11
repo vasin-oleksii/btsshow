@@ -19,7 +19,7 @@ const NavBar = (props) => {
 										: "nav-item"
 								}
 							>
-								<Link to="/">Home</Link>
+								<Link to="/">Accueil</Link>
 							</li>
 							<li
 								className={
@@ -28,7 +28,25 @@ const NavBar = (props) => {
 										: "nav-item"
 								}
 							>
-								<Link to="/about">About</Link>
+								<Link to="/about">À propos</Link>
+							</li>
+							<li
+								className={
+									active === "cv"
+										? "nav-item active"
+										: "nav-item"
+								}
+							>
+								<Link to="/cv">CV</Link>
+							</li>
+							<li
+								className={
+									active === "competences"
+										? "nav-item active"
+										: "nav-item"
+								}
+							>
+								<Link to="/competences">Compétences</Link>
 							</li>
 							<li
 								className={
@@ -37,7 +55,25 @@ const NavBar = (props) => {
 										: "nav-item"
 								}
 							>
-								<Link to="/projects">Projects</Link>
+								<Link to="/projects">Projets</Link>
+							</li>
+							<li
+								className={
+									active === "stages"
+										? "nav-item active"
+										: "nav-item"
+								}
+							>
+								<Link to="/stages">Stages</Link>
+							</li>
+							<li
+								className={
+									active === "veille"
+										? "nav-item active"
+										: "nav-item"
+								}
+							>
+								<Link to="/veille">Veille</Link>
 							</li>
 							<li
 								className={

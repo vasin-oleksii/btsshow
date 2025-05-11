@@ -21,7 +21,7 @@ const About = () => {
 	return (
 		<React.Fragment>
 			<Helmet>
-				<title>{`About | ${INFO.main.title}`}</title>
+				<title>{`À propos | ${INFO.main.title}`}</title>
 				<meta name="description" content={currentSEO.description} />
 				<meta
 					name="keywords"
@@ -47,6 +47,50 @@ const About = () => {
 
 								<div className="subtitle about-subtitle">
 									{INFO.about.description}
+								</div>
+
+								<div className="about-details">
+									<div className="about-subtitle">
+										<h3>Formation</h3>
+										<p>
+											2024–2026 : BTS SIO – SLAM, Lycée
+											Saint-John Perse, Pau
+										</p>
+										<p>
+											2023–2024 : STI2D SIN, Lycée Antoine
+											Bourdelle, Montauban
+										</p>
+									</div>
+
+									<div className="about-subtitle">
+										<h3>Expériences professionnelles</h3>
+										<p>
+											Junior Software Engineer – Miratech
+											(React, Next.js, Ruby on Rails)
+										</p>
+										<p>
+											Frontend Developer – DigitalMindUA
+											(React Native)
+										</p>
+									</div>
+
+									<div className="about-subtitle">
+										<h3>Compétences techniques</h3>
+										<p>
+											HTML5, CSS3, JavaScript, TypeScript,
+											React, Redux, Next.js, Tailwind,
+											Ruby on Rails, Node.js, Git, Docker,
+											Firebase, Jest
+										</p>
+									</div>
+
+									<div className="about-subtitle">
+										<h3>Langues</h3>
+										<p>
+											Français (C1), Anglais (B2),
+											Ukrainien (C2), Russe (C2)
+										</p>
+									</div>
 								</div>
 							</div>
 
