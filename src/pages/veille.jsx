@@ -43,7 +43,7 @@ const Veille = () => {
 						<div className="title veille-title">
 							Veille Technologique
 							<a
-								href="/veille.pdf"
+								href="https://www.canva.com/design/DAGdfMcP43E/FANGWGEW6snbx0q1vHHTZg/edit?utm_content=DAGdfMcP43E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
 								className="veille-pdf-button"
 								target="_blank"
 								rel="noopener noreferrer"

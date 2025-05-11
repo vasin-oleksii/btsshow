@@ -54,72 +54,41 @@ const INFO = {
 
 	projects: [
 		{
-			title: "Site Web personnel (CV)",
+			title: "PokemonQuize",
 			description:
-				"Création d'un site de présentation personnel avec navigation et menu. Technologies: HTML, CSS, JavaScript. Compétence: 1.3 Développement de la présence en ligne de l'organisation.",
+				"Application de quiz Pokémon développée en JavaScript avec un design simple et déploiement via Vercel.",
 			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
 			linkText: "Voir le projet",
-			link: "https://github.com/vasin-oleksii",
+			link: "https://pokemon-quize.vercel.app/",
 		},
-
-		{
-			title: "Projet Locaboard",
-			description:
-				"Conception d'un site dynamique en collaboration avec deux camarades. Technologies: HTML, CSS, JavaScript.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/html/html.png",
-			linkText: "Voir le projet",
-			link: "https://github.com/vasin-oleksii",
-		},
-
-		{
-			title: "Boutique du Pic du Midi",
-			description:
-				"Refonte d'un site existant dans le cadre d'un projet scolaire. Technologies: WordPress, HTML, CSS, PHP.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/php/php.png",
-			linkText: "Voir le projet",
-			link: "https://github.com/vasin-oleksii",
-		},
-
-		{
-			title: "Projet Concession Motoos",
-			description:
-				"Développement d'un site pour une concession moto fictive. Technologies: HTML, CSS, JavaScript, PHP.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
-			linkText: "Voir le projet",
-			link: "https://github.com/vasin-oleksii",
-		},
-
-		{
-			title: "Habitat et Humanisme",
-			description:
-				"Stage en développement web. Objectifs: Contribuer à la refonte de leur plateforme numérique. Compétences: Intégration, accessibilité, développement front/back, gestion de contenus.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/html/html.png",
-			linkText: "Voir le projet",
-			link: "https://github.com/vasin-oleksii",
-		},
-
 		{
 			title: "Shop.co",
 			description:
-				"E-commerce moderne, développé avec React + TypeScript + Vite. Utilisation de React Helmet, Redux Toolkit, et composants réutilisables.",
+				"Site e-commerce moderne en React + TypeScript + Vite. Utilisation de React Helmet, Redux Toolkit, composants modulaires.",
 			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/typescript/typescript.png",
 			linkText: "Voir le projet",
-			link: "https://github.com/vasin-oleksii",
+			link: "https://shop-c0.vercel.app/",
 		},
-
 		{
-			title: "Positivus",
+			title: "DuneWave - Locaboard (Projet d'école)",
 			description:
-				"Landing page en React et SCSS basée sur un design Figma. Responsive, animation, lazy loading.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/react/react.png",
+				"Projet d’école simulant une plateforme de gestion de logements. HTML, CSS, JS. Authentification simple et interface intuitive.",
+			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/html/html.png",
 			linkText: "Voir le projet",
-			link: "https://github.com/vasin-oleksii",
+			link: "https://dune-wave.vercel.app/pages/monCompteConnection.html",
 		},
-
 		{
 			title: "Partage",
 			description:
-				"Mini-service de partage de texte et de liens, simple et rapide pour la formation ou le travail collaboratif.",
+				"Service minimaliste de partage de texte et de liens. Développé avec React + Vite. Idéal pour l'apprentissage ou le travail collaboratif rapide.",
+			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/typescript/typescript.png",
+			linkText: "Voir le projet",
+			link: "https://partage.vercel.app/",
+		},
+		{
+			title: "Site Web personnel (CV)",
+			description:
+				"Création d’un site personnel pour la présentation du CV et des projets. HTML, CSS, JavaScript. Compétence 1.3 du BTS SIO.",
 			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
 			linkText: "Voir le projet",
 			link: "https://github.com/vasin-oleksii",

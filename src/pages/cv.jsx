@@ -43,7 +43,7 @@ const CV = () => {
 						<div className="title cv-title">
 							Mon Curriculum Vitae
 							<a
-								href="/cv.pdf"
+								href="https://www.canva.com/design/DAGbav64vE0/uibH1i4MvjT7kD5LiidiTw/edit?utm_content=DAGbav64vE0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
 								className="cv-pdf-button"
 								target="_blank"
 								rel="noopener noreferrer"

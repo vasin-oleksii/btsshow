@@ -38,7 +38,8 @@ const Footer = () => {
 
 				<div className="footer-credits">
 					<div className="footer-credits-text">
-						© 2024 Vasin Oleksii. Tous droits réservés.
+						© {new Date().getFullYear()} Vasin Oleksii. Tous droits
+						réservés.
 					</div>
 				</div>
 			</div>
