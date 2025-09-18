@@ -42,6 +42,21 @@ const Works = () => {
 								2024 Apr - 2024 Jun
 							</div>
 						</div>
+
+						<div className="work">
+							<img
+								src="https://via.placeholder.com/200x200/4A90E2/FFFFFF?text=H&H"
+								alt="Habitat et Humanisme"
+								className="work-image"
+							/>
+							<div className="work-title">Habitat et Humanisme</div>
+							<div className="work-subtitle">
+								Stagiaire Développement Web
+							</div>
+							<div className="work-duration">
+								2025
+							</div>
+						</div>
 					</div>
 				}
 			/>

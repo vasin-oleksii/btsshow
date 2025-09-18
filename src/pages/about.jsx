@@ -72,6 +72,10 @@ const About = () => {
 											Frontend Developer – DigitalMindUA
 											(React Native)
 										</p>
+										<p>
+											Stagiaire – Habitat et Humanisme Pyrénées Adour | 2025
+											(Développement web et numérique)
+										</p>
 									</div>
 
 									<div className="about-subtitle">

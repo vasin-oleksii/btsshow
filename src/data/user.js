@@ -43,6 +43,14 @@ const INFO = {
 					"Développement avec React Native, intégration de systèmes de paiement, API externes",
 				logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdX2jfJBVbV3AHlWbCpuQApG7m9QQF09KgV7Ic_10XkVOYxi0KVi_xExlZSZIap2LwQTM&usqp=CAU",
 			},
+			{
+				company: "Habitat et Humanisme Pyrénées Adour",
+				position: "Stagiaire Développement Web",
+				period: "2025",
+				description:
+					"Développement web et numérique pour l'amélioration de la plateforme de gestion des logements sociaux",
+				logo: "https://via.placeholder.com/200x200/4A90E2/FFFFFF?text=H&H",
+			},
 		],
 	},
 
