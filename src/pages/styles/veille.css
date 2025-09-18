@@ -26,17 +26,21 @@
 	align-items: center;
 	gap: 8px;
 	padding: 8px 16px;
-	background-color: #007bff;
-	color: white;
+	background-color: #ffd700;
+	color: #333;
 	border-radius: 4px;
 	text-decoration: none;
 	transition: all 0.3s ease;
 	font-size: 14px;
+	font-weight: 600;
+	box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
 }
 
 .veille-pdf-button:hover {
-	background-color: #0056b3;
+	background-color: #ffc107;
+	color: #000;
 	transform: translateY(-2px);
+	box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
 }
 
 .veille-content {
