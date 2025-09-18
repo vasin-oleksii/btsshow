@@ -15,7 +15,7 @@ const Stage = () => {
 					<div className="stage-body">
 						<div className="stage-item">
 							<img
-								src="https://via.placeholder.com/200x200/4A90E2/FFFFFF?text=H&H"
+								src="habitat.png"
 								alt="Habitat et Humanisme"
 								className="stage-image"
 							/>

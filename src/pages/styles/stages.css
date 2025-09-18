@@ -28,17 +28,21 @@
 	align-items: center;
 	gap: 8px;
 	padding: 10px 20px;
-	background-color: var(--main-color);
-	color: white;
+	background-color: #ffd700;
+	color: #333;
 	text-decoration: none;
 	border-radius: 5px;
 	transition: all 0.3s ease;
 	font-size: 1rem;
+	font-weight: 600;
+	box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
 }
 
 .stages-pdf-button:hover {
-	background-color: var(--link-color);
+	background-color: #ffc107;
+	color: #000;
 	transform: translateY(-2px);
+	box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
 }
 
 .stages-content {
