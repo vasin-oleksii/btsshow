@@ -93,6 +93,11 @@
 	padding-top: 30px;
 }
 
+.homepage-stage {
+	flex-basis: 600px;
+	padding-top: 30px;
+}
+
 @media (max-width: 1024px) {
 	.homepage-first-area {
 		flex-direction: column;
@@ -143,6 +148,12 @@
 	}
 
 	.homepage-works {
+		flex-basis: auto;
+		margin-left: -25px;
+		margin-right: -25px;
+	}
+
+	.homepage-stage {
 		flex-basis: auto;
 		margin-left: -25px;
 		margin-right: -25px;

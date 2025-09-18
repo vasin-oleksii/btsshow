@@ -48,19 +48,26 @@ const Stages = () => {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<FontAwesomeIcon icon={faFilePdf} /> Télécharger Présentation
+								<FontAwesomeIcon icon={faFilePdf} /> Télécharger
+								Présentation
 							</a>
 						</div>
 
 						<div className="stages-content">
 							<div className="stages-section">
-								<h2>Habitat et Humanisme Pyrénées Adour | 2025</h2>
+								<h2>
+									Habitat et Humanisme Pyrénées Adour | 2025
+								</h2>
 								<div className="stage-details">
 									<h3>À propos de l'association</h3>
 									<p>
-										Habitat et Humanisme est une association qui œuvre pour l'accès au logement des personnes en difficulté. 
-										Elle développe des projets d'habitat social et accompagne les familles vers l'autonomie résidentielle 
-										et l'insertion sociale dans la région des Pyrénées-Adour.
+										Habitat et Humanisme est une association
+										qui œuvre pour l'accès au logement des
+										personnes en difficulté. Elle développe
+										des projets d'habitat social et
+										accompagne les familles vers l'autonomie
+										résidentielle et l'insertion sociale
+										dans la région des Pyrénées-Adour.
 									</p>
 
 									<h3>Domaine</h3>
@@ -68,8 +75,11 @@ const Stages = () => {
 
 									<h3>Objectifs</h3>
 									<p>
-										Contribuer à la refonte ou au développement de leur plateforme numérique pour améliorer 
-										la gestion des logements et l'accompagnement des familles.
+										Contribuer à la refonte ou au
+										développement de leur plateforme
+										numérique pour améliorer la gestion des
+										logements et l'accompagnement des
+										familles.
 									</p>
 
 									<h3>Compétences mobilisées</h3>
