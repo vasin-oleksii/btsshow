@@ -160,12 +160,13 @@ const Homepage = () => {
 								))}
 							</div>
 
-							<div className="homepage-works">
-								<Works />
-							</div>
-
-							<div className="homepage-stage">
-								<Stage />
+							<div className="homepage-work-section">
+								<div className="homepage-works">
+									<Works />
+								</div>
+								<div className="homepage-stage">
+									<Stage />
+								</div>
 							</div>
 						</div>
 

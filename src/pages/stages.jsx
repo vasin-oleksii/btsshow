@@ -53,6 +53,57 @@ const Stages = () => {
 							</a>
 						</div>
 
+						<div className="stages-pdf-viewer">
+							<iframe
+								src="/Presentation Stage.pdf#toolbar=0&navpanes=0&scrollbar=0"
+								width="100%"
+								height="800px"
+								title="Présentation Stage"
+								className="stages-pdf-iframe"
+							></iframe>
+							<div className="stages-pdf-fallback">
+								<object
+									data="/Presentation Stage.pdf"
+									type="application/pdf"
+									width="100%"
+									height="800px"
+									className="stages-pdf-object"
+								>
+									<p>
+										Votre navigateur ne supporte pas
+										l'affichage des PDF.
+										<a
+											href="/Presentation Stage.pdf"
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											Télécharger le PDF
+										</a>
+									</p>
+								</object>
+							</div>
+						</div>
+
+						<div className="stages-mobile-message">
+							<div className="mobile-pdf-info">
+								<h3>📱 Version mobile</h3>
+								<p>
+									Pour une meilleure expérience de lecture sur
+									mobile et tablette, téléchargez la
+									présentation PDF directement.
+								</p>
+								<a
+									href="/Presentation Stage.pdf"
+									className="mobile-download-button"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<FontAwesomeIcon icon={faFilePdf} />{" "}
+									Télécharger la Présentation
+								</a>
+							</div>
+						</div>
+
 						<div className="stages-content">
 							<div className="stages-section">
 								<h2>
@@ -70,26 +121,71 @@ const Stages = () => {
 										dans la région des Pyrénées-Adour.
 									</p>
 
-									<h3>Domaine</h3>
-									<p>Développement web et numérique</p>
-
-									<h3>Objectifs</h3>
+									<h3>Domaine d'activité</h3>
 									<p>
-										Contribuer à la refonte ou au
+										Développement web et transformation
+										numérique
+									</p>
+
+									<h3>Objectifs du stage</h3>
+									<p>
+										Contribuer à la refonte et au
 										développement de leur plateforme
 										numérique pour améliorer la gestion des
-										logements et l'accompagnement des
-										familles.
+										logements sociaux et l'accompagnement
+										des familles. Développer des outils de
+										suivi et de communication pour optimiser
+										les processus internes.
 									</p>
 
 									<h3>Compétences mobilisées</h3>
 									<ul>
-										<li>Intégration web</li>
-										<li>Accessibilité numérique</li>
-										<li>Développement front/back</li>
-										<li>Gestion de contenus</li>
-										<li>Interface utilisateur</li>
+										<li>
+											Développement front-end (React,
+											HTML5, CSS3)
+										</li>
+										<li>
+											Intégration et accessibilité web
+										</li>
+										<li>
+											Développement back-end (Node.js,
+											bases de données)
+										</li>
+										<li>Gestion de contenus et CMS</li>
+										<li>
+											Interface utilisateur et expérience
+											utilisateur
+										</li>
+										<li>
+											Gestion de projet et méthodologies
+											agiles
+										</li>
 									</ul>
+
+									<h3>Technologies utilisées</h3>
+									<ul>
+										<li>
+											React.js pour l'interface
+											utilisateur
+										</li>
+										<li>Node.js pour le backend</li>
+										<li>
+											MongoDB/PostgreSQL pour la base de
+											données
+										</li>
+										<li>Git pour le versioning</li>
+										<li>Figma pour le design</li>
+									</ul>
+
+									<h3>Résultats attendus</h3>
+									<p>
+										Amélioration significative de
+										l'efficacité des processus de gestion
+										des logements, meilleure communication
+										avec les bénéficiaires, et modernisation
+										de l'outil numérique de l'association
+										pour servir au mieux sa mission sociale.
+									</p>
 								</div>
 							</div>
 						</div>

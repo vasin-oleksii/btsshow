@@ -45,6 +45,31 @@
 	text-align: right;
 }
 
+@media (max-width: 1050px) {
+	.footer-nav-link-list {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 15px;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.footer-nav-link-item {
+		font-size: 90%;
+	}
+}
+
+@media (max-width: 800px) {
+	.footer-nav-link-list {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 12px;
+	}
+
+	.footer-nav-link-item {
+		font-size: 88%;
+	}
+}
+
 @media (max-width: 600px) {
 	.footer {
 		flex-direction: column;
@@ -59,5 +84,13 @@
 
 	.footer-nav-link-list {
 		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+		text-align: center;
+	}
+
+	.footer-nav-link-item {
+		font-size: 85%;
 	}
 }

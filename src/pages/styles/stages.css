@@ -1,6 +1,6 @@
 .stages-container {
 	width: 100%;
-	max-width: 800px;
+	max-width: 1200px;
 	margin: 0 auto;
 	padding: 20px;
 }
@@ -28,21 +28,49 @@
 	align-items: center;
 	gap: 8px;
 	padding: 10px 20px;
-	background-color: #ffd700;
-	color: #333;
+	background-color: #14b8a6;
+	color: white;
 	text-decoration: none;
 	border-radius: 5px;
 	transition: all 0.3s ease;
 	font-size: 1rem;
 	font-weight: 600;
-	box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+	box-shadow: 0 2px 4px rgba(20, 184, 166, 0.3);
 }
 
 .stages-pdf-button:hover {
-	background-color: #ffc107;
-	color: #000;
+	background-color: #0d9488;
+	color: white;
 	transform: translateY(-2px);
-	box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
+	box-shadow: 0 4px 8px rgba(20, 184, 166, 0.4);
+}
+
+.stages-pdf-viewer {
+	margin: 30px 0;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	background-color: var(--main-background);
+}
+
+.stages-pdf-iframe {
+	border: none;
+	border-radius: 10px;
+	width: 100%;
+	height: 800px;
+	background-color: white;
+}
+
+.stages-pdf-fallback {
+	display: none;
+}
+
+.stages-pdf-object {
+	border: none;
+	border-radius: 10px;
+	width: 100%;
+	height: 800px;
+	background-color: white;
 }
 
 .stages-content {
@@ -93,6 +121,67 @@
 .stage-details li {
 	margin-bottom: 10px;
 	line-height: 1.6;
+}
+
+/* Mobile message styles - hidden by default */
+.stages-mobile-message {
+	display: none;
+}
+
+.mobile-pdf-info {
+	background-color: #f8f9fa;
+	border: 2px solid #14b8a6;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: center;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-pdf-info h3 {
+	color: #14b8a6;
+	margin-bottom: 15px;
+	font-size: 1.3rem;
+}
+
+.mobile-pdf-info p {
+	color: #666;
+	margin-bottom: 20px;
+	line-height: 1.6;
+}
+
+.mobile-download-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 24px;
+	background-color: #14b8a6;
+	color: white;
+	text-decoration: none;
+	border-radius: 6px;
+	transition: all 0.3s ease;
+	font-size: 1rem;
+	font-weight: 600;
+	box-shadow: 0 2px 4px rgba(20, 184, 166, 0.3);
+}
+
+.mobile-download-button:hover {
+	background-color: #0d9488;
+	color: white;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 8px rgba(20, 184, 166, 0.4);
+}
+
+@media (max-width: 1024px) {
+	/* Hide PDF viewer on tablets and mobile */
+	.stages-pdf-viewer {
+		display: none;
+	}
+
+	/* Show mobile message on tablets and mobile */
+	.stages-mobile-message {
+		display: block;
+		margin: 30px 0;
+	}
 }
 
 @media (max-width: 768px) {

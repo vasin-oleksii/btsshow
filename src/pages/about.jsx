@@ -65,16 +65,17 @@ const About = () => {
 									<div className="about-subtitle">
 										<h3>Expériences professionnelles</h3>
 										<p>
-											Junior Software Engineer – Miratech
+											Ingénieur Logiciel Junior – Miratech
 											(React, Next.js, Ruby on Rails)
 										</p>
 										<p>
-											Frontend Developer – DigitalMindUA
+											Développeur Frontend – DigitalMindUA
 											(React Native)
 										</p>
 										<p>
-											Stagiaire – Habitat et Humanisme Pyrénées Adour | 2025
-											(Développement web et numérique)
+											Stagiaire – Habitat et Humanisme
+											Pyrénées Adour | 2025 (Développement
+											web et numérique)
 										</p>
 									</div>
 

@@ -43,17 +43,24 @@ const CV = () => {
 						<div className="title cv-title">
 							Mon Curriculum Vitae
 							<a
-								href="https://www.canva.com/design/DAGbav64vE0/uibH1i4MvjT7kD5LiidiTw/edit?utm_content=DAGbav64vE0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+								href="/CV-Vasin Oleksii.pdf"
 								className="cv-pdf-button"
 								target="_blank"
 								rel="noopener noreferrer"
-								style={{
-									color: "black",
-								}}
 							>
 								<FontAwesomeIcon icon={faFilePdf} /> Télécharger
 								PDF
 							</a>
+						</div>
+
+						<div className="cv-pdf-viewer">
+							<iframe
+								src="/CV-Vasin Oleksii.pdf#toolbar=0&navpanes=0&scrollbar=0"
+								width="100%"
+								height="600px"
+								title="CV Vasin Oleksii"
+								className="cv-pdf-iframe"
+							></iframe>
 						</div>
 
 						<div className="cv-content">
@@ -84,26 +91,98 @@ const CV = () => {
 							<div className="cv-section">
 								<h2>Expériences professionnelles</h2>
 								<p>
-									Depuis Octobre 2024 : Junior Software
-									Engineer chez Miratech
+									<strong>
+										Depuis Octobre 2024 : Ingénieur Logiciel
+										Junior chez Miratech
+									</strong>
 									<br />→ Développement fullstack (React,
 									Next.js, Ruby on Rails)
+									<br />→ Collaboration en équipe
+									internationale
+									<br />→ Maintenance et évolution
+									d'applications web
 								</p>
 								<p>
-									Avril – Juin 2024 : Junior Frontend
-									Developer chez DigitalMindUA
-									<br />→ Développement avec React Native,
-									intégration de systèmes de paiement, API
-									externes
+									<strong>
+										Avril – Juin 2024 : Développeur Frontend
+										Junior chez DigitalMindUA
+									</strong>
+									<br />→ Développement avec React Native
+									<br />→ Intégration de systèmes de paiement
+									et API externes
+									<br />→ Développement d'applications mobiles
+									cross-platform
+								</p>
+								<p>
+									<strong>
+										2025 : Stagiaire Développement Web chez
+										Habitat et Humanisme Pyrénées Adour
+									</strong>
+									<br />→ Refonte de plateforme numérique pour
+									la gestion de logements sociaux
+									<br />→ Développement d'outils de suivi et
+									de communication
+									<br />→ Amélioration des processus internes
+									de l'association
 								</p>
 							</div>
 
 							<div className="cv-section">
 								<h2>Compétences techniques</h2>
 								<p>
-									HTML5, CSS3, JavaScript, TypeScript, React,
-									Redux, Next.js, Tailwind, Ruby on Rails,
-									Node.js, Git, Docker, Firebase, Jest
+									<strong>Frontend :</strong> HTML5, CSS3,
+									JavaScript ES6+, TypeScript, React, Redux,
+									Next.js, Tailwind CSS
+								</p>
+								<p>
+									<strong>Backend :</strong> Node.js, Ruby on
+									Rails, Express.js, API REST
+								</p>
+								<p>
+									<strong>Bases de données :</strong> MongoDB,
+									PostgreSQL, MySQL
+								</p>
+								<p>
+									<strong>Outils :</strong> Git, Docker,
+									Firebase, Jest, Figma, Webpack
+								</p>
+								<p>
+									<strong>Mobile :</strong> React Native,
+									développement cross-platform
+								</p>
+							</div>
+
+							<div className="cv-section">
+								<h2>Projets significatifs</h2>
+								<p>
+									<strong>Shop.co :</strong> Site e-commerce
+									moderne en React + TypeScript + Vite avec
+									Redux Toolkit
+								</p>
+								<p>
+									<strong>PokemonQuize :</strong> Application
+									de quiz Pokémon en JavaScript vanilla
+									déployée sur Vercel
+								</p>
+								<p>
+									<strong>DuneWave - Locaboard :</strong>{" "}
+									Plateforme de gestion de logements (projet
+									d'école)
+								</p>
+								<p>
+									<strong>Partage :</strong> Service
+									minimaliste de partage de texte et liens en
+									React + Vite
+								</p>
+							</div>
+
+							<div className="cv-section">
+								<h2>Soft Skills</h2>
+								<p>
+									Travail en équipe, communication efficace,
+									résolution de problèmes, adaptabilité,
+									esprit critique, gestion du temps,
+									apprentissage continu
 								</p>
 							</div>
 						</div>

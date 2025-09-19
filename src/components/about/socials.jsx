@@ -25,7 +25,7 @@ const Socials = () => {
 							className="social-icon"
 						/>
 					</div>
-					<div className="social-text">Follow on GitHub</div>
+					<div className="social-text">Suivre sur GitHub</div>
 				</a>
 			</div>
 
@@ -41,7 +41,7 @@ const Socials = () => {
 							className="social-icon"
 						/>
 					</div>
-					<div className="social-text">Follow on LinkedIn</div>
+					<div className="social-text">Suivre sur LinkedIn</div>
 				</a>
 			</div>
 
@@ -57,7 +57,7 @@ const Socials = () => {
 							className="social-icon"
 						/>
 					</div>
-					<div className="social-text">Follow on Instagram</div>
+					<div className="social-text">Suivre sur Instagram</div>
 				</a>
 			</div>
 

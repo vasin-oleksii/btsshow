@@ -4,7 +4,7 @@ import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 
 import Card from "../common/card";
 
-import "./styles/stage.css";
+import "./styles/works.css";
 
 const Stage = () => {
 	return (
@@ -14,20 +14,20 @@ const Stage = () => {
 					icon={faGraduationCap}
 					title="Stage"
 					body={
-						<div className="stage-body">
-							<div className="stage-item">
+						<div className="works-body">
+							<div className="work">
 								<img
 									src="habitat.png"
 									alt="Habitat et Humanisme"
-									className="stage-image"
+									className="work-image"
 								/>
-								<div className="stage-title">
+								<div className="work-title">
 									Habitat et Humanisme
 								</div>
-								<div className="stage-subtitle">
+								<div className="work-subtitle">
 									Stagiaire Développement Web
 								</div>
-								<div className="stage-duration">2025</div>
+								<div className="work-duration">2025</div>
 							</div>
 						</div>
 					}

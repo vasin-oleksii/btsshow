@@ -10,7 +10,7 @@ const Works = () => {
 		<div className="works">
 			<Card
 				icon={faBriefcase}
-				title="Work"
+				title="Travail"
 				body={
 					<div className="works-body">
 						<div className="work">
@@ -21,10 +21,10 @@ const Works = () => {
 							/>
 							<div className="work-title">Miratech</div>
 							<div className="work-subtitle">
-								Software Engineer
+								Ingénieur Logiciel
 							</div>
 							<div className="work-duration">
-								2024 Oct - Present
+								2024 Oct - Présent
 							</div>
 						</div>
 
@@ -36,10 +36,10 @@ const Works = () => {
 							/>
 							<div className="work-title">Digital Minds</div>
 							<div className="work-subtitle">
-								Software Engineer
+								Ingénieur Logiciel
 							</div>
 							<div className="work-duration">
-								2024 Apr - 2024 Jun
+								2024 Avr - 2024 Juin
 							</div>
 						</div>
 					</div>

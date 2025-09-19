@@ -29,7 +29,7 @@ const INFO = {
 		description: [
 			{
 				company: "Miratech",
-				position: "Junior Software Engineer",
+				position: "Ingénieur Logiciel Junior",
 				period: "Depuis Octobre 2024",
 				description:
 					"Développement fullstack (React, Next.js, Ruby on Rails)",
@@ -37,7 +37,7 @@ const INFO = {
 			},
 			{
 				company: "DigitalMindUA",
-				position: "Junior Frontend Developer",
+				position: "Développeur Frontend Junior",
 				period: "Avril – Juin 2024",
 				description:
 					"Développement avec React Native, intégration de systèmes de paiement, API externes",

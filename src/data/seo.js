@@ -52,7 +52,7 @@ const SEO = [
 		page: "stages",
 		description:
 			"Informations sur mes stages et opportunités de stage, notamment dans le domaine du développement web.",
-		keywords: ["Vasin", "Vasin Oleksii", "Stages", "Internships"],
+		keywords: ["Vasin", "Vasin Oleksii", "Stages", "Stages"],
 	},
 
 	{
