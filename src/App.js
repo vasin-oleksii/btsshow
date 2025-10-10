@@ -8,7 +8,7 @@ import Projects from "./pages/projects";
 import Articles from "./pages/articles";
 import ReadArticle from "./pages/readArticle";
 import Contact from "./pages/contact";
-import Notfound from "./pages/404";
+// import Notfound from "./pages/404";
 import CV from "./pages/cv";
 import Competences from "./pages/competences";
 import Stages from "./pages/stages";

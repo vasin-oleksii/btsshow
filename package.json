@@ -3,9 +3,9 @@
 	"version": "1.1.0",
 	"description": "Personal portfolio template built using Reactjs",
 	"author": {
-		"name": "Tharindu N. Madhusanka",
-		"email": "mail@tharindu.dev",
-		"url": "https://tharindu.dev"
+		"name": "Oleksii Vasin",
+		"email": "vasin.oleksii@gmail.com",
+		"url": "https://portfolio.vasin.fr"
 	},
 	"license": "MIT",
 	"private": true,

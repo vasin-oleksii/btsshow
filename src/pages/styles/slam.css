@@ -1,0 +1,89 @@
+.slam-container {
+	width: 100%;
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.slam-logo-container {
+	margin-top: 4.5rem;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 30px;
+}
+
+.slam-title {
+	text-align: center;
+	font-size: 2.5rem;
+	margin-bottom: 20px;
+	color: var(--main-text-color);
+}
+
+.slam-intro {
+	text-align: center;
+	margin-bottom: 30px;
+	color: var(--secondary-text-color);
+}
+
+.slam-sections {
+	background-color: var(--main-background);
+	border-radius: 10px;
+	padding: 30px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.slam-section {
+	margin-bottom: 32px;
+}
+
+.slam-section:last-child {
+	margin-bottom: 0;
+}
+
+.slam-section h2 {
+	color: var(--main-text-color);
+	font-size: 1.6rem;
+	margin-bottom: 12px;
+	border-bottom: 2px solid var(--main-color);
+	padding-bottom: 6px;
+}
+
+.slam-section h3 {
+	color: var(--main-text-color);
+	font-size: 1.15rem;
+	margin-top: 18px;
+	margin-bottom: 8px;
+}
+
+.slam-section ul {
+	list-style-type: disc;
+	margin-left: 20px;
+	color: var(--secondary-text-color);
+}
+
+.slam-section li {
+	margin-bottom: 8px;
+	line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+	.slam-container {
+		padding: 15px;
+	}
+
+	.slam-sections {
+		padding: 20px;
+	}
+
+	.slam-title {
+		font-size: 2rem;
+	}
+
+	.slam-section h2 {
+		font-size: 1.35rem;
+	}
+
+	.slam-section h3 {
+		font-size: 1.05rem;
+	}
+}
