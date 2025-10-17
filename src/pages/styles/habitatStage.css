@@ -1,0 +1,284 @@
+.habitat-logo-container {
+	display: flex;
+	justify-content: left;
+	padding-top: 25px;
+}
+
+.habitat-logo {
+	display: flex;
+	position: fixed;
+	border: 1px solid white;
+	border-radius: 50%;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+	top: 4vh;
+}
+
+.habitat-container {
+	display: flex;
+	flex-direction: column;
+	padding-top: 120px;
+}
+
+.back-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--link-color);
+	text-decoration: none;
+	font-weight: 500;
+	margin-bottom: 30px;
+	transition: transform 0.2s ease;
+}
+
+.back-link:hover {
+	transform: translateX(-5px);
+}
+
+.habitat-title {
+	width: 100% !important;
+	margin-bottom: 10px;
+}
+
+.habitat-subtitle {
+	width: 100% !important;
+	margin-top: 25px;
+	margin-bottom: 40px;
+	color: var(--secondary-text-color);
+}
+
+.habitat-content {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.habitat-section {
+	background: #fff;
+	border-radius: 12px;
+	padding: 25px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.habitat-section h2 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 15px;
+	color: var(--primary-color);
+}
+
+.habitat-section p {
+	line-height: 1.7;
+	color: var(--secondary-text-color);
+	margin-bottom: 10px;
+}
+
+.habitat-section ul {
+	list-style: none;
+	padding: 0;
+}
+
+.habitat-section ul li {
+	padding: 8px 0;
+	padding-left: 25px;
+	position: relative;
+	color: var(--secondary-text-color);
+	line-height: 1.6;
+}
+
+.habitat-section ul li::before {
+	content: "▸";
+	position: absolute;
+	left: 0;
+	color: var(--link-color);
+	font-weight: bold;
+}
+
+.habitat-map-section {
+	background: #fff;
+	border-radius: 12px;
+	padding: 25px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+	margin-top: 20px;
+}
+
+.habitat-map-section h2 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 15px;
+	color: var(--primary-color);
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.map-info {
+	margin-bottom: 20px;
+}
+
+.map-info p {
+	color: var(--secondary-text-color);
+	line-height: 1.7;
+	margin: 5px 0;
+}
+
+.habitat-map-container {
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.habitat-map-container iframe {
+	display: block;
+}
+
+.habitat-pdf-viewer {
+	margin-top: 40px;
+	margin-bottom: 20px;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.habitat-pdf-iframe {
+	display: block;
+	border: none;
+}
+
+.habitat-pdf-fallback {
+	display: none;
+}
+
+.habitat-mobile-message {
+	display: none;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.mobile-pdf-info {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	padding: 25px;
+	border-radius: 12px;
+	text-align: center;
+}
+
+.mobile-pdf-info h3 {
+	margin-top: 0;
+	margin-bottom: 15px;
+	font-size: 1.3rem;
+}
+
+.mobile-pdf-info p {
+	margin-bottom: 20px;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.95);
+}
+
+.mobile-download-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 24px;
+	background: white;
+	color: #667eea;
+	text-decoration: none;
+	border-radius: 8px;
+	font-weight: 600;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-download-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.habitat-pdf-download {
+	margin-top: 30px;
+	text-align: center;
+	padding: 20px;
+	border-top: 2px solid #f4f4f5;
+}
+
+.habitat-pdf-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 24px;
+	background: linear-gradient(
+			180deg,
+			var(--link-color) 0%,
+			rgba(0, 0, 0, 0.06) 100%
+		),
+		var(--link-color);
+	color: #fff;
+	text-decoration: none;
+	border-radius: 8px;
+	font-weight: 600;
+	transition: transform 0.08s ease, box-shadow 0.2s ease;
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.habitat-pdf-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 10px 18px rgba(0, 0, 0, 0.16), 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.habitat-pdf-button:active {
+	transform: translateY(0);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.14), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 1024px) {
+	.habitat-title {
+		font-size: 2rem;
+	}
+
+	.habitat-subtitle {
+		font-size: 1rem;
+	}
+
+	.habitat-section {
+		padding: 20px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.habitat-pdf-viewer {
+		display: none;
+	}
+
+	.habitat-mobile-message {
+		display: block;
+	}
+
+	.habitat-pdf-download {
+		display: none;
+	}
+}
+
+@media (max-width: 600px) {
+	.habitat-container {
+		padding-top: 100px;
+	}
+
+	.habitat-title {
+		font-size: 1.5rem;
+	}
+
+	.habitat-subtitle {
+		font-size: 0.9rem;
+	}
+
+	.habitat-section {
+		padding: 15px;
+	}
+
+	.habitat-section h2 {
+		font-size: 1.2rem;
+	}
+
+	.habitat-map-container iframe {
+		height: 300px;
+	}
+}

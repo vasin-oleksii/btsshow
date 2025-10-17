@@ -14,13 +14,6 @@ const SEO = [
 	},
 
 	{
-		page: "articles",
-		description:
-			"Collection chronologique de mes articles sur la programmation, le leadership, la conception de produits et plus encore.",
-		keywords: ["Vasin", "Vasin Oleksii", "Articles", "Blog"],
-	},
-
-	{
 		page: "projects",
 		description:
 			"J'ai travaillé sur une variété de projets au fil des années et je suis fier des progrès réalisés. Beaucoup de ces projets sont open-source et disponibles pour que d'autres puissent les explorer et y contribuer.",

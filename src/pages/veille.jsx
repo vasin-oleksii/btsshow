@@ -6,9 +6,11 @@ import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
 import Logo from "../components/common/logo";
+import Article from "../components/articles/article";
 
 import INFO from "../data/user";
 import SEO from "../data/seo";
+import myArticles from "../data/articles";
 
 import "./styles/veille.css";
 
@@ -40,8 +42,34 @@ const Veille = () => {
 					</div>
 
 					<div className="veille-container">
-						<div className="title veille-title">
+						<div
+							className="title veille-title"
+							style={{ marginTop: "2rem" }}
+						>
 							Veille Technologique
+						</div>
+
+						<div className="subtitle veille-subtitle">
+							{INFO.articles.description}
+						</div>
+
+						<div className="veille-articles-container">
+							<div className="veille-articles-wrapper">
+								{myArticles.map((article, index) => (
+									<div
+										className="veille-article"
+										key={(index + 1).toString()}
+									>
+										<Article
+											key={(index + 1).toString()}
+											date={article().date}
+											title={article().title}
+											description={article().description}
+											link={"/article/" + (index + 1)}
+										/>
+									</div>
+								))}
+							</div>
 						</div>
 
 						<div className="veille-content">

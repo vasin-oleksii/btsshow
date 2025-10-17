@@ -71,7 +71,10 @@ const Competences = () => {
 							Compétences
 						</div>
 
-						<div className="competences-actions">
+						<div
+							className="competences-actions"
+							style={{ marginTop: "1rem" }}
+						>
 							<button className="btn" onClick={expandAll}>
 								Tout afficher
 							</button>

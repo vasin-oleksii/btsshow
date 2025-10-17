@@ -15,7 +15,7 @@ const INFO = {
 	homepage: {
 		title: "Développeur Web Full-Stack",
 		description:
-			"Je m'appelle Vasin Oleksii, étudiant en première année de BTS SIO SLAM au lycée Saint-John Perse à Pau. Passionné par le développement web, je possède déjà une expérience concrète dans la création de projets front-end et full-stack.",
+			"Je m'appelle Vasin Oleksii, étudiant en deuxième année de BTS SIO SLAM au lycée Saint-John Perse à Pau. Passionné par le développement web, je possède déjà une expérience concrète dans la création de projets front-end et full-stack.",
 	},
 
 	about: {
@@ -99,7 +99,7 @@ const INFO = {
 				"Création d’un site personnel pour la présentation du CV et des projets. HTML, CSS, JavaScript. Compétence 1.3 du BTS SIO.",
 			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
 			linkText: "Voir le projet",
-			link: "https://github.com/vasin-oleksii",
+			link: "https://github.com/vasin-oleksii/btsshow",
 		},
 	],
 };
