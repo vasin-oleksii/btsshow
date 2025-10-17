@@ -89,12 +89,6 @@ const Contact = () => {
 						</div>
 					</div>
 
-					<div className="socials-container">
-						<div className="contact-socials">
-							<Socials />
-						</div>
-					</div>
-
 					<div className="page-footer">
 						<Footer />
 					</div>
