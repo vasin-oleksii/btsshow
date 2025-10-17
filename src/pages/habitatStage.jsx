@@ -230,7 +230,7 @@ const HabitatStage = () => {
 								rel="noopener noreferrer"
 							>
 								<FontAwesomeIcon icon={faFilePdf} /> Télécharger
-								Présentation
+								la Présentation
 							</a>
 						</div>
 					</div>
