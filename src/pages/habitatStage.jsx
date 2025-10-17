@@ -59,6 +59,31 @@ const HabitatStage = () => {
 							numérique | 2025
 						</div>
 
+						<div className="habitat-map-section">
+							<h2>
+								<FontAwesomeIcon icon={faMapMarkerAlt} />{" "}
+								Localisation
+							</h2>
+							<div className="map-info">
+								<p>
+									<strong>Adresse :</strong> Pau,
+									Pyrénées-Atlantiques, France
+								</p>
+							</div>
+							<div className="habitat-map-container">
+								<iframe
+									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2903.7064130672966!2d-0.37553452365988094!3d43.29946957523699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5648ce0b963c8f%3A0x10cb54c3c3a976a3!2sHabitat%20et%20Humanisme%20Pyr%C3%A9n%C3%A9es%20Adour!5e0!3m2!1sen!2sfr!4v1760694113250!5m2!1sen!2sfr"
+									width="100%"
+									height="450"
+									style={{ border: 0 }}
+									allowFullScreen=""
+									loading="lazy"
+									referrerPolicy="no-referrer-when-downgrade"
+									title="Localisation Habitat et Humanisme Pyrénées Adour"
+								></iframe>
+							</div>
+						</div>
+
 						<div className="habitat-content">
 							<div className="habitat-section">
 								<h2>À propos de l'association</h2>
@@ -143,31 +168,6 @@ const HabitatStage = () => {
 									numérique de l'association pour servir au
 									mieux sa mission sociale.
 								</p>
-							</div>
-
-							<div className="habitat-map-section">
-								<h2>
-									<FontAwesomeIcon icon={faMapMarkerAlt} />{" "}
-									Localisation
-								</h2>
-								<div className="map-info">
-									<p>
-										<strong>Adresse :</strong> Pau,
-										Pyrénées-Atlantiques, France
-									</p>
-								</div>
-								<div className="habitat-map-container">
-									<iframe
-										src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2903.7064130672966!2d-0.37553452365988094!3d43.29946957523699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5648ce0b963c8f%3A0x10cb54c3c3a976a3!2sHabitat%20et%20Humanisme%20Pyr%C3%A9n%C3%A9es%20Adour!5e0!3m2!1sen!2sfr!4v1760694113250!5m2!1sen!2sfr"
-										width="100%"
-										height="450"
-										style={{ border: 0 }}
-										allowFullScreen=""
-										loading="lazy"
-										referrerPolicy="no-referrer-when-downgrade"
-										title="Localisation Habitat et Humanisme Pyrénées Adour"
-									></iframe>
-								</div>
 							</div>
 						</div>
 
