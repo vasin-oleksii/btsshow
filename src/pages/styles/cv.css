@@ -1,8 +1,8 @@
 .cv-container {
-	width: 100%;
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	margin: 0;
 }
 
 .cv-logo-container {
@@ -12,15 +12,64 @@
 	margin-bottom: 30px;
 }
 
-.cv-title {
-	text-align: center;
-	font-size: 2.5rem;
-	margin-bottom: 40px;
-	color: var(--main-text-color);
+.cv-about-section {
+	margin-bottom: 50px;
+}
+
+.cv-about-main {
+	display: flex;
+	gap: 50px;
+}
+
+.cv-about-left {
+	flex-basis: 900px;
+}
+
+.cv-about-right {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	gap: 20px;
+	flex-basis: 300px;
+}
+
+.cv-title {
+	width: 100% !important;
+}
+
+.cv-subtitle {
+	width: 80% !important;
+}
+
+.cv-image-container {
+	width: 370px;
+}
+
+.cv-image-wrapper {
+	display: inline-block;
+	overflow: hidden;
+	width: 100%;
+	border-radius: 10%;
+	transform: rotate(3deg);
+}
+
+.cv-image-wrapper img {
+	display: block;
+	width: 100%;
+}
+
+.cv-socials {
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+
+.cv-socials-mobile {
+	display: none;
+}
+
+.cv-pdf-download {
+	margin-top: 30px;
+	text-align: center;
+	padding: 20px;
+	border-top: 2px solid #f4f4f5;
 }
 
 .cv-pdf-button {
@@ -90,33 +139,50 @@
 	margin-bottom: 10px;
 }
 
-@media (max-width: 768px) {
-	.cv-container {
-		padding: 15px;
+@media (max-width: 1024px) {
+	.cv-about-main {
+		flex-direction: column;
 	}
 
-	.cv-content {
-		padding: 20px;
+	.cv-about-left {
+		flex-basis: 100%;
+		order: 2;
 	}
 
+	.cv-about-right {
+		flex-basis: 100%;
+		order: 1;
+	}
+
+	.cv-subtitle {
+		width: 100% !important;
+		padding-top: 20px !important;
+	}
+
+	.cv-image-container {
+		padding-bottom: 40px;
+	}
+
+	.cv-socials {
+		display: none;
+	}
+
+	.cv-socials-mobile {
+		padding-top: 30px;
+		display: flex;
+	}
+}
+
+@media (max-width: 600px) {
 	.cv-title {
-		font-size: 2rem;
+		width: 100% !important;
 	}
 
-	.cv-section h2 {
-		font-size: 1.3rem;
+	.cv-subtitle {
+		width: 100% !important;
 	}
 
-	.cv-pdf-button {
-		font-size: 0.9rem;
-		padding: 8px 16px;
-	}
-
-	.cv-pdf-viewer {
-		margin: 20px 0;
-	}
-
-	.cv-pdf-iframe {
-		height: 400px;
+	.cv-image-container {
+		width: 80%;
 	}
 }

@@ -1,8 +1,8 @@
 .competences-container {
-	width: 100%;
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	margin: 0;
 }
 
 .competences-logo-container {
@@ -13,10 +13,11 @@
 }
 
 .competences-title {
-	text-align: center;
-	font-size: 2.5rem;
-	margin-bottom: 40px;
-	color: var(--main-text-color);
+	width: 100% !important;
+}
+
+.competences-subtitle {
+	width: 100% !important;
 }
 
 .competences-content {
@@ -56,6 +57,7 @@
 	gap: 10px;
 	margin-bottom: 16px;
 	flex-wrap: wrap;
+	justify-content: flex-start;
 }
 
 .btn {
@@ -192,20 +194,12 @@
 	transform: translateY(-1px);
 }
 
-@media (max-width: 768px) {
-	.competences-container {
-		padding: 15px;
-	}
-
-	.competences-content {
-		padding: 20px;
-	}
-
+@media (max-width: 600px) {
 	.competences-title {
-		font-size: 2rem;
+		width: 100% !important;
 	}
 
-	.competences-section h2 {
-		font-size: 1.3rem;
+	.competences-subtitle {
+		width: 100% !important;
 	}
 }

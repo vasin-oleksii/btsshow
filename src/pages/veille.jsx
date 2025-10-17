@@ -42,66 +42,6 @@ const Veille = () => {
 					<div className="veille-container">
 						<div className="title veille-title">
 							Veille Technologique
-							<a
-								href="/Veille_TC.pdf"
-								className="veille-pdf-button"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<FontAwesomeIcon icon={faFilePdf} /> Télécharger
-								PDF
-							</a>
-						</div>
-
-						<div className="veille-pdf-viewer">
-							<iframe
-								src="/Veille_TC.pdf#toolbar=0&navpanes=0&scrollbar=0"
-								width="100%"
-								height="800px"
-								title="Veille Technologique"
-								className="veille-pdf-iframe"
-							></iframe>
-							<div className="veille-pdf-fallback">
-								<object
-									data="/Veille_TC.pdf"
-									type="application/pdf"
-									width="100%"
-									height="800px"
-									className="veille-pdf-object"
-								>
-									<p>
-										Votre navigateur ne supporte pas
-										l'affichage des PDF.
-										<a
-											href="/Veille_TC.pdf"
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											Télécharger le PDF
-										</a>
-									</p>
-								</object>
-							</div>
-						</div>
-
-						<div className="veille-mobile-message">
-							<div className="mobile-pdf-info">
-								<h3>📱 Version mobile</h3>
-								<p>
-									Pour une meilleure expérience de lecture sur
-									mobile et tablette, téléchargez le document
-									PDF directement.
-								</p>
-								<a
-									href="/Veille_TC.pdf"
-									className="mobile-download-button"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<FontAwesomeIcon icon={faFilePdf} />{" "}
-									Télécharger le PDF
-								</a>
-							</div>
 						</div>
 
 						<div className="veille-content">
@@ -165,6 +105,69 @@ const Veille = () => {
 									moderne.
 								</p>
 							</div>
+						</div>
+
+						<div className="veille-pdf-viewer">
+							<iframe
+								src="/Veille_TC.pdf#toolbar=0&navpanes=0&scrollbar=0"
+								width="100%"
+								height="800px"
+								title="Veille Technologique"
+								className="veille-pdf-iframe"
+							></iframe>
+							<div className="veille-pdf-fallback">
+								<object
+									data="/Veille_TC.pdf"
+									type="application/pdf"
+									width="100%"
+									height="800px"
+									className="veille-pdf-object"
+								>
+									<p>
+										Votre navigateur ne supporte pas
+										l'affichage des PDF.
+										<a
+											href="/Veille_TC.pdf"
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											Télécharger le PDF
+										</a>
+									</p>
+								</object>
+							</div>
+						</div>
+
+						<div className="veille-mobile-message">
+							<div className="mobile-pdf-info">
+								<h3>📱 Version mobile</h3>
+								<p>
+									Pour une meilleure expérience de lecture sur
+									mobile et tablette, téléchargez le document
+									PDF directement.
+								</p>
+								<a
+									href="/Veille_TC.pdf"
+									className="mobile-download-button"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<FontAwesomeIcon icon={faFilePdf} />{" "}
+									Télécharger le PDF
+								</a>
+							</div>
+						</div>
+
+						<div className="veille-pdf-download">
+							<a
+								href="/Veille_TC.pdf"
+								className="veille-pdf-button"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<FontAwesomeIcon icon={faFilePdf} /> Télécharger
+								PDF
+							</a>
 						</div>
 					</div>
 

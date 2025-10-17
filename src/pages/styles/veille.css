@@ -1,12 +1,8 @@
 .veille-container {
-	padding-top: 120px;
-	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 20px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	height: 100%;
+	margin: 0;
 }
 
 .veille-logo-container {
@@ -16,25 +12,31 @@
 }
 
 .veille-title {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	width: 100%;
-	max-width: 1200px;
-	margin-bottom: 30px;
+	width: 100% !important;
+}
+
+.veille-subtitle {
+	width: 100% !important;
+}
+
+.veille-pdf-download {
+	margin-top: 30px;
+	text-align: center;
+	padding: 20px;
+	border-top: 2px solid #f4f4f5;
 }
 
 .veille-pdf-button {
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	gap: 8px;
-	padding: 8px 16px;
+	padding: 10px 20px;
 	background-color: #14b8a6;
 	color: white;
-	border-radius: 4px;
 	text-decoration: none;
+	border-radius: 5px;
 	transition: all 0.3s ease;
-	font-size: 14px;
+	font-size: 1rem;
 	font-weight: 600;
 	box-shadow: 0 2px 4px rgba(20, 184, 166, 0.3);
 }
@@ -175,24 +177,12 @@
 	}
 }
 
-@media (max-width: 768px) {
-	.veille-container {
-		padding-top: 100px;
-		padding: 15px;
-	}
-
+@media (max-width: 600px) {
 	.veille-title {
-		flex-direction: column;
-		gap: 15px;
-		text-align: center;
+		width: 100% !important;
 	}
 
-	.veille-pdf-button {
-		width: 100%;
-		justify-content: center;
-	}
-
-	.veille-content {
-		padding: 15px;
+	.veille-subtitle {
+		width: 100% !important;
 	}
 }

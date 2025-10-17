@@ -40,69 +40,7 @@ const Stages = () => {
 					</div>
 
 					<div className="stages-container">
-						<div className="title stages-title">
-							Mes Stages
-							<a
-								href="/Presentation Stage.pdf"
-								className="stages-pdf-button"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<FontAwesomeIcon icon={faFilePdf} /> Télécharger
-								Présentation
-							</a>
-						</div>
-
-						<div className="stages-pdf-viewer">
-							<iframe
-								src="/Presentation Stage.pdf#toolbar=0&navpanes=0&scrollbar=0"
-								width="100%"
-								height="800px"
-								title="Présentation Stage"
-								className="stages-pdf-iframe"
-							></iframe>
-							<div className="stages-pdf-fallback">
-								<object
-									data="/Presentation Stage.pdf"
-									type="application/pdf"
-									width="100%"
-									height="800px"
-									className="stages-pdf-object"
-								>
-									<p>
-										Votre navigateur ne supporte pas
-										l'affichage des PDF.
-										<a
-											href="/Presentation Stage.pdf"
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											Télécharger le PDF
-										</a>
-									</p>
-								</object>
-							</div>
-						</div>
-
-						<div className="stages-mobile-message">
-							<div className="mobile-pdf-info">
-								<h3>📱 Version mobile</h3>
-								<p>
-									Pour une meilleure expérience de lecture sur
-									mobile et tablette, téléchargez la
-									présentation PDF directement.
-								</p>
-								<a
-									href="/Presentation Stage.pdf"
-									className="mobile-download-button"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<FontAwesomeIcon icon={faFilePdf} />{" "}
-									Télécharger la Présentation
-								</a>
-							</div>
-						</div>
+						<div className="title stages-title">Mes Stages</div>
 
 						<div className="stages-content">
 							<div className="stages-section">
@@ -188,6 +126,69 @@ const Stages = () => {
 									</p>
 								</div>
 							</div>
+						</div>
+
+						<div className="stages-pdf-viewer">
+							<iframe
+								src="/Presentation Stage.pdf#toolbar=0&navpanes=0&scrollbar=0"
+								width="100%"
+								height="800px"
+								title="Présentation Stage"
+								className="stages-pdf-iframe"
+							></iframe>
+							<div className="stages-pdf-fallback">
+								<object
+									data="/Presentation Stage.pdf"
+									type="application/pdf"
+									width="100%"
+									height="800px"
+									className="stages-pdf-object"
+								>
+									<p>
+										Votre navigateur ne supporte pas
+										l'affichage des PDF.
+										<a
+											href="/Presentation Stage.pdf"
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											Télécharger le PDF
+										</a>
+									</p>
+								</object>
+							</div>
+						</div>
+
+						<div className="stages-mobile-message">
+							<div className="mobile-pdf-info">
+								<h3>📱 Version mobile</h3>
+								<p>
+									Pour une meilleure expérience de lecture sur
+									mobile et tablette, téléchargez la
+									présentation PDF directement.
+								</p>
+								<a
+									href="/Presentation Stage.pdf"
+									className="mobile-download-button"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<FontAwesomeIcon icon={faFilePdf} />{" "}
+									Télécharger la Présentation
+								</a>
+							</div>
+						</div>
+
+						<div className="stages-pdf-download">
+							<a
+								href="/Presentation Stage.pdf"
+								className="stages-pdf-button"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<FontAwesomeIcon icon={faFilePdf} /> Télécharger
+								Présentation
+							</a>
 						</div>
 					</div>
 

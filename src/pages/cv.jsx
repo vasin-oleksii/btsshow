@@ -6,6 +6,7 @@ import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
 import Logo from "../components/common/logo";
+import Socials from "../components/about/socials";
 
 import INFO from "../data/user";
 import SEO from "../data/seo";
@@ -40,27 +41,38 @@ const CV = () => {
 					</div>
 
 					<div className="cv-container">
-						<div className="title cv-title">
-							Mon Curriculum Vitae
-							<a
-								href="/CV-Vasin Oleksii.pdf"
-								className="cv-pdf-button"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<FontAwesomeIcon icon={faFilePdf} /> Télécharger
-								PDF
-							</a>
-						</div>
+						<div className="cv-about-section">
+							<div className="cv-about-main">
+								<div className="cv-about-left">
+									<div className="title cv-title">
+										{INFO.about.title}
+									</div>
 
-						<div className="cv-pdf-viewer">
-							<iframe
-								src="/CV-Vasin Oleksii.pdf#toolbar=0&navpanes=0&scrollbar=0"
-								width="100%"
-								height="600px"
-								title="CV Vasin Oleksii"
-								className="cv-pdf-iframe"
-							></iframe>
+									<div className="subtitle cv-subtitle">
+										{INFO.about.description}
+									</div>
+
+									<div className="cv-socials">
+										<Socials />
+									</div>
+								</div>
+
+								<div className="cv-about-right">
+									<div className="cv-image-container">
+										<div className="cv-image-wrapper">
+											<img
+												src="about.png"
+												alt="about"
+												className="cv-image"
+											/>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div className="cv-socials-mobile">
+								<Socials />
+							</div>
 						</div>
 
 						<div className="cv-content">
@@ -185,6 +197,28 @@ const CV = () => {
 									apprentissage continu
 								</p>
 							</div>
+						</div>
+
+						<div className="cv-pdf-viewer">
+							<iframe
+								src="/CV-Vasin Oleksii.pdf#toolbar=0&navpanes=0&scrollbar=0"
+								width="100%"
+								height="600px"
+								title="CV Vasin Oleksii"
+								className="cv-pdf-iframe"
+							></iframe>
+						</div>
+
+						<div className="cv-pdf-download">
+							<a
+								href="/CV-Vasin Oleksii.pdf"
+								className="cv-pdf-button"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<FontAwesomeIcon icon={faFilePdf} /> Télécharger
+								PDF
+							</a>
 						</div>
 					</div>
 

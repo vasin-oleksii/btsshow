@@ -13,9 +13,6 @@ const Footer = () => {
 							<Link to="/">Accueil</Link>
 						</li>
 						<li className="footer-nav-link-item">
-							<Link to="/about">À propos</Link>
-						</li>
-						<li className="footer-nav-link-item">
 							<Link to="/cv">CV</Link>
 						</li>
 						<li className="footer-nav-link-item">
