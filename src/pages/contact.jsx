@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
 import Logo from "../components/common/logo";
-import Socials from "../components/about/socials";
 
 import INFO from "../data/user";
 import SEO from "../data/seo";
