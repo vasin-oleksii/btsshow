@@ -101,6 +101,15 @@ const NavBar = (props) => {
 							</li>
 							<li
 								className={
+									active === "benevolat"
+										? "nav-item active"
+										: "nav-item"
+								}
+							>
+								<Link to="/benevolat">Bénévolat</Link>
+							</li>
+							<li
+								className={
 									active === "veille"
 										? "nav-item active"
 										: "nav-item"
@@ -197,6 +206,17 @@ const NavBar = (props) => {
 							>
 								<Link to="/stages" onClick={closeMobileMenu}>
 									Stages
+								</Link>
+							</li>
+							<li
+								className={
+									active === "benevolat"
+										? "mobile-nav-item active"
+										: "mobile-nav-item"
+								}
+							>
+								<Link to="/benevolat" onClick={closeMobileMenu}>
+									Bénévolat
 								</Link>
 							</li>
 							<li

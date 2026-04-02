@@ -12,6 +12,7 @@ import Competences from "./pages/competences";
 import Stages from "./pages/stages";
 import HabitatStage from "./pages/habitatStage";
 import Habitat2026Stage from "./pages/habitat2026Stage";
+import Benevolat from "./pages/benevolat";
 import Veille from "./pages/veille";
 
 import { TRACKING_ID } from "./data/tracking";
@@ -42,6 +43,7 @@ function App() {
 					path="/stage/habitat-humanisme-2026"
 					element={<Habitat2026Stage />}
 				/>
+				<Route path="/benevolat" element={<Benevolat />} />
 				<Route path="/veille" element={<Veille />} />
 				{/* <Route path="*" element={<Notfound />} /> */}
 			</Routes>
