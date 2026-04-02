@@ -12,13 +12,27 @@ const Stage = () => {
 			<Link to="/stages" className="stage-link">
 				<Card
 					icon={faGraduationCap}
-					title="Stage"
+					title="Stages"
 					body={
 						<div className="works-body">
 							<div className="work">
 								<img
 									src="habitat.png"
-									alt="Habitat et Humanisme"
+									alt="Habitat et Humanisme 2026"
+									className="work-image"
+								/>
+								<div className="work-title">
+									Habitat et Humanisme
+								</div>
+								<div className="work-subtitle">
+									Stagiaire Développement Web
+								</div>
+								<div className="work-duration">2026</div>
+							</div>
+							<div className="work">
+								<img
+									src="habitat.png"
+									alt="Habitat et Humanisme 2025"
 									className="work-image"
 								/>
 								<div className="work-title">

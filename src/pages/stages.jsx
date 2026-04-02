@@ -46,6 +46,59 @@ const Stages = () => {
 								<div className="stage-header">
 									<h2>
 										Habitat et Humanisme Pyrénées Adour |
+										2026
+									</h2>
+									<Link
+										to="/stage/habitat-humanisme-2026"
+										className="stage-detail-link"
+									>
+										Voir les détails du stage →
+									</Link>
+								</div>
+								<div className="stage-details">
+									<h3>À propos de l&apos;association</h3>
+									<p>
+										Retour chez Habitat et Humanisme
+										Pyrénées Adour pour un second stage en
+										2026, dans la continuité des travaux
+										engagés l&apos;année précédente.
+									</p>
+
+									<h3>Domaine d&apos;activité</h3>
+									<p>
+										Développement web et transformation
+										numérique
+									</p>
+
+									<h3>Missions</h3>
+									<p>
+										Développement de nouvelles
+										fonctionnalités, optimisation des outils
+										existants et élargissement des
+										responsabilités au sein de
+										l&apos;équipe.
+									</p>
+
+									<h3>Compétences mobilisées</h3>
+									<ul>
+										<li>
+											Développement front-end (React,
+											HTML5, CSS3)
+										</li>
+										<li>
+											Développement back-end (Node.js,
+											bases de données)
+										</li>
+										<li>Gestion de projet agile</li>
+										<li>Documentation technique</li>
+									</ul>
+								</div>
+							</div>
+
+							<div className="stages-section">
+								<div className="stage-header">
+									<h2>
+										Habitat et Humanisme Pyrénées Adour |
 										2025
 									</h2>
 									<Link
