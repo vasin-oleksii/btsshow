@@ -1,0 +1,376 @@
+.bf-logo-container {
+	display: flex;
+	justify-content: left;
+	padding-top: 25px;
+}
+
+.bf-logo {
+	display: flex;
+	position: fixed;
+	border: 1px solid white;
+	border-radius: 50%;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+	top: 4vh;
+}
+
+.bf-container {
+	display: flex;
+	flex-direction: column;
+	padding-top: 120px;
+}
+
+.back-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--link-color);
+	text-decoration: none;
+	font-weight: 500;
+	margin-bottom: 30px;
+	transition: transform 0.2s ease;
+}
+
+.back-link:hover {
+	transform: translateX(-5px);
+}
+
+.bf-title {
+	width: 100% !important;
+	margin-bottom: 10px;
+}
+
+.bf-subtitle {
+	width: 100% !important;
+	margin-top: 15px;
+	margin-bottom: 25px;
+	color: var(--secondary-text-color);
+}
+
+/* Tech badges */
+.bf-techs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 25px;
+}
+
+.bf-tech {
+	display: inline-flex;
+	align-items: center;
+	padding: 6px 14px;
+	border-radius: 999px;
+	background: #f4f4f5;
+	border: 1px solid #e5e7eb;
+	color: var(--primary-color);
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+/* Actions / boutons */
+.bf-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-bottom: 30px;
+}
+
+.bf-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 22px;
+	border-radius: 8px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: transform 0.08s ease, box-shadow 0.2s ease;
+}
+
+.bf-btn-primary {
+	background: linear-gradient(
+			180deg,
+			var(--link-color) 0%,
+			rgba(0, 0, 0, 0.06) 100%
+		),
+		var(--link-color);
+	color: #fff;
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.bf-btn-primary:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 10px 18px rgba(0, 0, 0, 0.16), 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.bf-btn-disabled {
+	background: #f4f4f5;
+	border: 1px dashed #d1d5db;
+	color: #9ca3af;
+	cursor: not-allowed;
+}
+
+/* Contenu */
+.bf-content {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	margin-top: 10px;
+}
+
+.bf-section {
+	background: #fff;
+	border-radius: 12px;
+	padding: 25px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.bf-section h2 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 15px;
+	color: var(--primary-color);
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.bf-section h3 {
+	font-size: 1.15rem;
+	font-weight: 600;
+	margin: 25px 0 10px;
+	color: var(--primary-color);
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.bf-section p {
+	line-height: 1.7;
+	color: var(--secondary-text-color);
+	margin-bottom: 10px;
+}
+
+.bf-section ul {
+	list-style: none;
+	padding: 0;
+}
+
+.bf-section ul li {
+	padding: 8px 0;
+	padding-left: 25px;
+	position: relative;
+	color: var(--secondary-text-color);
+	line-height: 1.6;
+}
+
+.bf-section ul li::before {
+	content: "▸";
+	position: absolute;
+	left: 0;
+	color: var(--link-color);
+	font-weight: bold;
+}
+
+/* Figures / captures */
+.bf-figure {
+	margin: 20px 0 0;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	background: #fff;
+}
+
+.bf-figure img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.bf-figure figcaption {
+	padding: 10px 14px;
+	font-size: 0.85rem;
+	color: var(--secondary-text-color);
+	text-align: center;
+	background: #fafafa;
+	border-top: 1px solid #f0f0f0;
+}
+
+.bf-figure-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+}
+
+/* Blocs de code */
+.bf-code {
+	margin: 18px 0 0;
+	border-radius: 10px;
+	overflow: hidden;
+	border: 1px solid #1f2937;
+	background: #0f172a;
+}
+
+.bf-code-label {
+	padding: 8px 14px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: #cbd5e1;
+	background: #1e293b;
+	border-bottom: 1px solid #334155;
+}
+
+.bf-code pre {
+	margin: 0 !important;
+	border-radius: 0 !important;
+}
+
+/* Bouton image cliquable (ouverture plein écran) */
+.bf-figure-btn {
+	display: block;
+	width: 100%;
+	padding: 0;
+	border: none;
+	background: none;
+	cursor: zoom-in;
+	position: relative;
+	line-height: 0;
+}
+
+.bf-figure-btn img {
+	transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.bf-figure-zoom {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	width: 38px;
+	height: 38px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: rgba(15, 23, 42, 0.65);
+	color: #fff;
+	font-size: 0.95rem;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+	pointer-events: none;
+}
+
+.bf-figure-btn:hover img {
+	filter: brightness(0.9);
+}
+
+.bf-figure-btn:hover .bf-figure-zoom,
+.bf-figure-btn:focus-visible .bf-figure-zoom {
+	opacity: 1;
+}
+
+/* Lightbox plein écran */
+.bf-lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	background: rgba(0, 0, 0, 0.88);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 40px 20px;
+	cursor: zoom-out;
+	animation: bf-fade-in 0.18s ease;
+}
+
+@keyframes bf-fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.bf-lightbox-img {
+	max-width: 95vw;
+	max-height: 85vh;
+	object-fit: contain;
+	border-radius: 8px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+	cursor: default;
+}
+
+.bf-lightbox-caption {
+	margin-top: 16px;
+	color: #e5e7eb;
+	font-size: 0.95rem;
+	text-align: center;
+}
+
+.bf-lightbox-close {
+	position: fixed;
+	top: 20px;
+	right: 24px;
+	width: 46px;
+	height: 46px;
+	border: none;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.12);
+	color: #fff;
+	font-size: 1.3rem;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.bf-lightbox-close:hover {
+	background: rgba(255, 255, 255, 0.25);
+	transform: rotate(90deg);
+}
+
+@media (max-width: 1024px) {
+	.bf-title {
+		font-size: 2rem;
+	}
+
+	.bf-subtitle {
+		font-size: 1rem;
+	}
+
+	.bf-section {
+		padding: 20px;
+	}
+}
+
+@media (max-width: 768px) {
+	.bf-figure-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 600px) {
+	.bf-container {
+		padding-top: 100px;
+	}
+
+	.bf-title {
+		font-size: 1.5rem;
+	}
+
+	.bf-subtitle {
+		font-size: 0.9rem;
+	}
+
+	.bf-section {
+		padding: 15px;
+	}
+
+	.bf-section h2 {
+		font-size: 1.2rem;
+	}
+
+	.bf-code code {
+		font-size: 0.75rem;
+	}
+}

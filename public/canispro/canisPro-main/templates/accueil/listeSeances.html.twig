@@ -1,0 +1,151 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Séances{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .sessions-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 45%, #ffffff 100%);
+            border-bottom: 1px solid #e9ddff;
+        }
+
+        .sessions-badge {
+            display: inline-block;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            color: #7c3aed;
+            background: rgba(124, 58, 237, .12);
+            border: 1px solid rgba(124, 58, 237, .22);
+            border-radius: 999px;
+            padding: .35rem .8rem;
+        }
+
+        .sessions-wrap {
+            border: 1px solid #ddd6fe;
+            border-radius: 1rem;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 16px 35px rgba(109, 40, 217, .10);
+        }
+
+        .sessions-toolbar {
+            border-bottom: 1px solid #ede9fe;
+            background: #faf7ff;
+            padding: .85rem 1rem;
+        }
+
+        .sessions-table {
+            margin-bottom: 0;
+        }
+
+        .sessions-table thead th {
+            background: #f3ecff;
+            color: #312e81;
+            font-weight: 600;
+            border-color: #e6dcff;
+            white-space: nowrap;
+        }
+
+        .sessions-table td {
+            border-color: #f0e9ff;
+            color: #4b5563;
+            vertical-align: middle;
+        }
+
+        .status-pill {
+            font-size: .76rem;
+            font-weight: 600;
+            border-radius: 999px;
+            padding: .35rem .6rem;
+            display: inline-block;
+        }
+
+        .status-pill.available {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .status-pill.full {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .sessions-empty {
+            border: 1px dashed #c4b5fd;
+            background: #faf7ff;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<main role="main">
+    <section class="sessions-hero py-5">
+        <div class="container text-center">
+            <span class="sessions-badge mb-3">Planning</span>
+            <h1 class="display-5 fw-bold mb-2" style="color:#1e1b4b;">Liste des séances</h1>
+            <p class="lead text-secondary mb-0">Consultez les créneaux disponibles et accédez aux détails en un clic.</p>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            {% if seances is not empty %}
+                <div class="sessions-wrap">
+                    <div class="sessions-toolbar d-flex justify-content-between align-items-center gap-2 flex-wrap">
+                        <span class="small text-secondary">{{ seances|length }} séance(s) trouvée(s)</span>
+                        <a href="javascript:history.back()" class="btn btn-outline-primary btn-sm">Retour</a>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table sessions-table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Heure de début</th>
+                                    <th>Durée</th>
+                                    <th>Statut</th>
+                                    <th class="text-end pe-3">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for seance in seances %}
+                                    {% set placesRestantes = seance.cour.type.nbPlaces - seance.inscriptions|length %}
+                                    <tr>
+                                        <td>{{ seance.date ? seance.date|date('d/m/Y') : '' }}</td>
+                                        <td>{{ seance.heureDeb ? seance.heureDeb|date('H:i') : '' }}</td>
+                                        <td>{{ seance.duree ? seance.duree|date('H:i') : '' }}</td>
+                                        <td>
+                                            {% if placesRestantes > 0 %}
+                                                <span class="status-pill available">Disponible</span>
+                                            {% else %}
+                                                <span class="status-pill full">Complet</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-end pe-3">
+                                            <a class="btn btn-outline-primary btn-sm" href="{{ path('app_details_seance', {'id': seance.id}) }}">Détails</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% else %}
+                <div class="sessions-empty">
+                    <h3 class="h5 mb-2" style="color:#1e1b4b;">Aucune séance disponible</h3>
+                    <p class="text-secondary mb-3">Le planning sera mis à jour prochainement.</p>
+                    <a href="javascript:history.back()" class="btn btn-primary">Retour</a>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+</main>
+{% endblock %}

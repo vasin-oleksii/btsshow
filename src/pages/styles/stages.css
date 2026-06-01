@@ -1,8 +1,8 @@
 .stages-container {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
 	margin: 0;
+	min-height: 0;
 }
 
 .stages-logo-container {
@@ -132,6 +132,12 @@
 
 .stages-section:last-child {
 	margin-bottom: 0;
+}
+
+.stages-section-second {
+	margin-top: 40px;
+	padding-top: 30px;
+	border-top: 2px solid var(--link-color);
 }
 
 .stages-section h2 {

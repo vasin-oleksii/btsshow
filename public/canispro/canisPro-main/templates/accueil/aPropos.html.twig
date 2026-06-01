@@ -1,0 +1,247 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}À Propos{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 42%, #ffffff 100%);
+            border-bottom: 1px solid #ede9fe;
+        }
+
+        .about-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .45rem;
+            padding: .4rem .9rem;
+            border-radius: 999px;
+            background: rgba(124, 58, 237, .10);
+            color: #7c3aed;
+            border: 1px solid rgba(124, 58, 237, .18);
+            font-size: .82rem;
+            font-weight: 600;
+        }
+
+        .about-panel {
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            box-shadow: 0 14px 36px rgba(109, 40, 217, .08);
+        }
+
+        .about-gallery-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 1rem;
+            border: 1px solid #ede9fe;
+            box-shadow: 0 10px 28px rgba(109, 40, 217, .08);
+        }
+
+        .about-value {
+            height: 100%;
+            padding: 1.25rem;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            background: #fff;
+            box-shadow: 0 10px 28px rgba(109, 40, 217, .06);
+        }
+
+        .about-value-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: .9rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f3ff;
+            color: #7c3aed;
+            margin-bottom: 1rem;
+        }
+
+        .about-objective {
+            height: 100%;
+            padding: 1.1rem 1.15rem;
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: .95rem;
+        }
+
+        .about-cta {
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+            border-radius: 1.25rem;
+            color: #fff;
+            box-shadow: 0 20px 40px rgba(109, 40, 217, .18);
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<main role="main">
+    <section class="about-hero py-5 py-lg-6">
+        <div class="container py-3">
+            <div class="row align-items-center g-4 g-lg-5">
+                <div class="col-12 col-lg-7 text-center text-lg-start">
+                    <span class="about-badge mb-3">
+                        <span>CanisPro Éducation</span>
+                    </span>
+                    <h1 class="fw-bold mb-3" style="font-size: clamp(2rem, 5vw, 3.4rem); color: #1e1b4b; line-height: 1.1;">
+                        Une éducation canine moderne,
+                        bienveillante et durable.
+                    </h1>
+                    <p class="lead text-secondary mb-4" style="max-width: 700px;">
+                        Chez CanisPro, nous considérons le chien comme un véritable membre de la famille. Notre mission est de créer une relation harmonieuse entre le maître et son compagnon grâce à une approche positive, structurée et respectueuse du bien-être animal.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                        <a href="{{ path('app_liste_cours') }}" class="btn btn-primary btn-lg px-4">Découvrir nos cours</a>
+                        <a href="{{ path('app_login') }}" class="btn btn-outline-primary btn-lg px-4">Rejoindre l'espace membre</a>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-5">
+                    <div class="about-panel p-4 p-lg-4">
+                        <h2 class="h5 fw-semibold mb-3" style="color: #1e1b4b;">Notre engagement</h2>
+                        <div class="d-flex flex-column gap-3 text-secondary">
+                            <div>
+                                <strong class="d-block mb-1" style="color: #1e1b4b;">Respect du chien</strong>
+                                Comprendre ses besoins, son rythme et sa personnalité pour construire des progrès solides.
+                            </div>
+                            <div>
+                                <strong class="d-block mb-1" style="color: #1e1b4b;">Accompagnement humain</strong>
+                                Aider chaque propriétaire à gagner en confiance, en clarté et en régularité au quotidien.
+                            </div>
+                            <div>
+                                <strong class="d-block mb-1" style="color: #1e1b4b;">Méthode positive</strong>
+                                Favoriser l'apprentissage dans un cadre rassurant, motivant et adapté à chaque binôme.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-12 col-lg-5">
+                    <span class="badge text-bg-primary mb-2">Notre vision</span>
+                    <h2 class="fw-bold mb-3" style="color: #1e1b4b;">Plus qu'un centre, un lieu de progression</h2>
+                    <p class="text-secondary mb-3">
+                        Nous croyons qu'une bonne éducation canine ne repose pas uniquement sur des ordres, mais sur la qualité du lien entre le chien et son propriétaire.
+                    </p>
+                    <p class="text-secondary mb-0">
+                        C'est pourquoi nous proposons un accompagnement complet : apprentissage des bases, socialisation, gestion du comportement, développement de la confiance et suivi dans la durée.
+                    </p>
+                </div>
+                <div class="col-12 col-lg-7">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="about-value">
+                                <div class="about-value-icon">
+                                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+                                </div>
+                                <h3 class="h5 fw-semibold">Éducation personnalisée</h3>
+                                <p class="text-secondary mb-0">Chaque chien évolue à son rythme avec des conseils adaptés à son âge, son tempérament et ses besoins.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="about-value">
+                                <div class="about-value-icon">
+                                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                                </div>
+                                <h3 class="h5 fw-semibold">Méthode bienveillante</h3>
+                                <p class="text-secondary mb-0">Nous favorisons l'écoute, la cohérence et le renforcement positif pour des résultats durables.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="about-value">
+                                <div class="about-value-icon">
+                                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                                </div>
+                                <h3 class="h5 fw-semibold">Cours collectifs & individuels</h3>
+                                <p class="text-secondary mb-0">Une offre complète pour répondre aux différents profils de chiens et aux objectifs de leurs propriétaires.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="about-value">
+                                <div class="about-value-icon">
+                                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                </div>
+                                <h3 class="h5 fw-semibold">Suivi dans le temps</h3>
+                                <p class="text-secondary mb-0">Nous vous aidons à ancrer les bons réflexes et à suivre les progrès séance après séance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" style="background: #faf8ff;">
+        <div class="container">
+            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+                <div>
+                    <span class="badge text-bg-primary mb-2">Galerie</span>
+                    <h2 class="fw-bold mb-2" style="color: #1e1b4b;">Notre univers au quotidien</h2>
+                    <p class="text-secondary mb-0">Découvrez l'ambiance du centre, les séances et l'environnement dans lequel évoluent les chiens.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <img src="{{ asset('images/chien-accueil.webp') }}" class="about-gallery-img" alt="Chien au centre CanisPro">
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ asset('images/centre-education-canine.jpg') }}" class="about-gallery-img" alt="Centre CanisPro">
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ asset('images/dog2.webp') }}" class="about-gallery-img" alt="Photo d'un chien en entraînement">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge text-bg-primary mb-2">Objectifs du centre</span>
+                <h2 class="fw-bold" style="color: #1e1b4b;">Ce que nous voulons construire avec vous</h2>
+                <p class="text-secondary mx-auto" style="max-width: 720px;">Notre objectif est d'offrir un cadre rassurant et professionnel pour aider chaque binôme maître-chien à progresser durablement.</p>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="about-objective">Fournir des cours de formation adaptés aux besoins spécifiques des propriétaires et de leurs chiens.</div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="about-objective">Développer une communication claire, apaisée et cohérente entre l'humain et l'animal.</div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="about-objective">Favoriser le bien-être du chien grâce à une éducation fondée sur le respect, la patience et la compréhension.</div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="about-objective">Proposer des activités variées : socialisation, éducation de base, agility et travail comportemental.</div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="about-objective">Offrir un environnement structuré, rassurant et professionnel pour un apprentissage efficace.</div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="about-objective">Accompagner les familles dans la durée afin de renforcer la complicité avec leur compagnon.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="about-cta p-4 p-md-5 text-center">
+                <h2 class="fw-bold mb-3">Envie de découvrir notre approche ?</h2>
+                <p class="mb-4 mx-auto" style="max-width: 700px; color: rgba(255,255,255,.82);">
+                    Explorez nos cours, rejoignez l'espace membre et faites évoluer votre relation avec votre chien dans un cadre positif et structuré.
+                </p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{{ path('app_liste_cours') }}" class="btn btn-light px-4 fw-semibold" style="color: #7c3aed;">Voir les cours</a>
+                    <a href="{{ path('app_login') }}" class="btn px-4 fw-semibold" style="border: 1px solid rgba(255,255,255,.55); color: #fff;">Se connecter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

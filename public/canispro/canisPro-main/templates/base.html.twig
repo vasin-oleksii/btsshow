@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="CanisPro Education - Club canin : cours, séances et suivi personnalisé pour votre chien.">
+        <link rel="icon" type="image/png" href="{{asset('images/logo-centre-icon.png')}}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <title>{% block title %}CanisPro Education{% endblock %}</title>
+        {% block stylesheets %}
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+                :root {
+                    --cp-purple:       #7c3aed;
+                    --cp-purple-dark:  #6d28d9;
+                    --cp-purple-light: #8b5cf6;
+                    --cp-purple-soft:  #f5f3ff;
+                    --cp-purple-pale:  #ede9fe;
+                    --cp-border:       #ddd6fe;
+                    --cp-text:         #1e1b4b;
+                }
+
+                *, *::before, *::after { box-sizing: border-box; }
+
+                body {
+                    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+                    background:
+                        radial-gradient(circle at 90% -10%, rgba(124,58,237,.10) 0%, transparent 34%),
+                        radial-gradient(circle at -10% 120%, rgba(124,58,237,.06) 0%, transparent 40%),
+                        #fff;
+                    color: var(--cp-text);
+                    -webkit-font-smoothing: antialiased;
+                }
+
+                .cp-main {
+                    padding-top: .4rem;
+                }
+
+                /* ── Navbar ── */
+                .cp-navbar {
+                    background: linear-gradient(90deg, var(--cp-purple) 0%, #6d28d9 100%) !important;
+                    border-bottom: 1px solid rgba(255,255,255,.18);
+                    box-shadow: 0 8px 24px rgba(109,40,217,.25);
+                    backdrop-filter: blur(6px);
+                }
+                .cp-navbar .navbar-brand {
+                    font-weight: 700;
+                    font-size: 1.1rem;
+                    letter-spacing: -.3px;
+                    color: #fff !important;
+                }
+                .cp-navbar .nav-link {
+                    font-size: .875rem;
+                    font-weight: 500;
+                    color: rgba(255,255,255,.85) !important;
+                    transition: color .2s, transform .2s;
+                }
+                .cp-navbar .nav-link:hover,
+                .cp-navbar .nav-link.active {
+                    color: #fff !important;
+                    transform: translateY(-1px);
+                }
+                .cp-navbar .navbar-toggler { border-color: rgba(255,255,255,.3); }
+
+                /* Dropdown violet */
+                .cp-navbar .dropdown-menu {
+                    background: #fff;
+                    border: 1px solid var(--cp-border);
+                    border-radius: .65rem;
+                    box-shadow: 0 8px 28px rgba(109,40,217,.14);
+                    padding: .35rem;
+                    min-width: 210px;
+                }
+                .cp-navbar .dropdown-item {
+                    color: var(--cp-text) !important;
+                    border-radius: .45rem;
+                    font-size: .875rem;
+                    padding: .45rem .8rem;
+                    transition: background .15s, color .15s;
+                }
+                .cp-navbar .dropdown-item:hover,
+                .cp-navbar .dropdown-item:focus {
+                    background: var(--cp-purple-pale) !important;
+                    color: var(--cp-purple) !important;
+                }
+
+                /* ── Bouton déconnexion dans la navbar ── */
+                .cp-navbar .btn-light {
+                    font-size: .8rem;
+                    font-weight: 600;
+                    border-radius: .45rem;
+                    color: var(--cp-purple) !important;
+                }
+
+                /* ── Buttons ── */
+                .btn-primary {
+                    background: var(--cp-purple) !important;
+                    border-color: var(--cp-purple) !important;
+                    border-radius: .5rem;
+                    font-weight: 500;
+                    transition: background .2s, transform .15s, box-shadow .2s;
+                }
+                .btn-primary:hover, .btn-primary:focus {
+                    background: var(--cp-purple-dark) !important;
+                    border-color: var(--cp-purple-dark) !important;
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 16px rgba(109,40,217,.28) !important;
+                }
+                .btn-outline-primary {
+                    color: var(--cp-purple) !important;
+                    border-color: var(--cp-purple) !important;
+                    border-radius: .5rem;
+                    font-weight: 500;
+                    transition: all .2s;
+                }
+                .btn-outline-primary:hover, .btn-outline-primary:focus {
+                    background: var(--cp-purple) !important;
+                    border-color: var(--cp-purple) !important;
+                    color: #fff !important;
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 16px rgba(109,40,217,.22) !important;
+                }
+
+                /* ── Forms ── */
+                .form-label {
+                    color: var(--cp-text);
+                    font-weight: 600;
+                }
+                .form-control,
+                .form-select {
+                    border: 1px solid var(--cp-border);
+                    border-radius: .8rem;
+                    background-color: #fff;
+                    color: var(--cp-text);
+                    min-height: 48px;
+                    box-shadow: 0 2px 10px rgba(109,40,217,.03);
+                    transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+                }
+                textarea.form-control {
+                    min-height: 120px;
+                }
+                .form-control::placeholder {
+                    color: #9ca3af;
+                }
+                .form-control:focus,
+                .form-select:focus {
+                    border-color: var(--cp-purple-light);
+                    box-shadow: 0 0 0 .2rem rgba(124,58,237,.14);
+                }
+                .form-text {
+                    color: #6b7280;
+                }
+                .invalid-feedback,
+                .form-error-message {
+                    color: #dc2626;
+                    font-size: .875rem;
+                    margin-top: .35rem;
+                }
+
+                /* ── Cards ── */
+                .card {
+                    border: 1px solid var(--cp-border);
+                    border-radius: .85rem;
+                    transition: box-shadow .25s, transform .25s;
+                }
+                .card:hover {
+                    box-shadow: 0 10px 32px rgba(109,40,217,.13) !important;
+                    transform: translateY(-3px);
+                }
+                .card-footer.bg-white { background: #fff !important; }
+
+                /* ── Badge ── */
+                .badge.text-bg-primary, .text-bg-primary {
+                    background: var(--cp-purple) !important;
+                    border-radius: .4rem;
+                    font-weight: 500;
+                }
+
+                /* ── Hero ── */
+                .cp-hero {
+                    background: linear-gradient(135deg, var(--cp-purple-soft) 0%, #fff 70%);
+                }
+
+                /* ── Tables ── */
+                .table > thead { background: var(--cp-purple-pale); }
+
+                /* ── Links ── */
+                a { transition: color .2s ease; }
+                main a:not(.btn):hover { color: var(--cp-purple-light) !important; }
+
+                /* ── Footer ── */
+                .cp-footer {
+                    background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+                    color: rgba(255,255,255,.9);
+                    position: relative;
+                    overflow: hidden;
+                }
+                .cp-footer::before {
+                    content: '';
+                    position: absolute;
+                    top: -70px;
+                    right: -70px;
+                    width: 220px;
+                    height: 220px;
+                    border-radius: 50%;
+                    background: rgba(255,255,255,.07);
+                    pointer-events: none;
+                }
+                .cp-footer h5, .cp-footer h6 { color: #fff; font-weight: 600; }
+                .cp-footer .text-secondary { color: rgba(255,255,255,.65) !important; }
+                .cp-footer a { color: rgba(255,255,255,.8) !important; transition: color .2s; }
+                .cp-footer a:hover { color: #fff !important; text-decoration: underline; }
+                .cp-footer hr { border-color: rgba(255,255,255,.18); }
+                .cp-footer .small { color: rgba(255,255,255,.5) !important; }
+                .cp-footer .cp-logo-dot {
+                    width: 34px;
+                    height: 34px;
+                    border-radius: 50%;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: rgba(255,255,255,.14);
+                    border: 1px solid rgba(255,255,255,.22);
+                    font-weight: 700;
+                }
+
+                /* ── Responsive ── */
+                @media (max-width: 768px) {
+                    body { font-size: 14px; }
+                    h1, .display-5 { font-size: 1.75rem !important; }
+                    h2 { font-size: 1.5rem !important; }
+                    h3 { font-size: 1.25rem !important; }
+                    .btn-lg { padding: .5rem 1rem; font-size: .9rem; }
+                    .container { padding-left: 12px; padding-right: 12px; }
+                }
+                @media (max-width: 576px) {
+                    h1, .display-5 { font-size: 1.5rem !important; }
+                    h2 { font-size: 1.25rem !important; }
+                    .lead { font-size: .95rem; }
+                    .btn { font-size: .875rem; padding: .375rem .75rem; }
+                    .card { margin-bottom: 1rem; }
+                    .table { font-size: .75rem; }
+                }
+            </style>
+        {% endblock %}
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        {% include 'menu.html.twig' %}
+        <div class="flex-grow-1 cp-main">
+            {% block body %}{% endblock %}
+        </div>
+
+        <footer class="cp-footer mt-auto">
+            <div class="container py-5 position-relative">
+                <div class="row gy-4 align-items-start">
+                    <div class="col-md-5">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-white text-primary fw-bold" style="width: 50px; height: 50px; color: #7c3aed !important;">
+                                <img src="{{ asset('images/logo-centre-noBG.png') }}" alt="Logo CanisPro" style="width: 50px; height: 50px;">
+                            </span>
+                            <h5 class="mb-0">CanisPro Education</h5>
+                        </div>
+                        <p class="text-secondary mb-0">Club canin : cours, séances et suivi personnalisé pour votre chien, avec une approche moderne et bienveillante.</p>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <h6 class="text-uppercase text-secondary">Navigation</h6>
+                        <ul class="list-unstyled mb-0">
+                            <li><a class="link-light text-decoration-none" href="{{ path('app_accueil') }}">Accueil</a></li>
+                            <li><a class="link-light text-decoration-none" href="{{ path('app_liste_cours') }}">Cours</a></li>
+                            <li><a class="link-light text-decoration-none" href="{{ path('app_a_propos') }}">À propos</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <h6 class="text-uppercase text-secondary">Compte</h6>
+                        <ul class="list-unstyled mb-0">
+                            {% if app.user and is_granted('ROLE_ADMIN') %}
+                                <li>
+                                    <a class="link-light text-decoration-none" href="{{ path('app_admin_proprietaire_index') }}">Gestion</a>
+                                    <ul class="list-unstyled ps-3">
+                                        <li><a class="link-light text-decoration-none" href="{{ path('app_admin_chien_index') }}">Gestion des chiens</a></li>
+                                        <li><a class="link-light text-decoration-none" href="{{ path('app_admin_proprietaire_index') }}">Gestion des membres</a></li>
+                                        <li><a class="link-light text-decoration-none" href="{{ path('app_admin_inscription_index') }}">Gestion des inscriptions</a></li>
+                                        <li><a class="link-light text-decoration-none" href="{{ path('app_admin_cour_index') }}">Gestion des cours</a></li>
+                                        <li><a class="link-light text-decoration-none" href="{{ path('app_admin_seance_index') }}">Gestion des séances</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="link-light text-decoration-none" href="{{ path('app_logout') }}">Déconnexion</a></li>
+                            {% elseif app.user %}
+                                <li><a class="link-light text-decoration-none" href="{{ path('app_membre') }}">Espace membre</a></li>
+                                <li><a class="link-light text-decoration-none" href="{{ path('app_liste_cours') }}">Mes inscriptions</a></li>
+                            {% else %}
+                                <li><a class="link-light text-decoration-none" href="{{ path('app_login') }}">Connexion</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
+                    <p class="small text-secondary mb-0">© {{ "now"|date("Y") }} CanisPro Education. Tous droits réservés.</p>
+                </div>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

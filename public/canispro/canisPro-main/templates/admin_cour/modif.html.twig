@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier - Cours{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .admin-course-form-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
+            border: 1px solid #ede9fe;
+            border-radius: 1.2rem;
+            box-shadow: 0 16px 38px rgba(109, 40, 217, .08);
+        }
+
+        .admin-course-form-panel,
+        .admin-course-form-side {
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            box-shadow: 0 14px 36px rgba(109, 40, 217, .07);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<section class="py-4 py-lg-5">
+    <div class="container">
+        <div class="admin-course-form-hero p-4 p-lg-5 mb-4">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="badge text-bg-primary mb-3">Administration cours</span>
+                    <h1 class="fw-bold mb-3" style="color:#1e1b4b;">Modifier un cours</h1>
+                    <p class="text-secondary mb-0">Mettez à jour les informations du cours pour conserver un catalogue précis et cohérent.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ path('app_admin_cour_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-8">
+                <div class="admin-course-form-panel p-4 p-lg-5">
+                    {{ include('admin_cour/_form.html.twig', {'button_label': 'Enregistrer les modifications'}) }}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="admin-course-form-side p-4">
+                    <h2 class="h5 fw-semibold mb-3" style="color:#1e1b4b;">Rappel</h2>
+                    <p class="text-secondary mb-3">Un cours bien renseigné facilite l'inscription, la compréhension de l'offre et la gestion du centre.</p>
+                    <div class="small text-secondary">
+                        <strong style="color:#1e1b4b;">Conseil :</strong> vérifiez la cohérence entre le niveau, le type et la description avant d'enregistrer.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

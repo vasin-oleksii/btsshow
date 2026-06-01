@@ -1,0 +1,180 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste - Cours{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .admin-course-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 52%, #ffffff 100%);
+            border: 1px solid #ede9fe;
+            border-radius: 1.2rem;
+            box-shadow: 0 18px 42px rgba(109, 40, 217, .08);
+        }
+
+        .admin-course-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: .4rem .85rem;
+            border-radius: 999px;
+            background: rgba(124, 58, 237, .10);
+            border: 1px solid rgba(124, 58, 237, .16);
+            color: #7c3aed;
+            font-size: .82rem;
+            font-weight: 600;
+        }
+
+        .admin-course-stat {
+            height: 100%;
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            padding: 1.1rem;
+            box-shadow: 0 12px 28px rgba(109, 40, 217, .06);
+        }
+
+        .admin-course-stat-number {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #7c3aed;
+            line-height: 1;
+        }
+
+        .admin-course-table-wrap {
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            box-shadow: 0 14px 36px rgba(109, 40, 217, .08);
+            overflow: hidden;
+        }
+
+        .admin-course-table thead th {
+            background: #f5f3ff;
+            color: #1e1b4b;
+            border-bottom: 1px solid #e9ddff;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .admin-course-table tbody td {
+            vertical-align: middle;
+            border-color: #f1eafe;
+        }
+
+        .admin-course-description {
+            max-width: 340px;
+            color: #6b7280;
+        }
+
+        .admin-course-empty {
+            padding: 2.5rem 1rem;
+            text-align: center;
+            color: #6b7280;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<section class="py-4 py-lg-5">
+    <div class="container">
+        <div class="admin-course-hero p-4 p-lg-5 mb-4">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="admin-course-chip mb-3">Administration cours</span>
+                    <h1 class="fw-bold mb-3" style="color:#1e1b4b; font-size: clamp(2rem, 4vw, 3rem);">Gérer l'offre de cours</h1>
+                    <p class="text-secondary mb-0" style="max-width: 720px;">
+                        Visualisez l'ensemble des cours disponibles, ajustez leurs informations et mettez à jour votre catalogue en quelques clics.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ path('app_admin_cour_new') }}" class="btn btn-primary btn-lg px-4">Créer un cours</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="admin-course-stat">
+                    <div class="admin-course-stat-number">{{ cours|length }}</div>
+                    <div class="text-secondary mt-2">Cours enregistrés</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="admin-course-stat">
+                    <div class="admin-course-stat-number">Catalogue</div>
+                    <div class="text-secondary mt-2">Organisation claire des types et niveaux</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="admin-course-stat">
+                    <div class="admin-course-stat-number">Gestion</div>
+                    <div class="text-secondary mt-2">Création, modification et suppression rapides</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-course-table-wrap">
+            <div class="table-responsive">
+                <table class="table admin-course-table align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom du cours</th>
+                            <th>Description</th>
+                            <th>Prix</th>
+                            <th>Type</th>
+                            <th>Niveau</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for cour in cours %}
+                        <tr>
+                            <td><span class="badge text-bg-primary">#{{ cour.id }}</span></td>
+                            <td>
+                                <div class="fw-semibold" style="color:#1e1b4b;">{{ cour.nomCour }}</div>
+                            </td>
+                            <td>
+                                <div class="admin-course-description">{{ cour.description }}</div>
+                            </td>
+                            <td>
+                                <span class="fw-semibold" style="color:#1e1b4b;">{{ cour.prix }} €</span>
+                            </td>
+                            <td>
+                                <span class="badge rounded-pill" style="background:#f5f3ff; color:#7c3aed; border:1px solid #e9ddff;">
+                                    {{ cour.type.libelleType }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge rounded-pill" style="background:#ffffff; color:#6d28d9; border:1px solid #ddd6fe;">
+                                    {{ cour.niveau.libelleNiveau }}
+                                </span>
+                            </td>
+                            <td class="text-end">
+                                <div class="d-flex flex-wrap justify-content-end gap-2">
+                                    <a href="{{ path('app_admin_cour_edit', {'id': cour.id}) }}" class="btn btn-outline-primary btn-sm">Modifier</a>
+                                    <form method="post" action="{{ path('app_admin_cour_delete', {'id': cour.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer ce cours ?');" class="d-inline-block">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cour.id) }}">
+                                        <button class="btn btn-danger btn-sm">Supprimer</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">
+                                <div class="admin-course-empty">
+                                    <div class="fw-semibold mb-2" style="color:#1e1b4b;">Aucun cours trouvé</div>
+                                    <div class="mb-3">Créez votre premier cours pour commencer à structurer l'offre du centre.</div>
+                                    <a href="{{ path('app_admin_cour_new') }}" class="btn btn-primary">Créer un cours</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

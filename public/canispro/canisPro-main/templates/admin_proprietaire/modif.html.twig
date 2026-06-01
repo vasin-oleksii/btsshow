@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier - Propriétaire{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .admin-owner-form-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
+            border: 1px solid #ede9fe;
+            border-radius: 1.2rem;
+            box-shadow: 0 16px 38px rgba(109, 40, 217, .08);
+        }
+
+        .admin-owner-form-panel,
+        .admin-owner-form-side {
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            box-shadow: 0 14px 36px rgba(109, 40, 217, .07);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<section class="py-4 py-lg-5">
+    <div class="container">
+        <div class="admin-owner-form-hero p-4 p-lg-5 mb-4">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="badge text-bg-primary mb-3">Administration membres</span>
+                    <h1 class="fw-bold mb-3" style="color:#1e1b4b;">Modifier un propriétaire</h1>
+                    <p class="text-secondary mb-0">Mettez à jour les coordonnées d'un membre pour conserver une base fiable et exploitable dans tout le centre.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ path('app_admin_proprietaire_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-8">
+                <div class="admin-owner-form-panel p-4 p-lg-5">
+                    {{ include('admin_proprietaire/_form.html.twig', {'button_label': 'Enregistrer les modifications'}) }}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="admin-owner-form-side p-4">
+                    <h2 class="h5 fw-semibold mb-3" style="color:#1e1b4b;">Rappel</h2>
+                    <p class="text-secondary mb-3">Des coordonnées à jour facilitent les échanges avec les membres et améliorent le suivi administratif.</p>
+                    <div class="small text-secondary">
+                        <strong style="color:#1e1b4b;">Conseil :</strong> vérifiez surtout l'email, le téléphone et l'adresse avant validation.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

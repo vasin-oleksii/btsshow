@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Crée - Proprietaire{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .admin-owner-form-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
+            border: 1px solid #ede9fe;
+            border-radius: 1.2rem;
+            box-shadow: 0 16px 38px rgba(109, 40, 217, .08);
+        }
+
+        .admin-owner-form-panel,
+        .admin-owner-form-side {
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            box-shadow: 0 14px 36px rgba(109, 40, 217, .07);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<section class="py-4 py-lg-5">
+    <div class="container">
+        <div class="admin-owner-form-hero p-4 p-lg-5 mb-4">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="badge text-bg-primary mb-3">Administration membres</span>
+                    <h1 class="fw-bold mb-3" style="color:#1e1b4b;">Créer un nouveau propriétaire</h1>
+                    <p class="text-secondary mb-0">Ajoutez un membre avec ses coordonnées complètes pour faciliter le suivi des chiens, des séances et des inscriptions.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ path('app_admin_proprietaire_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-8">
+                <div class="admin-owner-form-panel p-4 p-lg-5">
+                    {{ include('admin_proprietaire/_form.html.twig', {'button_label': 'Créer le propriétaire'}) }}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="admin-owner-form-side p-4">
+                    <h2 class="h5 fw-semibold mb-3" style="color:#1e1b4b;">Bonnes pratiques</h2>
+                    <ul class="text-secondary ps-3 mb-0">
+                        <li class="mb-2">Vérifiez l'orthographe du nom et du prénom.</li>
+                        <li class="mb-2">Renseignez une adresse email valide.</li>
+                        <li class="mb-2">Ajoutez un numéro de téléphone exploitable.</li>
+                        <li>Complétez l'adresse pour un dossier administrativement propre.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

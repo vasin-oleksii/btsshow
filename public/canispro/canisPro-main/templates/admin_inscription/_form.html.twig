@@ -1,0 +1,35 @@
+{{ form_start(form) }}
+
+{% if show_date %}
+    <div class="mb-4">
+        {{ form_row(form.dateInscription, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control form-control-lg' }
+        }) }}
+    </div>
+{% endif %}
+
+<div class="row g-4">
+    <div class="col-md-6">
+        {{ form_row(form.seance, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-select form-select-lg' }
+        }) }}
+    </div>
+
+    <div class="col-md-6">
+        {{ form_row(form.chien, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-select form-select-lg' }
+        }) }}
+    </div>
+</div>
+
+<div class="d-flex flex-wrap gap-3 align-items-center mt-4">
+    <button type="submit" class="btn btn-primary px-4 py-2">
+        {{ button_label|default('Sauvegarder') }}
+    </button>
+    <span class="text-secondary small">Les modifications seront visibles dans la liste des inscriptions.</span>
+</div>
+
+{{ form_end(form) }}

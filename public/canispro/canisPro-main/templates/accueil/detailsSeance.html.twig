@@ -1,0 +1,225 @@
+{# templates/seance/seance.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la séance {{ seance.id }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .session-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 45%, #ffffff 100%);
+            border-bottom: 1px solid #e9ddff;
+        }
+
+        .session-badge {
+            display: inline-block;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            color: #7c3aed;
+            background: rgba(124, 58, 237, .12);
+            border: 1px solid rgba(124, 58, 237, .22);
+            border-radius: 999px;
+            padding: .35rem .8rem;
+        }
+
+        .session-card {
+            border: 1px solid #ddd6fe;
+            border-radius: 1rem;
+            background: #fff;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(109, 40, 217, .12);
+        }
+
+        .session-header {
+            background: linear-gradient(100deg, #7c3aed 0%, #6d28d9 100%);
+            color: #fff;
+            padding: 1rem 1.2rem;
+        }
+
+        .session-info {
+            border: 1px solid #ede9fe;
+            border-radius: .8rem;
+            overflow: hidden;
+        }
+
+        .session-info .row {
+            margin: 0;
+            border-bottom: 1px solid #ede9fe;
+        }
+
+        .session-info .row:last-child {
+            border-bottom: none;
+        }
+
+        .session-key {
+            background: #faf7ff;
+            color: #312e81;
+            font-weight: 600;
+            padding: .75rem 1rem;
+        }
+
+        .session-value {
+            color: #4b5563;
+            padding: .75rem 1rem;
+        }
+
+        .session-value strong {
+            color: #5b21b6;
+        }
+
+        .dogs-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: .55rem;
+        }
+
+        .dogs-item {
+            border: 1px solid #ede9fe;
+            border-radius: .75rem;
+            background: #fff;
+            padding: .6rem .75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: .7rem;
+        }
+
+        .dogs-item small {
+            color: #6b7280;
+        }
+
+        .session-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .6rem;
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee7ff;
+        }
+
+        .session-section-title {
+            color: #1e1b4b;
+            font-weight: 700;
+            margin-bottom: .75rem;
+        }
+
+        @media (max-width: 576px) {
+            .dogs-item {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .session-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<main role="main">
+    <section class="session-hero py-5">
+        <div class="container text-center">
+            <span class="session-badge mb-3">Détail séance</span>
+            <h1 class="display-5 fw-bold mb-2" style="color:#1e1b4b;">Séance {{ seance.id }}</h1>
+            <p class="lead text-secondary mb-0">Retrouvez toutes les informations de cette séance.</p>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10 col-xl-9">
+                    <article class="session-card">
+                        <div class="session-header">
+                            <h2 class="h4 mb-0 fw-semibold">{{ seance.cour.nomCour }}</h2>
+                        </div>
+
+                        <div class="card-body p-4 p-md-5">
+                            <h5 class="session-section-title">Informations de la séance</h5>
+
+                            <div class="session-info mb-4">
+                                <div class="row g-0">
+                                    <div class="col-12 col-md-5 session-key">Date</div>
+                                    <div class="col-12 col-md-7 session-value">{{ seance.date|date('d/m/Y') }}</div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-12 col-md-5 session-key">Heure de début</div>
+                                    <div class="col-12 col-md-7 session-value">{{ seance.heureDeb|date('H:i') }}</div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-12 col-md-5 session-key">Durée</div>
+                                    <div class="col-12 col-md-7 session-value">{{ seance.duree|date('H:i') }}</div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-12 col-md-5 session-key">Type de cours</div>
+                                    <div class="col-12 col-md-7 session-value">{{ seance.cour.type.libelleType }}</div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-12 col-md-5 session-key">Niveau du cours</div>
+                                    <div class="col-12 col-md-7 session-value">{{ seance.cour.niveau.libelleNiveau }}</div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-12 col-md-5 session-key">Places restantes</div>
+                                    <div class="col-12 col-md-7 session-value"><strong>{{ seance.cour.type.nbPlaces - seance.inscriptions|length }}</strong></div>
+                                </div>
+                            </div>
+
+                            <h5 class="session-section-title">Chiens inscrits</h5>
+                            {% if seance.inscriptions|length > 0 %}
+                                <ul class="dogs-list mb-3">
+                                    {% for inscription in seance.inscriptions %}
+                                        {% if is_granted('ROLE_ADMIN') or (app.user and inscription.chien.proprietaire.user == app.user) %}
+                                            <li class="dogs-item">
+                                                <span>
+                                                    <strong>{{ inscription.chien.nomChien }}</strong>
+                                                    <small>({{ inscription.chien.race }})</small>
+                                                </span>
+                                                <a href="{{ path('app_retirer_chien', {'inscriptionId': inscription.id}) }}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Retirer ?')">Retirer</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p class="text-secondary mb-3">Aucun chien inscrit pour le moment.</p>
+                            {% endif %}
+
+                            <div class="session-actions">
+                                {% set type = seance.cour.type.libelleType|lower %}
+                                {% if type in ['collectif', 'collectifs'] %}
+                                    {% if seance.inscriptions|length >= 15 %}
+                                        <button class="btn btn-success" disabled>Complet (15)</button>
+                                    {% else %}
+                                        {% if app.user %}
+                                            <a href="{{ path('app_ajouter_chien', {'seanceId': seanceId}) }}" class="btn btn-success">Ajouter un chien</a>
+                                        {% else %}
+                                            <a href="{{ path('app_login') }}" class="btn btn-success">Ajouter un chien</a>
+                                        {% endif %}
+                                    {% endif %}
+                                {% elseif type in ['individuels', 'individuel'] %}
+                                    {% if seance.inscriptions|length == 0 %}
+                                        {% if app.user %}
+                                            <a href="{{ path('app_ajouter_chien', {'seanceId': seanceId}) }}" class="btn btn-success">Ajouter un chien</a>
+                                        {% else %}
+                                            <a href="{{ path('app_login') }}" class="btn btn-success">Ajouter un chien</a>
+                                        {% endif %}
+                                    {% else %}
+                                        <button class="btn btn-success" disabled>1 chien max</button>
+                                    {% endif %}
+                                {% endif %}
+
+                                <a href="javascript:history.back()" class="btn btn-outline-primary">Retour</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

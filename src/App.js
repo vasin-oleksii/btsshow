@@ -14,6 +14,11 @@ import HabitatStage from "./pages/habitatStage";
 import Habitat2026Stage from "./pages/habitat2026Stage";
 import Benevolat from "./pages/benevolat";
 import Veille from "./pages/veille";
+import BilletterieFa from "./pages/billetterieFa";
+import PokemonQuiz from "./pages/pokemonQuiz";
+import DuneWave from "./pages/duneWave";
+import Partage from "./pages/partage";
+import CanisPro from "./pages/canisPro";
 
 import { TRACKING_ID } from "./data/tracking";
 import "./app.css";
@@ -45,6 +50,17 @@ function App() {
 				/>
 				<Route path="/benevolat" element={<Benevolat />} />
 				<Route path="/veille" element={<Veille />} />
+				<Route
+					path="/project/billetterie-fa"
+					element={<BilletterieFa />}
+				/>
+				<Route
+					path="/project/pokemon-quiz"
+					element={<PokemonQuiz />}
+				/>
+				<Route path="/project/dune-wave" element={<DuneWave />} />
+				<Route path="/project/partage" element={<Partage />} />
+				<Route path="/project/canispro" element={<CanisPro />} />
 				{/* <Route path="*" element={<Notfound />} /> */}
 			</Routes>
 		</div>

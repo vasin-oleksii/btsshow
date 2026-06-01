@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des cours{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .courses-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 45%, #ffffff 100%);
+            border-bottom: 1px solid #e9ddff;
+        }
+
+        .courses-badge {
+            display: inline-block;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            color: #7c3aed;
+            background: rgba(124, 58, 237, .12);
+            border: 1px solid rgba(124, 58, 237, .22);
+            border-radius: 999px;
+            padding: .35rem .8rem;
+        }
+
+        .course-card {
+            border: 1px solid #ddd6fe;
+            border-radius: 1rem;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 12px 28px rgba(109, 40, 217, .10);
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 36px rgba(109, 40, 217, .16);
+        }
+
+        .course-card-header {
+            background: linear-gradient(100deg, #7c3aed 0%, #6d28d9 100%);
+            color: #fff;
+            padding: .9rem 1rem;
+        }
+
+        .course-description {
+            padding-left: 10px;
+            color: #4b5563;
+            font-size: .94rem;
+            min-height: 78px;
+        }
+
+        .course-price {
+            color: #5b21b6;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8rem;
+            margin-top: auto;
+            padding-top: .75rem;
+            border-top: 1px solid #eee7ff;
+        }
+
+        @media (max-width: 576px) {
+            .course-meta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .course-meta .btn {
+                width: 100%;
+            }
+        }
+
+        .courses-empty {
+            border: 1px dashed #c4b5fd;
+            background: #faf7ff;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<main role="main">
+    <section class="courses-hero py-5">
+        <div class="container text-center">
+            <span class="courses-badge mb-3">CanisPro Education</span>
+            <h1 class="display-5 fw-bold mb-2" style="color:#1e1b4b;">Nos cours d'éducation canine</h1>
+            <p class="lead text-secondary mb-0">Choisissez la formation adaptée à votre chien et à vos objectifs.</p>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            {% if cours is not empty %}
+                <div class="row g-4 justify-content-center">
+                    {% for cour in cours %}
+                        <div class="col-12 col-sm-10 col-md-6 col-lg-5 col-xl-4 d-flex">
+                            <article class="course-card h-100 w-100">
+                                <div class="course-card-header text-center">
+                                    <h5 class="mb-0 fw-semibold">{{ cour.nomCour }}</h5>
+                                </div>
+
+                                <div class="card-body d-flex flex-column">
+                                    <p class="course-description mb-3">{{ cour.description }}</p>
+
+                                    <div class="course-meta">
+                                        <p class="mb-0 course-price">{{ cour.prix }} €</p>
+                                        <a class="btn btn-outline-primary" href="{{ path('app_details_cour', {'id': cour.id}) }}">Voir les détails</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="courses-empty">
+                    <h3 class="h5 mb-2" style="color:#1e1b4b;">Aucun cours disponible pour le moment</h3>
+                    <p class="text-secondary mb-3">Nous mettons régulièrement à jour le planning. Revenez bientôt.</p>
+                    <a href="{{ path('app_accueil') }}" class="btn btn-primary">Retour à l'accueil</a>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+</main>
+
+{% endblock %}

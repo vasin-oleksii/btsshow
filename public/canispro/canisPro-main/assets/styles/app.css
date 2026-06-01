@@ -1,0 +1,49 @@
+body {
+    background-color: var(--cp-purple-soft, #f3edff);
+}
+
+/* Mobile-first responsive typography */
+@media (max-width: 992px) {
+    .display-5 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    .py-5 {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    .container {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 13px;
+    }
+
+    .mt-5 {
+        margin-top: 1rem !important;
+    }
+
+    .mb-4 {
+        margin-bottom: 1rem !important;
+    }
+
+    .table-responsive {
+        border: none;
+    }
+
+    .table thead {
+        font-size: 0.75rem;
+    }
+}

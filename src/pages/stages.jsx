@@ -70,24 +70,25 @@ const Stages = () => {
 										numérique
 									</p>
 
-									<h3>Missions</h3>
+									<h3>Mission principale</h3>
 									<p>
-										Développement de nouvelles
-										fonctionnalités, optimisation des outils
-										existants et élargissement des
-										responsabilités au sein de
-										l&apos;équipe.
+										Développement d&apos;une carte
+										interactive des logements de
+										l&apos;association : visualisation
+										géolocalisée du parc, marqueurs colorés
+										par statut, fiches détaillées et vue
+										tableau avec filtres et export.
 									</p>
 
 									<h3>Compétences mobilisées</h3>
 									<ul>
 										<li>
 											Développement front-end (React,
-											HTML5, CSS3)
+											Leaflet / cartographie)
 										</li>
 										<li>
 											Développement back-end (Node.js,
-											bases de données)
+											API REST, base de données)
 										</li>
 										<li>Gestion de projet agile</li>
 										<li>Documentation technique</li>
@@ -128,62 +129,56 @@ const Stages = () => {
 
 									<h3>Objectifs du stage</h3>
 									<p>
-										Contribuer à la refonte et au
-										développement de leur plateforme
-										numérique pour améliorer la gestion des
-										logements sociaux et l'accompagnement
-										des familles. Développer des outils de
-										suivi et de communication pour optimiser
-										les processus internes.
+										Moderniser et automatiser les processus
+										internes de l'association autour de son
+										outil de suivi des familles et du parc
+										immobilier (ISIS).
 									</p>
 
-									<h3>Compétences mobilisées</h3>
+									<h3>Réalisations</h3>
 									<ul>
 										<li>
-											Développement front-end (React,
-											HTML5, CSS3)
+											Application cartographique :
+											recherche d'adresse et services à
+											proximité (rayon de 5 km),
+											utilisable hors-ligne.
 										</li>
 										<li>
-											Intégration et accessibilité web
+											Optimisation et tests : migration
+											SSR (Next.js), tests Jest / Cypress
+											et pipeline CI/CD.
 										</li>
 										<li>
-											Développement back-end (Node.js,
-											bases de données)
-										</li>
-										<li>Gestion de contenus et CMS</li>
-										<li>
-											Interface utilisateur et expérience
-											utilisateur
-										</li>
-										<li>
-											Gestion de projet et méthodologies
-											agiles
+											Automatisation de la génération des
+											badges à partir d'un fichier Excel.
 										</li>
 									</ul>
 
 									<h3>Technologies utilisées</h3>
 									<ul>
 										<li>
-											React.js pour l'interface
-											utilisateur
+											React, Leaflet et Google Places API
+											pour la cartographie
 										</li>
-										<li>Node.js pour le backend</li>
+										<li>Next.js (SSR), Node.js, TypeScript</li>
 										<li>
-											MongoDB/PostgreSQL pour la base de
-											données
+											Jest, Cypress et GitHub Actions
+											(tests et CI/CD)
 										</li>
-										<li>Git pour le versioning</li>
-										<li>Figma pour le design</li>
+										<li>
+											Excel, Office.js et Node.js pour les
+											badges
+										</li>
 									</ul>
 
-									<h3>Résultats attendus</h3>
+									<h3>Résultats</h3>
 									<p>
-										Amélioration significative de
-										l'efficacité des processus de gestion
-										des logements, meilleure communication
-										avec les bénéficiaires, et modernisation
-										de l'outil numérique de l'association
-										pour servir au mieux sa mission sociale.
+										Des outils plus modernes pour
+										l'association : une carte pour localiser
+										rapidement adresses et services, et une
+										génération de badges qui réduit les
+										erreurs et fait gagner du temps à
+										l'équipe.
 									</p>
 								</div>
 							</div>
@@ -200,3 +195,4 @@ const Stages = () => {
 };
 
 export default Stages;
+

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'un chien{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .admin-form-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
+            border: 1px solid #ede9fe;
+            border-radius: 1.2rem;
+            box-shadow: 0 16px 38px rgba(109, 40, 217, .08);
+        }
+
+        .admin-form-panel,
+        .admin-form-side {
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            box-shadow: 0 14px 36px rgba(109, 40, 217, .07);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<section class="py-4 py-lg-5">
+    <div class="container">
+        <div class="admin-form-hero p-4 p-lg-5 mb-4">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="badge text-bg-primary mb-3">Administration chiens</span>
+                    <h1 class="fw-bold mb-3" style="color:#1e1b4b;">Ajouter un nouveau chien</h1>
+                    <p class="text-secondary mb-0">Créez une nouvelle fiche chien avec ses informations essentielles et associez-la à son propriétaire.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ path('app_admin_chien_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-8">
+                <div class="admin-form-panel p-4 p-lg-5">
+                    {{ include('admin_chien/_form.html.twig', {
+                        button_label: 'Créer la fiche'
+                    }) }}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="admin-form-side p-4">
+                    <h2 class="h5 fw-semibold mb-3" style="color:#1e1b4b;">Conseils de saisie</h2>
+                    <ul class="text-secondary ps-3 mb-0">
+                        <li class="mb-2">Renseignez un nom clair et facilement identifiable.</li>
+                        <li class="mb-2">Sélectionnez la race et le sexe avec précision.</li>
+                        <li class="mb-2">Associez le bon propriétaire pour faciliter le suivi administratif.</li>
+                        <li>Vérifiez l'âge du chien avant l'enregistrement final.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

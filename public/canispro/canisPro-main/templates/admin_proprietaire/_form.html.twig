@@ -1,0 +1,59 @@
+{{ form_start(form) }}
+
+<div class="row g-4">
+    <div class="col-md-6">
+        {{ form_row(form.nom, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control form-control-lg', placeholder: 'Nom' }
+        }) }}
+    </div>
+
+    <div class="col-md-6">
+        {{ form_row(form.prenom, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control form-control-lg', placeholder: 'Prénom' }
+        }) }}
+    </div>
+
+    <div class="col-md-6">
+        {{ form_row(form.mail, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control form-control-lg', placeholder: 'nom@exemple.com' }
+        }) }}
+    </div>
+
+    <div class="col-md-6">
+        <label for="password" class="form-label fw-semibold mb-2" style="color:#1e1b4b;">Mot de passe</label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control form-control-lg"
+            placeholder="Définir un mot de passe"
+            autocomplete="new-password"
+            required
+        >
+        <div class="form-text">Choisissez un mot de passe sécurisé pour ce propriétaire.</div>
+    </div>
+
+    <div class="col-md-6">
+        {{ form_row(form.tel, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control form-control-lg', placeholder: 'Téléphone' }
+        }) }}
+    </div>
+
+    <div class="col-12">
+        {{ form_row(form.adresse, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control', rows: '4', placeholder: 'Adresse complète' }
+        }) }}
+    </div>
+</div>
+
+<div class="d-flex flex-wrap gap-3 align-items-center mt-4">
+    <button class="btn btn-primary px-4 py-2">{{ button_label|default('Enregistrer') }}</button>
+    <span class="text-secondary small">Les informations seront visibles dans la liste des propriétaires.</span>
+</div>
+
+{{ form_end(form) }}

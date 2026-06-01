@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
@@ -19,7 +20,7 @@ const Competences = () => {
 
 	// Accordion state: manage open/close per top-level section (1, 2, 3)
 	const [openSections, setOpenSections] = useState({
-		1: false,
+		1: true,
 		2: false,
 		3: false,
 	});
@@ -36,15 +37,111 @@ const Competences = () => {
 		setOpenSections({ 1: false, 2: false, 3: false });
 	};
 
-	// Build references from existing projects
-	const projectRefs = useMemo(() => {
-		return (INFO.projects || []).map((p, idx) => ({
-			key: `ref-${idx}`,
-			title: p.title,
-			link: p.link,
-			text: p.linkText || "Voir",
-		}));
+	// Lookup des projets par titre, pour des références robustes (sans index)
+	const projectByTitle = useMemo(() => {
+		const map = {};
+		(INFO.projects || []).forEach((p) => {
+			map[p.title] = p;
+		});
+		return map;
 	}, []);
+
+	// Stage 2026 (page interne) utilisé comme référence
+	const STAGE_2026 = {
+		title: "Stage 2026 — Carte des logements",
+		link: "/stage/habitat-humanisme-2026",
+	};
+
+	// Mises en pratique : projets liés à chaque bloc de compétences
+	const refsBloc1 = [
+		{
+			title: "Site Web personnel (CV)",
+			note: "1.3 — présence en ligne, site personnel déployé",
+		},
+		{
+			title: "CanisPro — Symfony",
+			note: "1.4 — travail en mode projet (Scrum, ClickUp, Git)",
+		},
+		{
+			title: "Dune Wave",
+			note: "1.5 — déploiement et mise à disposition (Vercel)",
+		},
+		{
+			...STAGE_2026,
+			note: "1.4 / 1.5 — projet mené en équipe et livré à l'association",
+		},
+	];
+	const refsBloc2 = [
+		{
+			title: "CanisPro — Symfony",
+			note: "2.1 / 2.3 — Symfony MVC, Doctrine ORM, MySQL",
+		},
+		{
+			title: "Billetterie du Fâ — PHP/MVC",
+			note: "2.1 / 2.3 — MVC PHP, DAO, MySQL, génération de PDF",
+		},
+		{
+			title: "PokemonQuize",
+			note: "2.1 — React, hooks personnalisés, logique de jeu",
+		},
+		{
+			title: "Partage",
+			note: "2.1 / 2.3 — React + API REST + MongoDB",
+		},
+		{
+			...STAGE_2026,
+			note: "2.1 / 2.2 — carte React + API REST Node.js",
+		},
+	];
+	const refsBloc3 = [
+		{
+			title: "PokemonQuize",
+			note: "sensibilisation à la cybersécurité (quiz)",
+		},
+		{
+			title: "CanisPro — Symfony",
+			note: "3.5 — authentification, rôles, CSRF, hachage bcrypt",
+		},
+		{
+			title: "Billetterie du Fâ — PHP/MVC",
+			note: "3.1 / 3.5 — protection XSS & injection SQL, RGPD",
+		},
+	];
+
+	const renderRefs = (items) => (
+		<div className="references">
+			<div className="references-title">
+				Mises en pratique (projets liés)
+			</div>
+			<ul className="references-list">
+				{items.filter(Boolean).map((it) => {
+					const proj = projectByTitle[it.title];
+					const link = it.link || (proj && proj.link) || "#";
+					const isInternal = link.startsWith("/");
+					return (
+						<li key={it.title}>
+							{isInternal ? (
+								<Link to={link}>{it.title}</Link>
+							) : (
+								<a
+									href={link}
+									target="_blank"
+									rel="noreferrer"
+								>
+									{it.title}
+								</a>
+							)}
+							{it.note && (
+								<span className="reference-note">
+									{it.note}
+								</span>
+							)}
+						</li>
+					);
+				})}
+			</ul>
+		</div>
+	);
 
 	return (
 		<React.Fragment>
@@ -234,26 +331,7 @@ const Competences = () => {
 											</li>
 										</ul>
 
-										<div className="references">
-											<div className="references-title">
-												Références (projets liés)
-											</div>
-											<ul className="references-list">
-												{projectRefs
-													.slice(4, 5)
-													.map((r) => (
-														<li key={r.key}>
-															<a
-																href={r.link}
-																target="_blank"
-																rel="noreferrer"
-															>
-																{r.title}
-															</a>
-														</li>
-													))}
-											</ul>
-										</div>
+										{renderRefs(refsBloc1)}
 									</div>
 								)}
 							</div>
@@ -377,26 +455,7 @@ const Competences = () => {
 											</li>
 										</ul>
 
-										<div className="references">
-											<div className="references-title">
-												Références (projets liés)
-											</div>
-											<ul className="references-list">
-												{projectRefs
-													.slice(0, 4)
-													.map((r) => (
-														<li key={r.key}>
-															<a
-																href={r.link}
-																target="_blank"
-																rel="noreferrer"
-															>
-																{r.title}
-															</a>
-														</li>
-													))}
-											</ul>
-										</div>
+										{renderRefs(refsBloc2)}
 									</div>
 								)}
 							</div>
@@ -540,26 +599,7 @@ const Competences = () => {
 											</li>
 										</ul>
 
-										<div className="references">
-											<div className="references-title">
-												Références (projets liés)
-											</div>
-											<ul className="references-list">
-												{projectRefs
-													.slice(1, 3)
-													.map((r) => (
-														<li key={r.key}>
-															<a
-																href={r.link}
-																target="_blank"
-																rel="noreferrer"
-															>
-																{r.title}
-															</a>
-														</li>
-													))}
-											</ul>
-										</div>
+										{renderRefs(refsBloc3)}
 									</div>
 								)}
 							</div>

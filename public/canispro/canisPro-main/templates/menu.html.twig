@@ -1,0 +1,60 @@
+{% block body %}
+    <nav class="navbar navbar-expand-lg cp-navbar sticky-top py-2">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="{{ path('app_accueil') }}">
+                <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-white text-primary fw-bold" style="width: 50px; height: 50px; color: #7c3aed !important;">
+                    <img src="{{ asset('images/logo-centre-noBG.png') }}" alt="Logo CanisPro" style="width: 50px; height: 50px;">
+                </span>
+                <span>CanisPro Education</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_liste_cours') }}">Liste des Cours</a>
+                    </li>
+
+                    {% if is_granted('ROLE_USERS') and not is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_membre') }}">Espace membre</a>
+                        </li>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestion</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ path('app_admin_chien_index') }}">Gestion des chiens</a></li>
+                                <li><a class="dropdown-item" href="{{ path('app_admin_proprietaire_index') }}">Gestion des membres</a></li>
+                                <li><a class="dropdown-item" href="{{ path('app_admin_inscription_index') }}">Gestion des inscriptions</a></li>
+                                <li><a class="dropdown-item" href="{{ path('app_admin_cour_index') }}">Gestion des cours</a></li>
+                                <li><a class="dropdown-item" href="{{ path('app_admin_seance_index') }}">Gestion des séances</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_a_propos') }}">À propos</a>
+                    </li>
+
+                    {% if app.user %}
+                        <li class="nav-item d-lg-flex align-items-center ms-lg-2">
+                            <span class="navbar-text me-lg-2 mb-2 mb-lg-0 px-2 py-1 rounded" style="font-size: 0.8rem; background: rgba(255,255,255,.16); color: #fff;">{{ app.user.userIdentifier }}</span>
+                            <form action="{{ path('app_logout') }}" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-light btn-sm">Déconnexion</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item ms-lg-2">
+                            <a class="btn btn-light btn-sm" href="{{ path('app_login') }}">Connexion</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}

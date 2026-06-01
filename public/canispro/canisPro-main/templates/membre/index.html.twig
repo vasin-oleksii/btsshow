@@ -1,0 +1,199 @@
+﻿{% extends 'base.html.twig' %}
+
+{% block title %}Espace Membre{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .member-hero {
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+            color: #fff;
+            border-radius: 1.25rem;
+            box-shadow: 0 20px 44px rgba(109, 40, 217, .18);
+        }
+
+        .member-panel {
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1.1rem;
+            box-shadow: 0 14px 36px rgba(109, 40, 217, .08);
+        }
+
+        .member-stat {
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 1rem;
+            padding: 1rem;
+            height: 100%;
+        }
+
+        .member-info-item {
+            padding: .95rem 0;
+            border-bottom: 1px solid #f1eafe;
+        }
+
+        .member-info-item:last-child {
+            border-bottom: 0;
+        }
+
+        .info-label {
+            color: #6b7280;
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-bottom: .2rem;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: #1e1b4b;
+        }
+
+        .dog-card {
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            background: #fff;
+            transition: transform .2s ease, box-shadow .2s ease;
+            box-shadow: 0 10px 24px rgba(109, 40, 217, .06);
+        }
+
+        .dog-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 34px rgba(109, 40, 217, .10);
+        }
+
+        .member-dog-badge {
+            background: #f5f3ff;
+            border: 1px solid #e9ddff;
+            color: #7c3aed;
+            border-radius: 999px;
+            padding: .45rem .75rem;
+            font-size: .82rem;
+            font-weight: 500;
+        }
+
+        .member-empty {
+            background: linear-gradient(135deg, #faf5ff 0%, #ffffff 100%);
+            border: 1px dashed #d8b4fe;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container py-4 py-lg-5">
+
+    <div class="member-hero p-4 p-lg-5 mb-4">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-8">
+                <span class="badge bg-white text-dark mb-3" style="color:#7c3aed !important; border-radius:.7rem;">Espace membre</span>
+                <h1 class="fw-bold mb-2" style="font-size: clamp(2rem, 4vw, 3rem);">Bienvenue {{ membre.prenom }} {{ membre.nom }}</h1>
+                <p class="mb-0" style="color: rgba(255,255,255,.82); max-width: 720px;">
+                    Retrouvez ici vos informations personnelles, gérez vos chiens et gardez un accès simple à votre espace personnel.
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="member-stat text-center">
+                            <div class="fw-bold" style="font-size: 1.8rem;">{{ membre.chiens|length }}</div>
+                            <div class="small" style="color: rgba(255,255,255,.8);">Chiens</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="member-stat text-center">
+                            <div class="fw-bold" style="font-size: 1.8rem;">Actif</div>
+                            <div class="small" style="color: rgba(255,255,255,.8);">Compte</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% for message in app.session.flashbag.get('success') %}
+        <div class="alert alert-success border-0 shadow-sm rounded-4">{{ message }}</div>
+    {% endfor %}
+
+    <div class="row g-4">
+        <div class="col-lg-5">
+            <div class="member-panel p-4 p-lg-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h2 class="h4 mb-0" style="color:#1e1b4b;">Vos informations</h2>
+                    <a href="{{ path('app_membre_modifier', {'id': membre.id}) }}" class="btn btn-outline-primary btn-sm">Modifier</a>
+                </div>
+
+                <div class="member-info-item">
+                    <div class="info-label">Nom</div>
+                    <div class="info-value">{{ membre.nom }}</div>
+                </div>
+                <div class="member-info-item">
+                    <div class="info-label">Prénom</div>
+                    <div class="info-value">{{ membre.prenom }}</div>
+                </div>
+                <div class="member-info-item">
+                    <div class="info-label">Email</div>
+                    <div class="info-value">{{ membre.mail }}</div>
+                </div>
+                <div class="member-info-item">
+                    <div class="info-label">Téléphone</div>
+                    <div class="info-value">{{ membre.tel }}</div>
+                </div>
+                <div class="member-info-item">
+                    <div class="info-label">Adresse</div>
+                    <div class="info-value">{{ membre.adresse }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="member-panel p-4 p-lg-4">
+                <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 mb-4">
+                    <div>
+                        <h2 class="h4 mb-1" style="color:#1e1b4b;">Vos chiens</h2>
+                        <p class="text-secondary mb-0">Ajoutez, modifiez ou supprimez les fiches de vos compagnons.</p>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge text-bg-primary rounded-pill px-3 py-2">{{ membre.chiens|length }}</span>
+                        <a href="{{ path('app_chien_ajout') }}" class="btn btn-primary btn-sm px-3">Ajouter un chien</a>
+                    </div>
+                </div>
+
+                <div class="pe-1" style="max-height: 540px; overflow-y:auto;">
+                    {% for chien in membre.chiens %}
+                        <div class="dog-card mb-3">
+                            <div class="card-body p-4">
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-md-8">
+                                        <h5 class="card-title mb-2" style="color:#1e1b4b;">{{ chien.nomChien }}</h5>
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <span class="member-dog-badge">Race : {{ chien.race }}</span>
+                                            <span class="member-dog-badge">Âge : {{ chien.age }}</span>
+                                            <span class="member-dog-badge">Sexe : {{ chien.sexe }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 d-flex flex-wrap justify-content-md-end gap-2">
+                                        <a href="{{ path('app_chien_modification', {'id': chien.id}) }}" class="btn btn-outline-primary btn-sm px-3">Modifier</a>
+                                        <form method="POST" action="{{ path('app_chien_suppression', {'id': chien.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer ce chien ?');">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('sup' ~ chien.id) }}">
+                                            <input type="submit" class="btn btn-outline-danger btn-sm" value="Supprimer">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="member-empty">
+                            <h5 class="mb-2" style="color:#1e1b4b;">Aucun chien enregistré</h5>
+                            <p class="text-secondary mb-3">Ajoutez votre premier compagnon pour commencer à gérer vos informations depuis l'espace membre.</p>
+                            <a href="{{ path('app_chien_ajout') }}" class="btn btn-primary">Ajouter un chien</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

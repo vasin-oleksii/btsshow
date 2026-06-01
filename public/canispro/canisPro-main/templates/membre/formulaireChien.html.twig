@@ -1,0 +1,115 @@
+﻿{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if isModif %}
+        Modifier un chien
+    {% else %}
+        Ajouter un chien
+    {% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .member-dog-form-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
+            border: 1px solid #ede9fe;
+            border-radius: 1.25rem;
+            box-shadow: 0 18px 40px rgba(109, 40, 217, .08);
+        }
+
+        .member-dog-form-panel,
+        .member-dog-form-side {
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            box-shadow: 0 12px 30px rgba(109, 40, 217, .07);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container py-4 py-lg-5">
+    <div class="member-dog-form-hero p-4 p-lg-5 mb-4">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-8">
+                <span class="badge text-bg-primary mb-3">Gestion de vos chiens</span>
+                <h1 class="fw-bold mb-3" style="color:#1e1b4b;">
+                    {% if isModif %}
+                        Modifier {{ chien.nomChien }}
+                    {% else %}
+                        Ajouter un chien
+                    {% endif %}
+                </h1>
+                <p class="text-secondary mb-0">
+                    {% if isModif %}
+                        Mettez à jour les informations de votre compagnon pour garder une fiche claire et complète.
+                    {% else %}
+                        Créez la fiche de votre compagnon pour centraliser ses informations dans votre espace membre.
+                    {% endif %}
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="javascript:history.back()" class="btn btn-outline-primary">Retour</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 align-items-start">
+        <div class="col-lg-8">
+            <div class="member-dog-form-panel p-4 p-lg-5">
+                {{ form_start(form) }}
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            {{ form_row(form.nomChien, {
+                                label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+                                attr: { class: 'form-control form-control-lg', placeholder: 'Nom du chien' }
+                            }) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.race, {
+                                label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+                                attr: { class: 'form-control form-control-lg', placeholder: 'Race' }
+                            }) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.age, {
+                                label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+                                attr: { class: 'form-control form-control-lg', placeholder: 'Âge' }
+                            }) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.sexe, {
+                                label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+                                attr: { class: 'form-select form-select-lg' }
+                            }) }}
+                        </div>
+                    </div>
+
+                    <div class="mt-4 d-flex flex-wrap gap-3 align-items-center">
+                        <button type="submit" class="btn btn-primary px-4">
+                            {% if isModif %}
+                                Enregistrer les modifications
+                            {% else %}
+                                Enregistrer
+                            {% endif %}
+                        </button>
+                        <span class="text-secondary small">Ces informations seront visibles dans votre espace membre.</span>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="member-dog-form-side p-4">
+                <h2 class="h5 fw-semibold mb-3" style="color:#1e1b4b;">Conseils</h2>
+                <ul class="text-secondary ps-3 mb-0">
+                    <li class="mb-2">Indiquez un nom facilement identifiable.</li>
+                    <li class="mb-2">Renseignez correctement la race et l'âge.</li>
+                    <li class="mb-2">Sélectionnez le bon sexe.</li>
+                    <li>Une fiche complète facilite les inscriptions futures.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

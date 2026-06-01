@@ -1,0 +1,47 @@
+{{ form_start(form) }}
+
+<div class="row g-4">
+    <div class="col-md-6">
+        {{ form_row(form.nomChien, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control form-control-lg', placeholder: 'Ex. Rocky' }
+        }) }}
+    </div>
+
+    <div class="col-md-6">
+        {{ form_row(form.race, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control form-control-lg', placeholder: 'Ex. Berger Australien' }
+        }) }}
+    </div>
+
+    <div class="col-md-6">
+        {{ form_row(form.age, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control form-control-lg', min: '0' }
+        }) }}
+    </div>
+
+    <div class="col-md-6">
+        {{ form_row(form.sexe, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-select form-select-lg' }
+        }) }}
+    </div>
+
+    <div class="col-12">
+        {{ form_row(form.proprietaire, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-select form-select-lg' }
+        }) }}
+    </div>
+</div>
+
+<div class="d-flex flex-wrap gap-3 align-items-center mt-4">
+    <button type="submit" class="btn btn-primary px-4 py-2">
+        {{ button_label|default('Enregistrer') }}
+    </button>
+    <span class="text-secondary small">Les informations enregistrées seront visibles dans la liste d'administration.</span>
+</div>
+
+{{ form_end(form) }}

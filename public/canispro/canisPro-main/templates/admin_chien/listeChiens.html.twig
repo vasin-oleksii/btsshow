@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des chiens{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .admin-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #ffffff 100%);
+            border: 1px solid #ede9fe;
+            border-radius: 1.25rem;
+            box-shadow: 0 18px 42px rgba(109, 40, 217, .08);
+        }
+
+        .admin-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: .4rem .85rem;
+            border-radius: 999px;
+            background: rgba(124, 58, 237, .10);
+            border: 1px solid rgba(124, 58, 237, .16);
+            color: #7c3aed;
+            font-size: .82rem;
+            font-weight: 600;
+        }
+
+        .admin-stat {
+            height: 100%;
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            padding: 1.1rem;
+            box-shadow: 0 12px 28px rgba(109, 40, 217, .06);
+        }
+
+        .admin-stat-number {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #7c3aed;
+            line-height: 1;
+        }
+
+        .admin-table-wrap {
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            box-shadow: 0 14px 36px rgba(109, 40, 217, .08);
+            overflow: hidden;
+        }
+
+        .admin-table thead th {
+            background: #f5f3ff;
+            color: #1e1b4b;
+            border-bottom: 1px solid #e9ddff;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .admin-table tbody td {
+            vertical-align: middle;
+            border-color: #f1eafe;
+        }
+
+        .admin-empty {
+            padding: 2.5rem 1rem;
+            text-align: center;
+            color: #6b7280;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<section class="py-4 py-lg-5">
+    <div class="container">
+        <div class="admin-hero p-4 p-lg-5 mb-4">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="admin-chip mb-3">Administration chiens</span>
+                    <h1 class="fw-bold mb-3" style="color:#1e1b4b; font-size: clamp(2rem, 4vw, 3rem);">Gérer les chiens inscrits</h1>
+                    <p class="text-secondary mb-0" style="max-width: 720px;">
+                        Retrouvez l'ensemble des chiens enregistrés, consultez rapidement leurs informations et gérez les modifications depuis un tableau clair et moderne.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ path('app_admin_chien_ajout') }}" class="btn btn-primary btn-lg px-4">Ajouter un chien</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="admin-stat">
+                    <div class="admin-stat-number">{{ chiens|length }}</div>
+                    <div class="text-secondary mt-2">Chiens enregistrés</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="admin-stat">
+                    <div class="admin-stat-number">Admin</div>
+                    <div class="text-secondary mt-2">Gestion centralisée des profils canins</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="admin-stat">
+                    <div class="admin-stat-number">Rapide</div>
+                    <div class="text-secondary mt-2">Modification et suppression en un clic</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-table-wrap">
+            <div class="table-responsive">
+                <table class="table admin-table align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Race</th>
+                            <th>Âge</th>
+                            <th>Sexe</th>
+                            <th>Propriétaire</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for chien in chiens %}
+                            <tr>
+                                <td><span class="badge text-bg-primary">#{{ chien.id }}</span></td>
+                                <td>
+                                    <div class="fw-semibold" style="color:#1e1b4b;">{{ chien.nomChien }}</div>
+                                </td>
+                                <td>{{ chien.race }}</td>
+                                <td>{{ chien.age }} an{% if chien.age > 1 %}s{% endif %}</td>
+                                <td>
+                                    <span class="badge rounded-pill" style="background:#f5f3ff; color:#7c3aed; border:1px solid #e9ddff;">
+                                        {{ chien.sexe }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="fw-semibold" style="color:#1e1b4b;">{{ chien.proprietaire.nom }}</div>
+                                    <div class="small text-secondary">{{ chien.proprietaire.mail }}</div>
+                                </td>
+                                <td class="text-end">
+                                    <div class="d-flex flex-wrap justify-content-end gap-2">
+                                        <a href="{{ path('app_admin_chien_modif', {'id': chien.id}) }}" class="btn btn-outline-primary btn-sm">Modifier</a>
+                                        <form method="post" action="{{ path('app_admin_chien_delete', {'id': chien.id}) }}" onsubmit="return confirm('Vous êtes sûr de vouloir supprimer ce chien ?');" class="d-inline-block">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ chien.id) }}">
+                                            <button class="btn btn-danger btn-sm">Supprimer</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7">
+                                    <div class="admin-empty">
+                                        <div class="fw-semibold mb-2" style="color:#1e1b4b;">Aucun chien trouvé</div>
+                                        <div class="mb-3">Commencez par créer une première fiche pour alimenter votre base.</div>
+                                        <a href="{{ path('app_admin_chien_ajout') }}" class="btn btn-primary">Ajouter un chien</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,11 @@
+Captured at 2026-04-02T09:35:10.263Z
+BASE=http://127.0.0.1:8000
+
+01-connexion.png
+02-menu-gestion.png
+03-gestion-chiens.png
+04-ajout-chien.png
+05-gestion-membres.png
+06-gestion-inscriptions.png
+07-gestion-cours.png
+08-gestion-seances.png

@@ -1,0 +1,48 @@
+{{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
+
+<div class="row g-4">
+    <div class="col-md-8">
+        {{ form_row(form.nomCour, {
+            label: 'Nom du cours',
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control form-control-lg', placeholder: 'Ex. Éducation canine débutant' }
+        }) }}
+    </div>
+
+    <div class="col-md-4">
+        {{ form_row(form.prix, {
+            label: 'Prix',
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control form-control-lg', placeholder: 'Ex. 35' }
+        }) }}
+    </div>
+
+    <div class="col-12">
+        {{ form_row(form.description, {
+            label: 'Description',
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control', rows: '5', placeholder: 'Décrivez le contenu, les objectifs et les bénéfices du cours.' }
+        }) }}
+    </div>
+
+    <div class="col-md-6">
+        {{ form_row(form.type, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-select form-select-lg' }
+        }) }}
+    </div>
+
+    <div class="col-md-6">
+        {{ form_row(form.niveau, {
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-select form-select-lg' }
+        }) }}
+    </div>
+</div>
+
+<div class="d-flex flex-wrap gap-3 align-items-center mt-4">
+    <button class="btn btn-primary px-4 py-2">{{ button_label|default('Valider') }}</button>
+    <span class="text-secondary small">Les informations seront visibles dans la liste d'administration des cours.</span>
+</div>
+
+{{ form_end(form) }}

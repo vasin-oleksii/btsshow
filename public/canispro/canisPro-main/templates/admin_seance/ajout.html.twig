@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'une séance{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .admin-session-form-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
+            border: 1px solid #ede9fe;
+            border-radius: 1.2rem;
+            box-shadow: 0 16px 38px rgba(109, 40, 217, .08);
+        }
+
+        .admin-session-form-panel,
+        .admin-session-form-side {
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            box-shadow: 0 14px 36px rgba(109, 40, 217, .07);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<section class="py-4 py-lg-5">
+    <div class="container">
+        <div class="admin-session-form-hero p-4 p-lg-5 mb-4">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="badge text-bg-primary mb-3">Administration séances</span>
+                    <h1 class="fw-bold mb-3" style="color:#1e1b4b;">Créer une nouvelle séance</h1>
+                    <p class="text-secondary mb-0">Programmez une séance en définissant sa date, son heure, sa durée et le cours concerné.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ path('app_admin_seance_index') }}" class="btn btn-outline-primary">Retour à la liste</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-8">
+                <div class="admin-session-form-panel p-4 p-lg-5">
+                    {{ include('admin_seance/_form.html.twig', {'button_label': 'Créer la séance'}) }}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="admin-session-form-side p-4">
+                    <h2 class="h5 fw-semibold mb-3" style="color:#1e1b4b;">Conseils de planification</h2>
+                    <ul class="text-secondary ps-3 mb-0">
+                        <li class="mb-2">Choisissez la bonne date avant d'ouvrir les inscriptions.</li>
+                        <li class="mb-2">Vérifiez l'heure de début et la durée.</li>
+                        <li class="mb-2">Associez la séance au bon cours.</li>
+                        <li>Gardez un planning clair et régulier pour vos membres.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

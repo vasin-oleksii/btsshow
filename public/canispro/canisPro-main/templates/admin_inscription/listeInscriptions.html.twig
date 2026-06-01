@@ -1,0 +1,173 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des inscriptions{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .admin-insc-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 52%, #ffffff 100%);
+            border: 1px solid #ede9fe;
+            border-radius: 1.2rem;
+            box-shadow: 0 18px 42px rgba(109, 40, 217, .08);
+        }
+
+        .admin-insc-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: .4rem .85rem;
+            border-radius: 999px;
+            background: rgba(124, 58, 237, .10);
+            border: 1px solid rgba(124, 58, 237, .16);
+            color: #7c3aed;
+            font-size: .82rem;
+            font-weight: 600;
+        }
+
+        .admin-insc-stat {
+            height: 100%;
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            padding: 1.1rem;
+            box-shadow: 0 12px 28px rgba(109, 40, 217, .06);
+        }
+
+        .admin-insc-stat-number {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #7c3aed;
+            line-height: 1;
+        }
+
+        .admin-insc-table-wrap {
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            box-shadow: 0 14px 36px rgba(109, 40, 217, .08);
+            overflow: hidden;
+        }
+
+        .admin-insc-table thead th {
+            background: #f5f3ff;
+            color: #1e1b4b;
+            border-bottom: 1px solid #e9ddff;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .admin-insc-table tbody td {
+            vertical-align: middle;
+            border-color: #f1eafe;
+        }
+
+        .admin-insc-empty {
+            padding: 2.5rem 1rem;
+            text-align: center;
+            color: #6b7280;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<section class="py-4 py-lg-5">
+    <div class="container">
+        <div class="admin-insc-hero p-4 p-lg-5 mb-4">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="admin-insc-chip mb-3">Administration inscriptions</span>
+                    <h1 class="fw-bold mb-3" style="color:#1e1b4b; font-size: clamp(2rem, 4vw, 3rem);">Gérer les inscriptions</h1>
+                    <p class="text-secondary mb-0" style="max-width: 720px;">
+                        Consultez toutes les inscriptions enregistrées, reliez facilement chaque chien à sa séance et mettez à jour les données administratives en toute simplicité.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ path('app_admin_inscription_ajout') }}" class="btn btn-primary btn-lg px-4">Nouvelle inscription</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="admin-insc-stat">
+                    <div class="admin-insc-stat-number">{{ inscriptions|length }}</div>
+                    <div class="text-secondary mt-2">Inscriptions enregistrées</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="admin-insc-stat">
+                    <div class="admin-insc-stat-number">Suivi</div>
+                    <div class="text-secondary mt-2">Vue claire des chiens et des séances associées</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="admin-insc-stat">
+                    <div class="admin-insc-stat-number">Gestion</div>
+                    <div class="text-secondary mt-2">Modification et suppression rapides</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-insc-table-wrap">
+            <div class="table-responsive">
+                <table class="table admin-insc-table align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date d'inscription</th>
+                            <th>Chien</th>
+                            <th>Séance</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for inscription in inscriptions %}
+                            <tr>
+                                <td><span class="badge text-bg-primary">#{{ inscription.id }}</span></td>
+                                <td>
+                                    <div class="fw-semibold" style="color:#1e1b4b;">{{ inscription.dateInscription ? inscription.dateInscription|date('d/m/Y') : 'Non renseignée' }}</div>
+                                </td>
+                                <td>
+                                    {% if inscription.chien %}
+                                        <div class="fw-semibold" style="color:#1e1b4b;">{{ inscription.chien.nomChien }}</div>
+                                        <div class="small text-secondary">{{ inscription.chien.race }}</div>
+                                    {% else %}
+                                        <span class="text-secondary">Aucun chien associé</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if inscription.seance %}
+                                        <div class="fw-semibold" style="color:#1e1b4b;">{{ inscription.seance.date ? inscription.seance.date|date('d/m/Y') : 'Date indisponible' }}</div>
+                                        <div class="small text-secondary">{{ inscription.seance.heureDeb ? inscription.seance.heureDeb|date('H:i') : 'Heure indisponible' }}</div>
+                                    {% else %}
+                                        <span class="text-secondary">Aucune séance associée</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-end">
+                                    <div class="d-flex flex-wrap justify-content-end gap-2">
+                                        <a href="{{ path('app_admin_inscription_modif', {'id': inscription.id}) }}" class="btn btn-outline-primary btn-sm">Modifier</a>
+                                        <form method="post" action="{{ path('app_admin_inscription_delete', {'id': inscription.id}) }}" class="d-inline-block" onsubmit="return confirm('Vous êtes sûr de vouloir supprimer cette inscription ?');">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ inscription.id) }}">
+                                            <button class="btn btn-danger btn-sm">Supprimer</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5">
+                                    <div class="admin-insc-empty">
+                                        <div class="fw-semibold mb-2" style="color:#1e1b4b;">Aucune inscription trouvée</div>
+                                        <div class="mb-3">Commencez par enregistrer une première inscription entre un chien et une séance.</div>
+                                        <a href="{{ path('app_admin_inscription_ajout') }}" class="btn btn-primary">Créer une inscription</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

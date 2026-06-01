@@ -62,43 +62,57 @@ const INFO = {
 
 	projects: [
 		{
+			title: "CanisPro — Symfony",
+			description:
+				"Application web de gestion d'un club d'éducation canine : cours, séances, chiens et inscriptions. Développée avec Symfony 8, PHP 8.4, Doctrine ORM et MySQL.",
+			logo: "/projects/canispro/logo.png",
+			preview: "/projects/canispro/accueil.png",
+			linkText: "Voir le projet",
+			link: "/project/canispro",
+		},
+		{
+			title: "Billetterie du Fâ — PHP/MVC",
+			description:
+				"Application complète de réservation de billets pour le site archéologique du Fâ. Architecture MVC en PHP 8, base de données MySQL et génération de factures PDF.",
+			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/php/php.png",
+			preview: "/projects/billetterie-fa/accueil.png",
+			linkText: "Voir le projet",
+			link: "/project/billetterie-fa",
+		},
+		{
 			title: "PokemonQuize",
 			description:
-				"Application de quiz Pokémon développée en JavaScript avec un design simple et déploiement via Vercel.",
+				"Jeu de combat tour par tour façon Pokémon, transformé en quiz de cybersécurité. Développé en React avec des hooks personnalisés.",
 			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
+			preview: "/projects/pokemon-quiz/accueil.png",
 			linkText: "Voir le projet",
-			link: "https://pokemon-quize.vercel.app/",
+			link: "/project/pokemon-quiz",
 		},
 		{
-			title: "Shop.co",
+			title: "Dune Wave",
 			description:
-				"Site e-commerce moderne en React + TypeScript + Vite. Utilisation de React Helmet, Redux Toolkit, composants modulaires.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/typescript/typescript.png",
-			linkText: "Voir le projet",
-			link: "https://shop-c0.vercel.app/",
-		},
-		{
-			title: "DuneWave - Locaboard (Projet d'école)",
-			description:
-				"Projet d’école simulant une plateforme de gestion de logements. HTML, CSS, JS. Authentification simple et interface intuitive.",
+				"Boutique en ligne de matériel de surf et de glisse, réalisée en projet d'école. HTML, CSS et JavaScript.",
 			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/html/html.png",
+			preview: "/projects/dune-wave/accueil.png",
 			linkText: "Voir le projet",
-			link: "https://dune-wave.vercel.app/pages/monCompteConnection.html",
+			link: "/project/dune-wave",
 		},
 		{
 			title: "Partage",
 			description:
-				"Service minimaliste de partage de texte et de liens. Développé avec React + Vite. Idéal pour l'apprentissage ou le travail collaboratif rapide.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/typescript/typescript.png",
+				"Application web pour partager rapidement du texte et des liens. Développée en React avec une base de données MongoDB.",
+			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
+			preview: "/projects/partage/accueil.png",
 			linkText: "Voir le projet",
-			link: "https://partage.vercel.app/",
+			link: "/project/partage",
 		},
 		{
 			title: "Site Web personnel (CV)",
 			description:
-				"Création d’un site personnel pour la présentation du CV et des projets. HTML, CSS, JavaScript. Compétence 1.3 du BTS SIO.",
+				"Le code source de ce portfolio. Site personnel pour présenter mon CV et mes projets. HTML, CSS, JavaScript (React). Compétence 1.3 du BTS SIO.",
 			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
-			linkText: "Voir le projet",
+			isCode: true,
+			linkText: "Voir le code",
 			link: "https://github.com/vasin-oleksii/btsshow",
 		},
 	],

@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail du cours{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .course-detail-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 45%, #ffffff 100%);
+            border-bottom: 1px solid #e9ddff;
+        }
+
+        .course-detail-badge {
+            display: inline-block;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            color: #7c3aed;
+            background: rgba(124, 58, 237, .12);
+            border: 1px solid rgba(124, 58, 237, .22);
+            border-radius: 999px;
+            padding: .35rem .8rem;
+        }
+
+        .course-detail-card {
+            border: 1px solid #ddd6fe;
+            border-radius: 1rem;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 18px 40px rgba(109, 40, 217, .12);
+        }
+
+        .course-detail-header {
+            background: linear-gradient(100deg, #7c3aed 0%, #6d28d9 100%);
+            color: #fff;
+            padding: 1rem 1.2rem;
+        }
+
+        .course-detail-label {
+            color: #312e81;
+            font-weight: 600;
+        }
+
+        .course-detail-desc {
+            color: #4b5563;
+            line-height: 1.7;
+        }
+
+        .course-detail-table {
+            border: 1px solid #ede9fe;
+            border-radius: .8rem;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+
+        .course-detail-table th {
+            width: 42%;
+            background: #faf7ff;
+            color: #312e81;
+            font-weight: 600;
+            border-color: #ede9fe;
+        }
+
+        .course-detail-table td {
+            border-color: #ede9fe;
+            color: #4b5563;
+        }
+
+        .course-detail-price {
+            color: #5b21b6;
+            font-weight: 700;
+        }
+
+        .course-detail-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: .75rem;
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee7ff;
+        }
+
+        @media (max-width: 576px) {
+            .course-detail-actions {
+                flex-direction: column;
+            }
+
+            .course-detail-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<main role="main">
+    <section class="course-detail-hero py-5">
+        <div class="container text-center">
+            <span class="course-detail-badge mb-3">Détail du cours</span>
+            <h1 class="display-5 fw-bold mb-2" style="color:#1e1b4b;">En savoir plus sur {{ cour.nomCour }}</h1>
+            <p class="lead text-secondary mb-0">Découvrez les informations complètes avant de choisir votre séance.</p>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10 col-xl-9">
+                    <article class="course-detail-card">
+                        <div class="course-detail-header">
+                            <h2 class="h4 mb-0 fw-semibold">{{ cour.nomCour }}</h2>
+                        </div>
+
+                        <div class="card-body p-4 p-md-5">
+                            <h5 class="course-detail-label mb-3">Description</h5>
+                            <p class="course-detail-desc mb-4">{{ cour.description }}</p>
+
+                            <h5 class="course-detail-label mb-3">Informations du cours</h5>
+                            <div class="table-responsive">
+                                <table class="table course-detail-table align-middle">
+                                    <tbody>
+                                        <tr>
+                                            <th>Type</th>
+                                            <td>{{ cour.type.libelleType }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Niveau</th>
+                                            <td>{{ cour.niveau.libelleNiveau }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Nombre de places</th>
+                                            <td>{{ cour.type.nbPlaces }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Prix</th>
+                                            <td class="course-detail-price">{{ cour.prix }} €</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="course-detail-actions">
+                                <a href="{{ path('app_liste_cours') }}" class="btn btn-outline-primary">Retour aux cours</a>
+                                <a href="{{ path('app_liste_seances', {'id': cour.id}) }}" class="btn btn-primary">Voir les séances</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

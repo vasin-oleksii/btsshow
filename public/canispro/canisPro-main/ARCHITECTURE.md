@@ -1,0 +1,713 @@
+# ARCHITECTURE & DIAGRAMMES - canisPro
+
+---
+
+## 1. Diagramme UML Entités
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        MODÈLE DE DONNÉES (UML)                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+                              ┌──────────────┐
+                              │    User      │
+                              ├──────────────┤
+                              │ - id: int    │
+                              │ - email: str │
+                              │ - password   │
+                              │ - roles[]    │
+                              └──────┬───────┘
+                                     │
+                                     │ 1:1
+                                     │
+                              ┌──────▼───────────────────┐
+                              │   Proprietaire          │
+                              ├────────────────────────┤
+                              │ - id: int              │
+                              │ - nom: str             │
+                              │ - prenom: str          │
+                              │ - mail: str            │
+                              │ - tel: str             │
+                              │ - adresse: str         │
+                              │ - user: User (1:1)     │
+                              │◆ chiens: Chien[] (1:n) │
+                              └──────┬─────────────────┘
+                                     │
+                                     │ 1:n
+                                     │
+                         ┌───────────▼──────────┐
+                         │     Chien            │
+                         ├──────────────────────┤
+                         │ - id: int            │
+                         │ - nomChien: str      │
+                         │ - race: str          │
+                         │ - age: int           │
+                         │ - sexe: str (M/F)    │
+                         │ - proprietaire: Prop │
+                         │◆ inscriptions[] (1:n)│
+                         └───────────┬──────────┘
+                                     │
+                                     │ 1:n
+                                     │
+                         ┌───────────▼──────────────────┐
+                         │    Inscription               │
+                         ├──────────────────────────────┤
+                         │ - id: int                    │
+                         │ - dateInscription: date      │
+                         │ - chien: Chien (n:1)    ◀───┼─── Many-to-Many
+                         │ - seance: Seance (n:1)  ◀───┼─── Table de Liaison
+                         └──────────────────────────────┘
+                                     │
+                                     │ n:1
+                                     │
+                         ┌───────────▼──────────────┐
+                         │     Seance               │
+                         ├──────────────────────────┤
+                         │ - id: int                │
+                         │ - date: date             │
+                         │ - heureDeb: time         │
+                         │ - duree: time            │
+                         │ - cour: Cour (n:1)   ◀──┤
+                         │◆ inscriptions[] (1:n)    │
+                         └───────────┬──────────────┘
+                                     │
+                                     │ n:1
+                                     │
+                         ┌───────────▼──────────────┐
+                         │     Cour                 │
+                         ├──────────────────────────┤
+                         │ - id: int                │
+                         │ - nomCour: str           │
+                         │ - description: str       │
+                         │ - prix: float            │
+                         │ - type: Type (n:1)   ◀──┤
+                         │ - niveau: Niveau (n:1)◀──┤
+                         │◆ seances[] (1:n)         │
+                         └──┬──────────────────┬────┘
+                            │ n:1              │ n:1
+                            │                  │
+        ┌───────────────────▼────┐  ┌─────────▼──────────┐
+        │      Type               │  │    Niveau          │
+        ├────────────────────────┤  ├────────────────────┤
+        │ - id: int              │  │ - id: int          │
+        │ - libelleType: str     │  │ - libelleNiveau:str│
+        │ - nbPlaces: int        │  │                    │
+        │  Exemple: Obéissance   │  │  Exemple: Débutant │
+        │           Agility      │  │           Int.     │
+        │           Pistage      │  │           Avancé   │
+        └────────────────────────┘  └────────────────────┘
+```
+
+---
+
+## 2. Diagramme Many-to-Many (Inscription)
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│           RELATION MANY-TO-MANY: Chien ↔ Seance                      │
+└──────────────────────────────────────────────────────────────────────┘
+
+
+        Chien (Table)                 Inscription (Table Liaison)      Seance (Table)
+        ┌─────────┐                   ┌──────────────────┐             ┌──────────┐
+        │ id (PK) │─────┐             │ id (PK)          │         ┌───│ id (PK)  │
+        │ 1       │     │             │ 1                │         │   │ 1        │
+        │ 2       │     │             ├──────────────────┤         │   │ 2        │
+        │ 3       │     │             │ chien_id (FK)    │────┐    │   │ 3        │
+        │ 4       │     │  ┌──────────┼ seance_id (FK)   │────┼────┤   ├──────────┤
+        │ ...     │     │  │  ┌───────┼ dateInscription  │    │    │   │ date     │
+        └─────────┘     │  │  │       │ 1 | 1 | 2053-04 │    │    │   │ 2053-04  │
+                        │  │  │       │ 1 | 2 | 2053-04 │    │    │   │ 2053-04  │
+        ┌─────────────┐ │  │  │       │ 2 | 1 | 2053-04 │    │    │   │ ...      │
+        │ Chien 1: Rex│ │  │  │       │ 3 | 2 | 2053-04 │    │    │   └──────────┘
+        │ (Berger)    │ │  │  │       │ 4 | 3 | 2053-04 │    │    │
+        └─────────────┘ │  │  │       └──────────────────┘    │    │   ┌──────────┐
+                        │  │  │                               │    └───│Seance 2  │
+        ┌─────────────┐ │  │  │       ┌────────────────────┐ │        │(15/04...)│
+        │ Chien 2:Luna│ │  │  │       │ Inscription 1:     │ │        └──────────┘
+        │ (Labrador)  │ │  │  │       │ - Rex à Seance 1   │ │
+        └─────────────┘ │  │  └──────▶│ - Luna à Seance 1  │─┘
+                        │  │          │ - Max à Seance 2   │
+        ┌─────────────┐ │  │          │ - Luna à Seance 2  │
+        │ Chien 3: Max│ │  │          └────────────────────┘
+        │ (Retriever) │─┘  │
+        └─────────────┘    │
+                           │
+                    CLÉS ÉTRANGÈRES
+                    Intégrité référentielle
+```
+
+---
+
+## 3. Flux de l'Application (Architecture MVC)
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                    FLUX D'UNE REQUÊTE HTTP                             │
+└────────────────────────────────────────────────────────────────────────┘
+
+
+USER REQUEST
+    │
+    │ GET /liste-des-cours
+    │
+    ▼
+┌─────────────────────────────┐
+│   ROUTING (routes.yaml)     │ ◀─ Cherche la route correspondante
+├─────────────────────────────┤
+│ Pattern: /liste-des-cours   │
+│ Controller: AccueilController │
+│ Action: listeCours          │
+│ Name: app_liste_cours       │
+└─────────────┬───────────────┘
+              │
+              ▼
+┌───────────────────────────────────────┐
+│   CONTROLLER (AccueilController)      │
+├───────────────────────────────────────┤
+│ public function listeCours(          │
+│   CourRepository $repository         │
+│ ): Response {                        │
+│   $cours = $repository->findAll();   │ ◀─ Récupère données
+│   return $this->render(...);         │ ◀─ Rend la vue
+│ }                                    │
+└─────────────┬───────────────────────┘
+              │
+    ┌─────────┴──────────┐
+    │                    │
+    ▼                    ▼
+┌─────────────────────┐  ┌─────────────────────────┐
+│ REPOSITORY          │  │ ENTITY (Chien, Cour...) │
+├─────────────────────┤  ├─────────────────────────┤
+│ findAll()           │  │ $id, $nomCour, $prix    │
+│ findBy()            │  │ $type, $niveau          │
+│ findOneBy()         │  │ getters/setters         │
+│ (requêtes SQL)      │  │ (représente les données │
+└─────────────┬───────┘  │  en BD)                 │
+              │          └─────────────────────────┘
+              │
+              ▼
+         ┌──────────────────────┐
+         │  Récupère à la BDD   │
+         │  (Doctrine ORM)      │
+         └─────────┬────────────┘
+                   │
+                   ▼
+    ┌──────────────────────────┐
+    │  Array<Cour>             │
+    │  [                       │
+    │    Cour {                │
+    │      id: 1,              │
+    │      nomCour: "Obéissance│
+    │      prix: 50.00         │
+    │    }                      │
+    │  ]                       │
+    └──────────────┬───────────┘
+                   │
+                   ▼
+┌──────────────────────────────────────┐
+│  TEMPLATE (listeCours.html.twig)     │
+├──────────────────────────────────────┤
+│ {% for cour in cours %}              │
+│   <h5>{{ cour.nomCour }}</h5>       │
+│   <p>{{ cour.description }}</p>     │
+│   <a href="...">Détails</a>         │
+│ {% endfor %}                         │
+└──────────────┬─────────────────────┘
+               │
+               ▼
+        ┌──────────────────┐
+        │   HTML RENDU     │
+        │  (Web Page)      │
+        └────────┬─────────┘
+                 │
+                 ▼
+           USER SEE PAGE
+```
+
+---
+
+## 4. Architecture par Modules / Fonctionnalités
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                  ARCHITECTURE PAR MODULES                              │
+└────────────────────────────────────────────────────────────────────────┘
+
+
+canisPro/
+│
+├─ PUBLIC MODULE (Accueil)
+│  ├─ Controller: AccueilController
+│  │  ├─ index() → Liste cours
+│  │  ├─ detailsCour() → Détails cours
+│  │  └─ listeSeances() → Séances disponibles
+│  │
+│  ├─ Template: templates/accueil/
+│  │  ├─ index.html.twig
+│  │  ├─ listeCours.html.twig
+│  │  ├─ detailsCour.html.twig
+│  │  └─ listeSeances.html.twig
+│  │
+│  └─ Repository: CourRepository, SeanceRepository
+│     └─ findAll(), findBy(), custom queries
+│
+├─ MEMBER MODULE (Propriétaire connecté)
+│  ├─ Controller: MembreController
+│  │  ├─ index() → Tableau de bord
+│  │  ├─ modifier() → Modifier profil
+│  │  ├─ ajoutEtModif() → Gérer les chiens
+│  │  └─ supprimer() → Supprimer chien
+│  │
+│  ├─ Template: templates/membre/
+│  │  ├─ index.html.twig (Dashboard)
+│  │  ├─ modifMembre.html.twig
+│  │  ├─ formulaireChien.html.twig
+│  │  └─ modif.html.twig
+│  │
+│  └─ Form: ChienType, ProprietaireType
+│
+├─ ADMIN MODULE (Administrateur)
+│  ├─ Admin Chiens
+│  │  ├─ Controller: AdminChienController (CRUD)
+│  │  ├─ Template: templates/admin_chien/
+│  │  ├─ Form: AdminChienType
+│  │  └─ Route: /admin/chien/*
+│  │
+│  ├─ Admin Cours
+│  │  ├─ Controller: AdminCourController (CRUD)
+│  │  ├─ Route: /admin/cour/*
+│  │  └─ Form: CourType
+│  │
+│  ├─ Admin Séances
+│  │  ├─ Controller: AdminSeanceController (CRUD)
+│  │  ├─ Route: /admin/seance/*
+│  │  └─ Form: SeanceType
+│  │
+│  ├─ Admin Inscriptions
+│  │  ├─ Controller: AdminInscriptionController
+│  │  ├─ Route: /admin/inscription/*
+│  │  └─ Form: InscriptionType
+│  │
+│  └─ Admin Propriétaires
+│     ├─ Controller: AdminProprietaireController
+│     ├─ Route: /admin/proprietaire/*
+│     └─ Form: ProprietaireType
+│
+└─ SECURITY MODULE
+   ├─ Controller: SecurityController
+   │  ├─ login() → Page de connexion
+   │  └─ logout() → Déconnexion
+   │
+   ├─ Entity: User
+   │  └─ email, password, roles
+   │
+   ├─ Config: security.yaml
+   │  ├─ Authentification
+   │  ├─ Autorisation
+   │  └─ Access Control
+   │
+   └─ Protection
+      ├─ CSRF Token sur formulaires
+      └─ Roles: ROLE_USER, ROLE_ADMIN
+```
+
+---
+
+## 5. Architecture des Dossiers/Fichiers
+
+```
+canisPro/
+│
+├─ src/
+│  ├─ Controller/
+│  │  ├─ AccueilController.php        ◀─ Routes publiques
+│  │  ├─ MembreController.php         ◀─ Routes membres
+│  │  ├─ AdminChienController.php     ◀─ CRUD Chiens (Admin)
+│  │  ├─ AdminCourController.php      ◀─ CRUD Cours
+│  │  ├─ AdminSeanceController.php    ◀─ CRUD Séances
+│  │  ├─ AdminInscriptionController.php
+│  │  ├─ AdminProprietaireController.php
+│  │  └─ SecurityController.php       ◀─ Login/Logout
+│  │
+│  ├─ Entity/
+│  │  ├─ User.php                     ◀─ Table user
+│  │  ├─ Proprietaire.php             ◀─ Table proprietaire
+│  │  ├─ Chien.php                    ◀─ Table chien
+│  │  ├─ Cour.php                     ◀─ Table cour
+│  │  ├─ Seance.php                   ◀─ Table seance
+│  │  ├─ Inscription.php              ◀─ Table inscription (liaison)
+│  │  ├─ Type.php                     ◀─ Table type
+│  │  └─ Niveau.php                   ◀─ Table niveau
+│  │
+│  ├─ Form/
+│  │  ├─ ChienType.php                ◀─ Formulaire chien (membre)
+│  │  ├─ AdminChienType.php           ◀─ Formulaire chien (admin)
+│  │  ├─ ProprietaireType.php
+│  │  ├─ CourType.php
+│  │  ├─ SeanceType.php
+│  │  ├─ InscriptionType.php
+│  │  └─ ... (autres formulaires)
+│  │
+│  ├─ Repository/
+│  │  ├─ ChienRepository.php          ◀─ Requêtes chiens
+│  │  ├─ CourRepository.php           ◀─ Requêtes cours
+│  │  ├─ SeanceRepository.php         ◀─ Requêtes séances
+│  │  ├─ InscriptionRepository.php
+│  │  ├─ ProprietaireRepository.php
+│  │  ├─ UserRepository.php
+│  │  ├─ TypeRepository.php
+│  │  ├─ NiveauRepository.php
+│  │  └─ ... (autres repositories)
+│  │
+│  ├─ DataFixtures/
+│  │  └─ BDDFixtures.php              ◀─ Données de test
+│  │
+│  └─ Kernel.php                      ◀─ Kernel Symfony
+│
+├─ templates/
+│  ├─ base.html.twig                 ◀─ Layout principal
+│  ├─ menu.html.twig                 ◀─ Navigation
+│  │
+│  ├─ accueil/
+│  │  ├─ index.html.twig              ◀─ Accueil
+│  │  ├─ listeCours.html.twig         ◀─ Liste cours
+│  │  ├─ detailsCour.html.twig        ◀─ Détails cours
+│  │  ├─ listeSeances.html.twig
+│  │  └─ detailsSeance.html.twig
+│  │
+│  ├─ membre/
+│  │  ├─ index.html.twig              ◀─ Dashboard
+│  │  ├─ modifMembre.html.twig        ◀─ Modifier profil
+│  │  └─ formulaireChien.html.twig    ◀─ Ajouter/Modifier chien
+│  │
+│  ├─ admin_chien/
+│  │  ├─ listeChiens.html.twig        ◀─ Liste admin
+│  │  ├─ ajout.html.twig              ◀─ Ajouter chien
+│  │  └─ modif.html.twig              ◀─ Modifier chien
+│  │
+│  ├─ admin_cour/
+│  │  └─ ... (templates admin cours)
+│  │
+│  ├─ admin_seance/
+│  │  └─ ... (templates admin séances)
+│  │
+│  ├─ security/
+│  │  ├─ login.html.twig              ◀─ Connexion
+│  │  └─ register.html.twig           ◀─ Inscription
+│  │
+│  └─ ... (autres templates)
+│
+├─ config/
+│  ├─ routes.yaml                    ◀─ Routes
+│  ├─ services.yaml                  ◀─ Services/Dépendances
+│  ├─ preload.php
+│  ├─ bundles.php
+│  │
+│  ├─ packages/
+│  │  ├─ doctrine.yaml                ◀─ Doctrine ORM
+│  │  ├─ security.yaml                ◀─ Sécurité
+│  │  ├─ framework.yaml               ◀─ Framework
+│  │  ├─ twig.yaml                    ◀─ Twig
+│  │  ├─ mailer.yaml
+│  │  └─ ... (autres packages)
+│  │
+│  └─ routes/
+│     ├─ security.yaml
+│     ├─ framework.yaml
+│     └─ web_profiler.yaml
+│
+├─ migrations/
+│  ├─ Version20260316074712.php      ◀─ Migrations BD
+│  └─ ... (historique migrations)
+│
+├─ public/
+│  ├─ index.php                      ◀─ Point d'entrée web
+│  └─ images/
+│     └─ ... (images statiques)
+│
+├─ assets/
+│  ├─ app.js                         ◀─ JS principal
+│  ├─ controllers.json
+│  ├─ stimulus_bootstrap.js          ◀─ Stimulus JS
+│  ├─ controllers/
+│  │  ├─ csrf_protection_controller.js
+│  │  └─ hello_controller.js
+│  ├─ styles/
+│  │  └─ app.css
+│  └─ vendor/
+│     └─ @hotwired/
+│        └─ stimulus/ (package JS)
+│
+├─ var/
+│  ├─ cache/                         ◀─ Cache Symfony
+│  ├─ log/                           ◀─ Logs
+│  └─ share/
+│
+├─ tests/
+│  └─ ... (tests unitaires)
+│
+├─ compose.yaml                      ◀─ Docker Compose
+├─ composer.json                     ◀─ Dépendances PHP
+├─ composer.lock                     ◀─ Lock dependencies
+├─ .env                              ◀─ Variables environnement
+├─ .env.local                        ◀─ Config locale (non-commité)
+├─ phpunit.dist.xml                 ◀─ Config PHPUnit
+│
+└─ README.md                         ◀─ Documentation
+   DOCUMENTATION_COMPLETE.md         ◀─ Doc technique complète
+   DOCUMENTATION.html                ◀─ Doc en HTML
+   ARCHITECTURE.md                   ◀─ Ce fichier
+```
+
+---
+
+## 6. Cycle de Vie d'une Entité Doctrine
+
+```
+┌────────────────────────────────────────────────────────────┐
+│         CYCLE DE VIE D'UNE ENTITÉ (Doctrine)               │
+└────────────────────────────────────────────────────────────┘
+
+
+┌──────────────────┐
+│  NEW ENTITY      │  $chien = new Chien();
+└────────┬─────────┘  Objet PHP, pas en BD
+         │
+         │ persist()
+         ▼
+┌──────────────────────┐
+│  MANAGED STATE       │  $em->persist($chien);
+├──────────────────────┤  Suivi par Entity Manager
+│ - En mémoire        │  Pas encore en BD
+│ - Change tracking   │
+└────────┬─────────────┘
+         │
+         │ flush()
+         ▼
+┌──────────────────────┐
+│   INSERT SQL         │  INSERT INTO chien VALUES (...)
+├──────────────────────┤  Exécution à la BD
+│ - Enregistré en BD   │
+│ - Entité managée     │
+└────────┬─────────────┘
+         │
+         │ (Modification)
+         │
+┌────────▼──────────────┐
+│   MODIFIED STATE      │  $chien->setNomChien('Luna');
+├───────────────────────┤  Changements détectés
+│ - Changé en mémoire   │
+│ - Non appliqué en BD  │
+└────────┬───────────────┘
+         │
+         │ flush()
+         ▼
+┌──────────────────────┐
+│   UPDATE SQL         │  UPDATE chien SET nom_chien='Luna' WHERE id=1
+├──────────────────────┤
+│ - BD synchronisée    │
+│ - État cohérent      │
+└────────┬──────────────┘
+         │
+         │ (Suppression)
+         │
+┌────────▼──────────────┐
+│   REMOVED STATE       │  $em->remove($chien);
+├───────────────────────┤  Marqué pour suppression
+│ - Marqué pour remove  │
+└────────┬───────────────┘
+         │
+         │ flush()
+         ▼
+┌──────────────────────┐
+│   DELETE SQL         │  DELETE FROM chien WHERE id=1
+├──────────────────────┤
+│ - Supprimé de la BD  │
+│ - Entité détachée    │
+└──────────────────────┘
+```
+
+---
+
+## 7. Diagramme de Flux de Sécurité
+
+```
+┌────────────────────────────────────────────────────────────┐
+│          FLUX DE SÉCURITÉ & AUTHENTIFICATION               │
+└────────────────────────────────────────────────────────────┘
+
+
+┌─────────────────────────┐
+│  USER NON AUTHENTIFIÉ   │
+└────────────┬────────────┘
+             │
+             ├─── GET / ────────────────────► [PUBLIC OK]
+             │
+             ├─── GET /liste-des-cours ─────► [PUBLIC OK]
+             │
+             ├─── GET /membre ───────────────┐
+             │                               │
+             │                               ▼
+             │                   ┌─────────────────────────────┐
+             │                   │ ACCÈS REFUSÉ                │
+             │                   │ Redirigé vers /login        │
+             │                   └─────────────────────────────┘
+             │
+             ├─── GET /login ────────────────► [FORM LOGIN]
+             │                                  Email + Password
+             │
+             └─────────────────────────────────┐
+                                               │
+                                               ▼
+                                    ┌──────────────────────┐
+                                    │ CHECK CREDENTIALS    │
+                                    │ (BCrypt Hash)        │
+                                    └────────┬─────────────┘
+                                             │
+                    ┌────────────────────────┴─────────────────┐
+                    │                                          │
+                    NO                                        YES
+                    │                                          │
+                    ▼                                          ▼
+        ┌───────────────────┐                   ┌──────────────────────────┐
+        │ INVALID CREDENTIALS│                   │ CREATE SESSION           │
+        │ Error Message      │                   │ Set JWT/Session token    │
+        │ Stay on /login     │                   │ Set User Roles           │
+        └───────────────────┘                   └──────────┬───────────────┘
+                                                           │
+                                                           ▼
+                                   ┌─────────────────────────────────────┐
+                                   │ USER AUTHENTICATED                  │
+                                   │ Session active + Roles              │
+                                   └─────────────────────────────────────┘
+                                                  │
+                    ┌─────────────────────────────┼──────────────────────┐
+                    │                             │                      │
+                    │                             │                      │
+            ┌───────▼────────────┐      ┌────────▼──────────┐    ┌──────▼────────┐
+            │ GET /membre        │      │ GET /admin        │    │ GET /logout    │
+            │ (ROLE_USER)        │      │ (ROLE_ADMIN)      │    │                │
+            └─────────┬─────────┘      └─────────┬─────────┘    └────────┬───────┘
+                      │                          │                       │
+                      ▼                          ▼                       ▼
+         ┌────────────────────┐     ┌───────────────────┐    ┌──────────────────┐
+         │ [OK] Tableau de    │     │ [OK] Admin Panel  │    │ Destroy Session  │
+         │      bord membre   │     │                   │    │ Clear cookies    │
+         └────────────────────┘     └───────────────────┘    │ Redirect to /    │
+                                                             └──────────────────┘
+```
+
+---
+
+## 8. Matrice Contrôle d'Accès (ACL)
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│          MATRICE CONTRÔLE D'ACCÈS (ACCESS CONTROL)                 │
+└────────────────────────────────────────────────────────────────────┘
+
+                │ Public │ ROLE_USER │ ROLE_ADMIN │ Admin+User
+                │        │ (Membre)  │ (Admin)    │ (Both)
+────────────────┼────────┼───────────┼────────────┼───────────
+GET /           │   ✓    │     ✓     │     ✓      │    ✓
+GET /liste-des- │   ✓    │     ✓     │     ✓      │    ✓
+cours           │        │           │            │
+GET /details-*  │   ✓    │     ✓     │     ✓      │    ✓
+GET /login      │   ✓    │     ✗     │     ✗      │    ✗
+GET /logout     │   ✗    │     ✓     │     ✓      │    ✓
+────────────────┼────────┼───────────┼────────────┼───────────
+GET /membre     │   ✗    │     ✓     │     ✗      │    ✓
+GET /membre/{id}│   ✗    │     ✓     │     ✗      │    ✓
+POST /membre/*  │   ✗    │     ✓     │     ✗      │    ✓
+────────────────┼────────┼───────────┼────────────┼───────────
+GET /admin/*    │   ✗    │     ✗     │     ✓      │    ✓
+POST /admin/*   │   ✗    │     ✗     │     ✓      │    ✓
+DELETE /admin/* │   ✗    │     ✗     │     ✓      │    ✓
+────────────────┼────────┼───────────┼────────────┼───────────
+
+Légende:
+✓ = Accès autorisé
+✗ = Accès refusé (redirection)
+```
+
+---
+
+## 9. Interaction entre Modules
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│             INTERACTIONS ENTRE LES MODULES                         │
+└────────────────────────────────────────────────────────────────────┘
+
+
+           ┌────────────────────────────────────────────┐
+           │      SÉCURITÉ (Security Bundle)            │
+           ├────────────────────────────────────────────┤
+           │ - Authentification                         │
+           │ - Autorisation (Roles)                     │
+           │ - CSRF Protection                          │
+           │ - Password Hashing (Bcrypt)               │
+           │                                            │
+           │  Utilisé par: TOUS LES MODULES            │
+           └────────────────────────────────────────────┘
+                            ▲
+                            │ Vérifie
+                            │
+           ┌────────────────┼────────────────┐
+           │                │                │
+           │                │                │
+        ┌──▼────────┐     ┌─▼──────────┐   ┌─▼──────────┐
+        │ MODULE     │     │ MODULE     │   │ MODULE     │
+        │ PUBLIC     │     │ MEMBER     │   │ ADMIN      │
+        ├────────────┤     ├────────────┤   ├────────────┤
+        │Controller: │     │Controller: │   │Controller: │
+        │Accueil     │     │Membre      │   │AdminChien  │
+        │            │     │            │   │AdminCour   │
+        │Routes:     │     │Routes:     │   │AdminSeance │
+        │- /         │     │- /membre   │   │AdminCours  │
+        │- /list-    │     │- /member/* │   │            │
+        │  cours     │     │            │   │Routes:     │
+        │- /details- │     │Forms:      │   │- /admin/*  │
+        │  cour      │     │- Chien     │   │            │
+        │- /list-    │     │- Proprio   │   │CRUD Ops:   │
+        │  seances   │     │            │   │- Create    │
+        │            │     │Repo Query: │   │- Read      │
+        │Repo Query: │     │- By User   │   │- Update    │
+        │- findAll() │     │- By Chien  │   │- Delete    │
+        │- findBy()  │     │            │   │            │
+        │            │     │Access:     │   │Access:     │
+        │Access:     │     │ROLE_USER   │   │ROLE_ADMIN  │
+        │PUBLIC      │     │            │   │            │
+        └─────────────┘     └────────────┘   └────────────┘
+           │                  │                 │
+           │                  │                 │
+           │                  └────────┬────────┘
+           │                           │
+           └───────────────┬───────────┘
+                           │
+                           ▼
+        ┌─────────────────────────────────────┐
+        │    ENTITIES & REPOSITORIES          │
+        ├─────────────────────────────────────┤
+        │ - Chien / ChienRepository           │
+        │ - Proprietaire / ProprioRepository  │
+        │ - Cour / CourRepository             │
+        │ - Seance / SeanceRepository         │
+        │ - Inscription / InscriptionRepo     │
+        │ - User / UserRepository             │
+        │ - Type / TypeRepository             │
+        │ - Niveau / NiveauRepository         │
+        │                                     │
+        │    ↓ (Doctrine ORM)                │
+        │                                     │
+        │    MySQL/MariaDB DATABASE           │
+        └─────────────────────────────────────┘
+```
+
+---
+
+**Fin de l'Architecture & Diagrammes**
+
+*Pour des détails supplémentaires, voir DOCUMENTATION_COMPLETE.md*

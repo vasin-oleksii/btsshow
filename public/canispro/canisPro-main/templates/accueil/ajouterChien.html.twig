@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscrire un chien{% endblock %}
+
+{% block body %}
+<main role="main" style="margin-top: 32px;">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Inscrire un chien</h1>
+            <p class="lead text-muted">Séance {{ seance.id }}</p>
+        </div>
+    </section>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <button type="submit" class="btn btn-primary">Inscrire</button>
+                    <a href="{{ path('app_details_seance', {'id': seance.id}) }}" class="btn btn-secondary">Annuler</a>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock %}

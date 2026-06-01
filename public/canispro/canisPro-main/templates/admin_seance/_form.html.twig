@@ -1,0 +1,44 @@
+{{ form_start(form) }}
+
+<div class="row g-4">
+    <div class="col-md-6">
+        {{ form_row(form.date, {
+            label: 'Date',
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control form-control-lg' }
+        }) }}
+    </div>
+
+    <div class="col-md-6">
+        {{ form_row(form.heureDeb, {
+            label: 'Heure de début',
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control form-control-lg' }
+        }) }}
+    </div>
+
+    <div class="col-md-6">
+        {{ form_row(form.duree, {
+            label: 'Durée',
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-control form-control-lg' }
+        }) }}
+    </div>
+
+    <div class="col-md-6">
+        {{ form_row(form.cour, {
+            label: 'Cours',
+            label_attr: { class: 'form-label fw-semibold mb-2', style: 'color:#1e1b4b;' },
+            attr: { class: 'form-select form-select-lg' }
+        }) }}
+    </div>
+</div>
+
+<div class="d-flex flex-wrap gap-3 align-items-center mt-4">
+    <button type="submit" class="btn btn-primary px-4 py-2">
+        {{ button_label|default('Enregistrer') }}
+    </button>
+    <span class="text-secondary small">Les informations seront visibles dans la liste des séances.</span>
+</div>
+
+{{ form_end(form) }}

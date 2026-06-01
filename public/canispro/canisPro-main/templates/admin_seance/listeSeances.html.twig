@@ -1,0 +1,180 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des séances{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .admin-session-hero {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 52%, #ffffff 100%);
+            border: 1px solid #ede9fe;
+            border-radius: 1.2rem;
+            box-shadow: 0 18px 42px rgba(109, 40, 217, .08);
+        }
+
+        .admin-session-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: .4rem .85rem;
+            border-radius: 999px;
+            background: rgba(124, 58, 237, .10);
+            border: 1px solid rgba(124, 58, 237, .16);
+            color: #7c3aed;
+            font-size: .82rem;
+            font-weight: 600;
+        }
+
+        .admin-session-stat {
+            height: 100%;
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            padding: 1.1rem;
+            box-shadow: 0 12px 28px rgba(109, 40, 217, .06);
+        }
+
+        .admin-session-stat-number {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #7c3aed;
+            line-height: 1;
+        }
+
+        .admin-session-table-wrap {
+            background: #fff;
+            border: 1px solid #ede9fe;
+            border-radius: 1rem;
+            box-shadow: 0 14px 36px rgba(109, 40, 217, .08);
+            overflow: hidden;
+        }
+
+        .admin-session-table thead th {
+            background: #f5f3ff;
+            color: #1e1b4b;
+            border-bottom: 1px solid #e9ddff;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .admin-session-table tbody td {
+            vertical-align: middle;
+            border-color: #f1eafe;
+        }
+
+        .admin-session-empty {
+            padding: 2.5rem 1rem;
+            text-align: center;
+            color: #6b7280;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<section class="py-4 py-lg-5">
+    <div class="container">
+        <div class="admin-session-hero p-4 p-lg-5 mb-4">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="admin-session-chip mb-3">Administration séances</span>
+                    <h1 class="fw-bold mb-3" style="color:#1e1b4b; font-size: clamp(2rem, 4vw, 3rem);">Gérer les séances</h1>
+                    <p class="text-secondary mb-0" style="max-width: 720px;">
+                        Organisez le calendrier du centre, consultez les séances programmées, leur durée, le cours associé et le nombre d'inscriptions en un coup d'œil.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ path('app_admin_seance_ajout') }}" class="btn btn-primary btn-lg px-4">Ajouter une séance</a>
+                </div>
+            </div>
+        </div>
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} alert-dismissible fade show rounded-4 border-0 shadow-sm" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="admin-session-stat">
+                    <div class="admin-session-stat-number">{{ seances|length }}</div>
+                    <div class="text-secondary mt-2">Séances programmées</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="admin-session-stat">
+                    <div class="admin-session-stat-number">Planning</div>
+                    <div class="text-secondary mt-2">Vue rapide sur les dates, horaires et durées</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="admin-session-stat">
+                    <div class="admin-session-stat-number">Suivi</div>
+                    <div class="text-secondary mt-2">Contrôle des cours liés et des inscriptions</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-session-table-wrap">
+            <div class="table-responsive">
+                <table class="table admin-session-table align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Heure début</th>
+                            <th>Durée</th>
+                            <th>Cours</th>
+                            <th>Inscriptions</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for seance in seances %}
+                            <tr>
+                                <td><span class="badge text-bg-primary">#{{ seance.id }}</span></td>
+                                <td>
+                                    <div class="fw-semibold" style="color:#1e1b4b;">{{ seance.date ? seance.date|date('d/m/Y') : '-' }}</div>
+                                </td>
+                                <td>{{ seance.heureDeb ? seance.heureDeb|date('H:i') : '-' }}</td>
+                                <td>{{ seance.duree ? seance.duree|date('H:i') : '-' }}</td>
+                                <td>
+                                    <span class="badge rounded-pill" style="background:#f5f3ff; color:#7c3aed; border:1px solid #e9ddff;">
+                                        {{ seance.cour ? seance.cour.nomCour : '-' }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge rounded-pill" style="background:#ffffff; color:#6d28d9; border:1px solid #ddd6fe;">
+                                        {{ seance.inscriptions|length }}
+                                    </span>
+                                </td>
+                                <td class="text-end">
+                                    <div class="d-flex flex-wrap justify-content-end gap-2">
+                                        <a href="{{ path('app_admin_seance_modif', {'id': seance.id}) }}" class="btn btn-outline-primary btn-sm">Modifier</a>
+                                        <form method="post" action="{{ path('app_admin_seance_delete', {'id': seance.id}) }}" onsubmit="return confirm('Vous êtes sûr de vouloir supprimer cette séance ?');" class="d-inline-block">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ seance.id) }}">
+                                            <button class="btn btn-danger btn-sm">Supprimer</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7">
+                                    <div class="admin-session-empty">
+                                        <div class="fw-semibold mb-2" style="color:#1e1b4b;">Aucune séance trouvée</div>
+                                        <div class="mb-3">Ajoutez une première séance pour commencer à structurer votre planning.</div>
+                                        <a href="{{ path('app_admin_seance_ajout') }}" class="btn btn-primary">Créer une séance</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

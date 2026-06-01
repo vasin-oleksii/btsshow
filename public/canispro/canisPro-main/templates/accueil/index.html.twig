@@ -1,0 +1,270 @@
+﻿{% extends 'base.html.twig' %}
+
+{% block title %}Accueil — CanisPro Education{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+  /* Hero */
+  .hero-section {
+    background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 45%, #fff 100%);
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(124,58,237,.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-img-wrap img {
+    object-fit: cover;
+    width: 100%;
+    max-height: 440px;
+    border-radius: 1.25rem;
+    box-shadow: 0 20px 60px rgba(109,40,217,.2);
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: rgba(124,58,237,.1);
+    color: #7c3aed;
+    border: 1px solid rgba(124,58,237,.25);
+    border-radius: 2rem;
+    padding: .3rem .9rem;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  /* Stats strip */
+  .stats-strip { background: #fff; border-top: 1px solid #ede9fe; border-bottom: 1px solid #ede9fe; }
+  .stat-item { border-right: 1px solid #ede9fe; }
+  .stat-item:last-child { border-right: none; }
+  .stat-number { font-size: 2rem; font-weight: 700; color: #7c3aed; line-height: 1; }
+  .stat-label { font-size: .8rem; color: #6b7280; font-weight: 500; }
+  /* Services */
+  .service-icon {
+    width: 52px; height: 52px;
+    background: #f5f3ff; border-radius: .75rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: background .2s;
+  }
+  .card:hover .service-icon { background: #ede9fe; }
+  .service-img { height: 200px; object-fit: cover; width: 100%; border-radius: .85rem .85rem 0 0; }
+  /* Why us */
+  .why-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .why-icon {
+    width: 44px; height: 44px; min-width: 44px;
+    background: #7c3aed; border-radius: .6rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* CTA */
+  .cta-banner {
+    background: linear-gradient(130deg, #7c3aed 0%, #6d28d9 100%);
+    border-radius: 1.25rem; position: relative; overflow: hidden;
+  }
+  .cta-banner::after {
+    content: ""; position: absolute;
+    bottom: -40px; right: -40px;
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,.06); border-radius: 50%; pointer-events: none;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+<main>
+
+  {# HERO #}
+  <section class="hero-section py-5">
+    <div class="container">
+      <div class="row align-items-center g-4 g-lg-5">
+        <div class="col-12 col-lg-6 text-center text-lg-start">
+          <span class="hero-badge mb-4 d-inline-flex">Depuis 2015 · Club canin certifié</span>
+          <h1 class="fw-bold mb-3" style="font-size:clamp(2rem,5vw,3.2rem);color:#1e1b4b;line-height:1.15;">
+            L'éducation canine,<br>
+            <span style="color:#7c3aed;">moderne</span> et bienveillante.
+          </h1>
+          <p class="lead mb-4" style="color:#4b5563;font-size:1.05rem;max-width:480px;margin-left:auto;margin-right:auto;">
+            Cours collectifs, séances individuelles et suivi personnalisé pour développer la complicité avec votre chien.
+          </p>
+          <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+            <a href="{{ path('app_liste_cours') }}" class="btn btn-primary btn-lg px-4">Voir les cours</a>
+            <a href="{{ path('app_a_propos') }}" class="btn btn-outline-primary btn-lg px-4">Notre approche</a>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="hero-img-wrap">
+            <img src="{{ asset('images/accueil/main.jpg') }}" alt="Education canine CanisPro">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# STATS #}
+  <section class="stats-strip py-4">
+    <div class="container">
+      <div class="row text-center g-0">
+        <div class="col-4 stat-item py-2">
+          <div class="stat-number">10+</div>
+          <div class="stat-label mt-1">Années d'expérience</div>
+        </div>
+        <div class="col-4 stat-item py-2">
+          <div class="stat-number">500+</div>
+          <div class="stat-label mt-1">Chiens formés</div>
+        </div>
+        <div class="col-4 stat-item py-2">
+          <div class="stat-number">15</div>
+          <div class="stat-label mt-1">Cours disponibles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# SERVICES #}
+  <section class="py-5" style="background:#fff;">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge text-bg-primary mb-2">Nos services</span>
+        <h2 class="fw-bold" style="color:#1e1b4b;">Ce que nous proposons</h2>
+        <p class="text-secondary mx-auto" style="max-width:500px;">Un accompagnement complet, de la première séance au suivi avancé.</p>
+      </div>
+      <div class="row g-4">
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="{{ asset('images/accueil/Aloa_29-768x768.jpg') }}" class="service-img" alt="Cours canins">
+            <div class="card-body d-flex flex-column gap-3 pt-4">
+              <div class="d-flex align-items-center gap-3">
+                <div class="service-icon">
+                  <svg width="22" height="22" fill="none" stroke="#7c3aed" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+                </div>
+                <h5 class="card-title mb-0 fw-semibold">Cours adaptés</h5>
+              </div>
+              <p class="card-text text-secondary" style="font-size:.9rem;">Cours collectifs et individuels adaptés au niveau et à la personnalité de votre chien, animés par des éducateurs certifiés.</p>
+            </div>
+            <div class="card-footer bg-white border-0 pb-4 px-4">
+              <a href="{{ path('app_liste_cours') }}" class="btn btn-outline-primary w-100">Explorer les cours</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="{{ asset('images/accueil/Viktor_4-768x768.jpg') }}" class="service-img" alt="Notre methode">
+            <div class="card-body d-flex flex-column gap-3 pt-4">
+              <div class="d-flex align-items-center gap-3">
+                <div class="service-icon">
+                  <svg width="22" height="22" fill="none" stroke="#7c3aed" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                </div>
+                <h5 class="card-title mb-0 fw-semibold">Notre méthode</h5>
+              </div>
+              <p class="card-text text-secondary" style="font-size:.9rem;">Une approche positive et bienveillante fondée sur le respect et la communication. Découvrez notre vision du bien-être canin.</p>
+            </div>
+            <div class="card-footer bg-white border-0 pb-4 px-4">
+              <a href="{{ path('app_a_propos') }}" class="btn btn-outline-primary w-100">Découvrir</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="{{ asset('images/accueil/Louguy_18-1-768x768.jpg') }}" class="service-img" alt="Espace membre">
+            <div class="card-body d-flex flex-column gap-3 pt-4">
+              <div class="d-flex align-items-center gap-3">
+                <div class="service-icon">
+                  <svg width="22" height="22" fill="none" stroke="#7c3aed" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <h5 class="card-title mb-0 fw-semibold">Espace membre</h5>
+              </div>
+              <p class="card-text text-secondary" style="font-size:.9rem;">Gérez votre profil, vos chiens et vos inscriptions depuis un espace personnel simple et sécurisé.</p>
+            </div>
+            <div class="card-footer bg-white border-0 pb-4 px-4">
+              {% if app.user %}
+                {% if is_granted('ROLE_ADMIN') %}
+                  <span class="btn btn-outline-secondary w-100 disabled">Réservé aux membres</span>
+                {% else %}
+                  <a href="{{ path('app_membre') }}" class="btn btn-outline-primary w-100">Mon espace</a>
+                {% endif %}
+              {% else %}
+                <a href="{{ path('app_login') }}" class="btn btn-outline-primary w-100">Se connecter</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {# POURQUOI NOUS #}
+  <section class="py-5" style="background:#f9f7ff;">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-12 col-lg-5">
+          <span class="badge text-bg-primary mb-2">Pourquoi nous choisir</span>
+          <h2 class="fw-bold mb-3" style="color:#1e1b4b;">Une équipe dédiée à votre chien</h2>
+          <p class="text-secondary" style="font-size:.95rem;">
+            Chez CanisPro, chaque chien est unique. Nos éducateurs adaptent chaque programme avec patience, méthode et bienveillance pour des résultats durables.
+          </p>
+        </div>
+        <div class="col-12 col-lg-7">
+          <div class="d-flex flex-column gap-4">
+            <div class="why-item">
+              <div class="why-icon">
+                <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              </div>
+              <div>
+                <h6 class="fw-semibold mb-1" style="color:#1e1b4b;">Méthodes positives uniquement</h6>
+                <p class="text-secondary mb-0" style="font-size:.875rem;">Nous bannissons toute contrainte. L'apprentissage doit être un plaisir pour l'animal comme pour le maître.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-icon">
+                <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div>
+                <h6 class="fw-semibold mb-1" style="color:#1e1b4b;">Petits groupes, grand suivi</h6>
+                <p class="text-secondary mb-0" style="font-size:.875rem;">Nos cours en petits effectifs garantissent une attention personnalisée et des progrès réels et durables.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-icon">
+                <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div>
+                <h6 class="fw-semibold mb-1" style="color:#1e1b4b;">Inscriptions en ligne simples</h6>
+                <p class="text-secondary mb-0" style="font-size:.875rem;">Consultez les séances disponibles, inscrivez votre chien et gérez tout depuis votre espace membre.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# CTA FINAL #}
+  <section class="py-5">
+    <div class="container">
+      <div class="cta-banner p-5 text-center text-white">
+        <h2 class="fw-bold mb-2" style="font-size:clamp(1.4rem,3vw,2.1rem);">Prêt à commencer l'aventure ?</h2>
+        <p class="mb-4 opacity-75" style="font-size:.95rem;max-width:480px;margin:0 auto 1.5rem;">
+          Rejoignez notre communauté de passionnés et offrez à votre chien la meilleure éducation possible.
+        </p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center">
+          <a href="{{ path('app_liste_cours') }}" class="btn btn-light fw-semibold px-4" style="color:#7c3aed;">Voir les cours</a>
+          {% if not app.user %}
+            <a href="{{ path('app_login') }}" class="btn px-4 fw-semibold" style="border:2px solid rgba(255,255,255,.6);color:#fff;">Créer un compte</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+{% endblock %}
